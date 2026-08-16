@@ -1,0 +1,185 @@
+/*
+ * TEDx Purdue U — global styles.
+ *
+ * Palette and type are lifted straight from the approved design:
+ * near-black canvas, TEDx logo red for every accent, Helvetica throughout.
+ */
+
+:root {
+	--bg: #0d0d0d;
+	--red: #ff2b06;
+	--text: #f5f5f5;
+	--text-muted: #c4c4c4;
+	--text-dim: #a8a8a8;
+	--text-faint: #8c8c8c;
+	--text-fainter: #6e6e6e;
+	--text-faintest: #5c5c5c;
+	--rule: #1f1f1f;
+	--border: #262626;
+	--border-strong: #3a3a3a;
+	--fill: #141414;
+	--fill-hatch: #1c1c1c;
+	--gutter: 6vw;
+	--mono: ui-monospace, Menlo, monospace;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: var(--red);
+	text-decoration: none;
+}
+
+a:hover {
+	color: #fff;
+}
+
+::selection {
+	background: var(--red);
+	color: #fff;
+}
+
+:focus-visible {
+	outline: 2px solid var(--red);
+	outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	font-weight: 700;
+}
+
+p {
+	margin: 0;
+}
+
+/* ---- Layout primitives ------------------------------------------------- */
+
+.section {
+	padding: 9vh var(--gutter);
+}
+
+.section--ruled {
+	border-bottom: 1px solid var(--rule);
+}
+
+.stack {
+	display: flex;
+	flex-direction: column;
+}
+
+/* ---- Type -------------------------------------------------------------- */
+
+.eyebrow {
+	font-size: 13px;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
+	color: var(--text-faint);
+}
+
+.page-title {
+	font-size: clamp(44px, 7vw, 92px);
+	line-height: 0.95;
+	letter-spacing: -0.03em;
+}
+
+.lede {
+	font-size: 19px;
+	line-height: 1.65;
+	color: var(--text-muted);
+	text-wrap: pretty;
+}
+
+.section-title {
+	font-size: clamp(26px, 3vw, 38px);
+	letter-spacing: -0.02em;
+}
+
+.body-text {
+	font-size: 16px;
+	line-height: 1.65;
+	color: var(--text-dim);
+}
+
+.label {
+	font-size: 12px;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--text-faint);
+}
+
+/* ---- Buttons ----------------------------------------------------------- */
+
+.btn {
+	display: inline-block;
+	padding: 15px 30px;
+	font-size: 14px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	font-weight: 700;
+	cursor: pointer;
+	transition:
+		background-color 0.15s ease,
+		color 0.15s ease,
+		border-color 0.15s ease;
+}
+
+.btn--primary {
+	background: var(--red);
+	color: #fff;
+}
+
+.btn--primary:hover {
+	background: #fff;
+	color: var(--bg);
+}
+
+.btn--outline {
+	border: 1px solid var(--border-strong);
+	color: var(--text);
+}
+
+.btn--outline:hover {
+	border-color: var(--red);
+	color: var(--red);
+}
+
+/* A red-underlined text link that reads as a call to action. */
+.link-rule {
+	align-self: flex-start;
+	font-size: 14px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: var(--red);
+	border-bottom: 2px solid var(--red);
+	padding-bottom: 4px;
+}
+
+/* ---- Misc -------------------------------------------------------------- */
+
+/* The short red bar that heads each feature column on the About page. */
+.tick {
+	width: 40px;
+	height: 4px;
+	background: var(--red);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

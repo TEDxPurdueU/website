@@ -1,25 +1,62 @@
-# CODING AGENTS: READ THIS FIRST
+# TEDx Purdue U
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+The club website — five pages, static, built with SvelteKit.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+| Page                        | Route       | Source                            |
+| --------------------------- | ----------- | --------------------------------- |
+| About                       | `/`         | `src/routes/+page.svelte`         |
+| Unseen 2027                 | `/unseen`   | `src/routes/unseen/+page.svelte`  |
+| Salons                      | `/salons`   | `src/routes/salons/+page.svelte`  |
+| Student Speaker Competition | `/speakers` | `src/routes/speakers/+page.svelte`|
+| Team                        | `/team`     | `src/routes/team/+page.svelte`    |
 
-## What you should do — IMPORTANT
+## Running it
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+```sh
+npm install
+npm run dev      # local dev server
+npm run build    # static site → build/
+npm run preview  # serve the built site
+npm run check    # type + a11y check
+```
 
-**Read `project/TEDx Purdue U.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+Every route is prerendered by `@sveltejs/adapter-static`, so `build/` is plain
+HTML/CSS/JS. Drop it on GitHub Pages, Netlify, Vercel, or any static host — no
+server needed.
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+## How it's put together
 
-## About the design files
+- `src/app.css` — the palette and shared type/button styles. Colors live as CSS
+  variables on `:root`: `--bg` (`#0d0d0d`), `--red` (`#ff2b06`, the logo red),
+  and the grey ramp. Change a color once here and it changes everywhere.
+- `src/lib/nav.js` — the page list, social links, and contact email. The header
+  and footer both read from it, so adding or renaming a page is a one-line edit.
+- `src/lib/components/` — `Header`, `Footer`, and `Placeholder` (the hatched box
+  standing in for photos that haven't been shot yet).
+- Page content lives in arrays at the top of each `+page.svelte`, so copy edits
+  don't mean touching markup.
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+## Content still to fill in
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+The design shipped with placeholders. Each one is marked with a `TODO` comment
+in the source:
 
-## Bundle contents
+| What                    | Where                                                    |
+| ----------------------- | -------------------------------------------------------- |
+| Conference date         | `src/routes/unseen/+page.svelte` — `facts`                |
+| Speaker portraits/names | `src/routes/unseen/+page.svelte` — `speakerSlots`         |
+| Application link        | `src/routes/speakers/+page.svelte` — the status badge     |
+| Salon dates             | `src/routes/salons/+page.svelte` — `upcoming`             |
+| Real names and roles    | `src/routes/team/+page.svelte` — `team`                   |
+| Headshots               | `src/routes/team/+page.svelte` — `<Placeholder>` elements |
+| Social URLs             | `src/lib/nav.js` — `socials`                              |
+| Contact email           | `src/lib/nav.js` — `contactEmail`                         |
+| Audience photo          | `src/routes/+page.svelte` — `<Placeholder>`               |
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `TEDx Purdue U website` project files (HTML prototypes, assets, components)
+To swap a placeholder for a real photo, drop the image in `static/` and replace
+the `<Placeholder … />` with an `<img>` at the same aspect ratio.
+
+## Design source
+
+The approved design prototype and the conversation behind it are kept in
+`project/` and `chats/` for reference. `project/HANDOFF.md` explains that bundle.
