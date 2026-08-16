@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TEDx Purdue U</title>
+<style>
+  body { margin:0; background:#0d0d0d; color:#f5f5f5; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#ff2b06; text-decoration:none; }
+  a:hover { color:#fff; }
+  ::selection { background:#ff2b06; color:#fff; }
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#0d0d0d">
+
+  <header style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:20px 6vw;background:rgba(13,13,13,0.92);backdrop-filter:blur(10px);border-bottom:1px solid #1f1f1f">
+    <img src="uploads/whitetext.png" alt="TEDx Purdue U" style="height:34px;width:auto;display:block;cursor:pointer" onClick="{{ goHome }}" />
+    <nav style="display:flex;align-items:center;gap:28px;flex-wrap:wrap">
+      <div onClick="{{ goHome }}" style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;color:{{ cHome }}" style-hover="color:#ff2b06">About</div>
+      <div onClick="{{ goEvent }}" style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;color:{{ cEvent }}" style-hover="color:#ff2b06">Unseen 2027</div>
+      <div onClick="{{ goSalons }}" style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;color:{{ cSalons }}" style-hover="color:#ff2b06">Salons</div>
+      <div onClick="{{ goSpeakers }}" style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;color:{{ cSpeakers }}" style-hover="color:#ff2b06">Speaker Comp</div>
+      <div onClick="{{ goTeam }}" style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;color:{{ cTeam }}" style-hover="color:#ff2b06">Team</div>
+    </nav>
+  </header>
+
+  <main style="flex:1">
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <section style="padding:12vh 6vw 10vh;border-bottom:1px solid #1f1f1f">
+          <div style="max-width:1100px;display:flex;flex-direction:column;gap:32px">
+            <div style="font-size:13px;letter-spacing:0.24em;text-transform:uppercase;color:#8c8c8c">West Lafayette, Indiana</div>
+            <h1 style="margin:0;font-size:clamp(44px,7vw,104px);line-height:0.95;letter-spacing:-0.03em;font-weight:700;text-wrap:balance">Ideas worth spreading, <span style="color:#ff2b06">Purdue built</span>.</h1>
+            <p style="margin:0;max-width:620px;font-size:19px;line-height:1.6;color:#c4c4c4;text-wrap:pretty">We are a student-run organization that curates one independently organized TED event each year, plus salons and a speaker competition that give the Purdue community a stage for its boldest thinking.</p>
+            <div style="display:flex;gap:16px;flex-wrap:wrap;padding-top:8px">
+              <div onClick="{{ goEvent }}" style="padding:15px 30px;background:#ff2b06;color:#fff;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;cursor:pointer" style-hover="background:#fff;color:#0d0d0d">Unseen 2027</div>
+              <div onClick="{{ goSpeakers }}" style="padding:15px 30px;border:1px solid #3a3a3a;color:#f5f5f5;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;cursor:pointer" style-hover="border-color:#ff2b06;color:#ff2b06">Speak on our stage</div>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding:9vh 6vw;border-bottom:1px solid #1f1f1f">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:48px;max-width:1200px">
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="width:40px;height:4px;background:#ff2b06"></div>
+              <h3 style="margin:0;font-size:22px;letter-spacing:-0.01em">The annual conference</h3>
+              <p style="margin:0;font-size:16px;line-height:1.65;color:#a8a8a8">A full day of talks from students, faculty, alumni, and guests — one theme, eight speakers, one room of people who want to be changed by an idea.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="width:40px;height:4px;background:#ff2b06"></div>
+              <h3 style="margin:0;font-size:22px;letter-spacing:-0.01em">Salons</h3>
+              <p style="margin:0;font-size:16px;line-height:1.65;color:#a8a8a8">Smaller evening gatherings through the semester: one short talk or screening, then a conversation that runs as long as it needs to.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="width:40px;height:4px;background:#ff2b06"></div>
+              <h3 style="margin:0;font-size:22px;letter-spacing:-0.01em">Student Speaker Competition</h3>
+              <p style="margin:0;font-size:16px;line-height:1.65;color:#a8a8a8">Every Purdue student gets a shot at the stage. Pitch an idea, get coached, and compete for a speaking slot at the conference.</p>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding:9vh 6vw;border-bottom:1px solid #1f1f1f">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;max-width:1200px">
+            <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:clamp(38px,4vw,58px);font-weight:700;color:#ff2b06;letter-spacing:-0.03em">8</div><div style="font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#8c8c8c">Speakers per conference</div></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:clamp(38px,4vw,58px);font-weight:700;color:#ff2b06;letter-spacing:-0.03em">400</div><div style="font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#8c8c8c">Seats in the room</div></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:clamp(38px,4vw,58px);font-weight:700;color:#ff2b06;letter-spacing:-0.03em">30+</div><div style="font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#8c8c8c">Student organizers</div></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:clamp(38px,4vw,58px);font-weight:700;color:#ff2b06;letter-spacing:-0.03em">4</div><div style="font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#8c8c8c">Salons each year</div></div>
+          </div>
+        </section>
+
+        <section style="padding:9vh 6vw">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:center;max-width:1200px">
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <h2 style="margin:0;font-size:clamp(28px,3.4vw,44px);line-height:1.1;letter-spacing:-0.02em">What TEDx means</h2>
+              <p style="margin:0;font-size:17px;line-height:1.7;color:#a8a8a8;text-wrap:pretty">In the spirit of ideas worth spreading, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Ours is run entirely by Purdue students, under license from TED.</p>
+              <div onClick="{{ goTeam }}" style="align-self:flex-start;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;color:#ff2b06;cursor:pointer;border-bottom:2px solid #ff2b06;padding-bottom:4px">Meet the team</div>
+            </div>
+            <div style="aspect-ratio:4/3;background-color:#141414;background-image:repeating-linear-gradient(135deg,#1c1c1c 0 10px,#141414 10px 20px);border:1px solid #262626;display:flex;align-items:flex-end;padding:18px">
+              <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#6e6e6e">[ photo — audience at last year's conference ]</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isEvent }}">
+      <div>
+        <section style="padding:10vh 6vw 8vh;border-bottom:1px solid #1f1f1f">
+          <div style="max-width:1150px;display:flex;flex-direction:column;gap:28px">
+            <div style="font-size:13px;letter-spacing:0.24em;text-transform:uppercase;color:#8c8c8c">2027 Annual Conference · Theme</div>
+            <h1 style="margin:0;font-size:clamp(72px,17vw,240px);line-height:0.82;letter-spacing:-0.05em;font-weight:700;text-transform:uppercase;color:#ff2b06">Unseen</h1>
+            <p style="margin:0;max-width:660px;font-size:19px;line-height:1.65;color:#c4c4c4;text-wrap:pretty">The work nobody claps for. The data we never collected. The people in the room who were never asked. Unseen is about what sits just outside our attention — and what changes the moment we look.</p>
+            <div style="display:flex;gap:40px;flex-wrap:wrap;padding-top:12px">
+              <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#8c8c8c">Date</div><div style="font-size:18px;font-weight:700">Spring 2027 — TBA</div></div>
+              <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#8c8c8c">Venue</div><div style="font-size:18px;font-weight:700">Purdue Memorial Union</div></div>
+              <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#8c8c8c">Tickets</div><div style="font-size:18px;font-weight:700">On sale later this year</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding:8vh 6vw;border-bottom:1px solid #1f1f1f">
+          <div style="max-width:1200px;display:flex;flex-direction:column;gap:36px">
+            <h2 style="margin:0;font-size:clamp(26px,3vw,38px);letter-spacing:-0.02em">Three questions we're building the day around</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#262626;border:1px solid #262626">
+              <div style="background:#0d0d0d;padding:34px;display:flex;flex-direction:column;gap:12px"><div style="font-size:13px;color:#ff2b06;font-weight:700">01</div><h3 style="margin:0;font-size:20px">Who is missing?</h3><p style="margin:0;font-size:15px;line-height:1.6;color:#a8a8a8">Labor, care, and expertise that hold systems up without appearing in them.</p></div>
+              <div style="background:#0d0d0d;padding:34px;display:flex;flex-direction:column;gap:12px"><div style="font-size:13px;color:#ff2b06;font-weight:700">02</div><h3 style="margin:0;font-size:20px">What can't we measure?</h3><p style="margin:0;font-size:15px;line-height:1.6;color:#a8a8a8">The limits of instruments, models, and the metrics we mistake for reality.</p></div>
+              <div style="background:#0d0d0d;padding:34px;display:flex;flex-direction:column;gap:12px"><div style="font-size:13px;color:#ff2b06;font-weight:700">03</div><h3 style="margin:0;font-size:20px">What do we refuse to see?</h3><p style="margin:0;font-size:15px;line-height:1.6;color:#a8a8a8">Attention as a choice — and the cost of looking away on purpose.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding:8vh 6vw;border-bottom:1px solid #1f1f1f">
+          <div style="max-width:900px;display:flex;flex-direction:column;gap:24px">
+            <h2 style="margin:0;font-size:clamp(26px,3vw,38px);letter-spacing:-0.02em">Day at a glance</h2>
+            <div style="display:flex;flex-direction:column">
+              <div style="display:flex;gap:28px;padding:20px 0;border-bottom:1px solid #1f1f1f"><div style="min-width:120px;font-size:15px;color:#ff2b06;font-weight:700">Morning</div><div style="font-size:16px;color:#c4c4c4">Doors, coffee, and Session I — three talks</div></div>
+              <div style="display:flex;gap:28px;padding:20px 0;border-bottom:1px solid #1f1f1f"><div style="min-width:120px;font-size:15px;color:#ff2b06;font-weight:700">Midday</div><div style="font-size:16px;color:#c4c4c4">Lunch, exhibits, and conversations with speakers</div></div>
+              <div style="display:flex;gap:28px;padding:20px 0;border-bottom:1px solid #1f1f1f"><div style="min-width:120px;font-size:15px;color:#ff2b06;font-weight:700">Afternoon</div><div style="font-size:16px;color:#c4c4c4">Session II — three talks and a performance</div></div>
+              <div style="display:flex;gap:28px;padding:20px 0"><div style="min-width:120px;font-size:15px;color:#ff2b06;font-weight:700">Evening</div><div style="font-size:16px;color:#c4c4c4">Closing talk and reception</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding:8vh 6vw">
+          <div style="max-width:1200px;display:flex;flex-direction:column;gap:28px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap">
+              <h2 style="margin:0;font-size:clamp(26px,3vw,38px);letter-spacing:-0.02em">Speakers</h2>
+              <span style="font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#8c8c8c">Announced on a rolling basis</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px">
+              <div style="aspect-ratio:3/4;background-color:#141414;background-image:repeating-linear-gradient(135deg,#1c1c1c 0 10px,#141414 10px 20px);border:1px solid #262626;display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6e6e6e">[ speaker 1 ]</span></div>
+              <div style="aspect-ratio:3/4;background-color:#141414;background-image:repeating-linear-gradient(135deg,#1c1c1c 0 10px,#141414 10px 20px);border:1px solid #262626;display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6e6e6e">[ speaker 2 ]</span></div>
+              <div style="aspect-ratio:3/4;background-color:#141414;background-image:repeating-linear-gradient(135deg,#1c1c1c 0 10px,#141414 10px 20px);border:1px solid #262626;display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6e6e6e">[ speaker 3 ]</span></div>
+              <div style="aspect-ratio:3/4;border:1px dashed #3a3a3a;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center"><span style="font-size:14px;color:#8c8c8c;line-height:1.5">Could be you —<br /><span onClick="{{ goSpeakers }}" style="color:#ff2b06;cursor:pointer;font-weight:700">enter the competition</span></span></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSalons }}">
+      <div>
+        <section style="padding:10vh 6vw 7vh;border-bottom:1px solid #1f1f1f">
+          <div style="max-width:900px;display:flex;flex-direction:column;gap:26px">
+            <div style="font-size:13px;letter-spacing:0.24em;text-transform:uppercase;color:#8c8c8c">Between conferences</div>
+            <h1 style="margin:0;font-size:clamp(44px,7vw,92px);line-height:0.95;letter-spacing:-0.03em;font-weight:700">Salons</h1>
+            <p style="margin:0;font-size:19px;line-height:1.65;color:#c4c4c4;text-wrap:pretty">Our mini-events. One idea, one small room, one long conversation — usually a short talk or a TED screening, then discussion over food. Free, open to everyone at Purdue, no ticket needed.</p>
+          </div>
+        </section>
+
+        <section style="padding:7vh 6vw;border-bottom:1px solid #1f1f1f">
+          <div style="max-width:1100px;display:flex;flex-direction:column;gap:24px">
+            <h2 style="margin:0;font-size:22px;letter-spacing:0.02em">Upcoming</h2>
+            <div style="border:1px solid #ff2b06;padding:36px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:center">
+              <div style="display:flex;flex-direction:column;gap:10px;max-width:600px">
+                <div style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#ff2b06">Fall 2026 · date TBA</div>
+                <h3 style="margin:0;font-size:26px;letter-spacing:-0.01em">Salon 01 — Blind Spots</h3>
+                <p style="margin:0;font-size:16px;line-height:1.6;color:#a8a8a8">A warm-up for Unseen: two students on what their field systematically fails to notice, then open discussion.</p>
+              </div>
+              <div style="padding:14px 26px;background:#ff2b06;color:#fff;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700">RSVP soon</div>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding:7vh 6vw">
+          <div style="max-width:1100px;display:flex;flex-direction:column;gap:24px">
+            <h2 style="margin:0;font-size:22px;letter-spacing:0.02em">Past salons</h2>
+            <div style="display:flex;flex-direction:column">
+              <div style="display:flex;gap:28px;padding:22px 0;border-top:1px solid #1f1f1f;flex-wrap:wrap"><div style="min-width:150px;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#8c8c8c">Spring 2026</div><div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Attention, for sale</div><div style="font-size:15px;color:#a8a8a8">Screening + discussion on the economics of what we look at.</div></div></div>
+              <div style="display:flex;gap:28px;padding:22px 0;border-top:1px solid #1f1f1f;flex-wrap:wrap"><div style="min-width:150px;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#8c8c8c">Fall 2025</div><div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Failing in public</div><div style="font-size:15px;color:#a8a8a8">Three researchers on experiments that didn't work.</div></div></div>
+              <div style="display:flex;gap:28px;padding:22px 0;border-top:1px solid #1f1f1f;border-bottom:1px solid #1f1f1f;flex-wrap:wrap"><div style="min-width:150px;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#8c8c8c">Spring 2025</div><div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">The city we walk past</div><div style="font-size:15px;color:#a8a8a8">A walking salon through West Lafayette with an urban planning student.</div></div></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSpeakers }}">
+      <div>
+        <section style="padding:10vh 6vw 7vh;border-bottom:1px solid #1f1f1f">
+          <div style="max-width:920px;display:flex;flex-direction:column;gap:26px">
+            <div style="font-size:13px;letter-spacing:0.24em;text-transform:uppercase;color:#8c8c8c">Open to every Purdue student</div>
+            <h1 style="margin:0;font-size:clamp(40px,6.5vw,86px);line-height:0.98;letter-spacing:-0.03em;font-weight:700;text-wrap:balance">Student Speaker Competition</h1>
+            <p style="margin:0;font-size:19px;line-height:1.65;color:#c4c4c4;text-wrap:pretty">One slot on the Unseen stage goes to a student. You don't need a title, a lab, or a startup — you need one idea you can defend in six minutes.</p>
+            <div style="align-self:flex-start;padding:15px 30px;background:#ff2b06;color:#fff;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;cursor:pointer" style-hover="background:#fff;color:#0d0d0d">Applications open Fall 2026</div>
+          </div>
+        </section>
+
+        <section style="padding:7vh 6vw;border-bottom:1px solid #1f1f1f">
+          <div style="max-width:1100px;display:flex;flex-direction:column;gap:32px">
+            <h2 style="margin:0;font-size:clamp(24px,2.8vw,34px);letter-spacing:-0.02em">How it works</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:36px">
+              <div style="display:flex;flex-direction:column;gap:12px;border-top:3px solid #ff2b06;padding-top:18px"><div style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#8c8c8c">Step 01</div><h3 style="margin:0;font-size:19px">Submit a pitch</h3><p style="margin:0;font-size:15px;line-height:1.6;color:#a8a8a8">200 words on your idea and why it matters now.</p></div>
+              <div style="display:flex;flex-direction:column;gap:12px;border-top:3px solid #ff2b06;padding-top:18px"><div style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#8c8c8c">Step 02</div><h3 style="margin:0;font-size:19px">Audition round</h3><p style="margin:0;font-size:15px;line-height:1.6;color:#a8a8a8">Shortlisted students give a three-minute version to our curation team.</p></div>
+              <div style="display:flex;flex-direction:column;gap:12px;border-top:3px solid #ff2b06;padding-top:18px"><div style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#8c8c8c">Step 03</div><h3 style="margin:0;font-size:19px">Coaching</h3><p style="margin:0;font-size:15px;line-height:1.6;color:#a8a8a8">Finalists get four weeks of rehearsal and script work with our speaker coaches.</p></div>
+              <div style="display:flex;flex-direction:column;gap:12px;border-top:3px solid #ff2b06;padding-top:18px"><div style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#8c8c8c">Step 04</div><h3 style="margin:0;font-size:19px">The stage</h3><p style="margin:0;font-size:15px;line-height:1.6;color:#a8a8a8">The winner speaks at the conference, filmed for the TEDx channel.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding:7vh 6vw">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;max-width:1100px">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <h2 style="margin:0;font-size:24px;letter-spacing:-0.01em">Who can enter</h2>
+              <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.6;color:#a8a8a8">
+                <li>Any currently enrolled Purdue undergraduate or graduate student</li>
+                <li>Any discipline — engineering to art history</li>
+                <li>Ideas only: no product pitches, promotions, or fundraising</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <h2 style="margin:0;font-size:24px;letter-spacing:-0.01em">What judges look for</h2>
+              <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.6;color:#a8a8a8">
+                <li>One clear idea, not a summary of a field</li>
+                <li>Evidence you actually did the thinking</li>
+                <li>A reason this audience should care today</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isTeam }}">
+      <div>
+        <section style="padding:10vh 6vw 7vh;border-bottom:1px solid #1f1f1f">
+          <div style="max-width:900px;display:flex;flex-direction:column;gap:26px">
+            <div style="font-size:13px;letter-spacing:0.24em;text-transform:uppercase;color:#8c8c8c">Entirely student-run</div>
+            <h1 style="margin:0;font-size:clamp(44px,7vw,92px);line-height:0.95;letter-spacing:-0.03em;font-weight:700">The team</h1>
+            <p style="margin:0;font-size:19px;line-height:1.65;color:#c4c4c4;text-wrap:pretty">Curation, production, design, marketing, and partnerships — every part of the conference is built by Purdue students who volunteer their semesters to it.</p>
+          </div>
+        </section>
+
+        <section style="padding:7vh 6vw;border-bottom:1px solid #1f1f1f">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:32px;max-width:1200px">
+            <div style="display:flex;flex-direction:column;gap:14px"><div style="aspect-ratio:1/1;background-color:#141414;background-image:repeating-linear-gradient(135deg,#1c1c1c 0 10px,#141414 10px 20px);border:1px solid #262626;display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6e6e6e">[ headshot ]</span></div><div><div style="font-size:17px;font-weight:700">Name Here</div><div style="font-size:14px;color:#ff2b06;letter-spacing:0.06em">Licensee &amp; Organizer</div></div></div>
+            <div style="display:flex;flex-direction:column;gap:14px"><div style="aspect-ratio:1/1;background-color:#141414;background-image:repeating-linear-gradient(135deg,#1c1c1c 0 10px,#141414 10px 20px);border:1px solid #262626;display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6e6e6e">[ headshot ]</span></div><div><div style="font-size:17px;font-weight:700">Name Here</div><div style="font-size:14px;color:#ff2b06;letter-spacing:0.06em">Curation Lead</div></div></div>
+            <div style="display:flex;flex-direction:column;gap:14px"><div style="aspect-ratio:1/1;background-color:#141414;background-image:repeating-linear-gradient(135deg,#1c1c1c 0 10px,#141414 10px 20px);border:1px solid #262626;display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6e6e6e">[ headshot ]</span></div><div><div style="font-size:17px;font-weight:700">Name Here</div><div style="font-size:14px;color:#ff2b06;letter-spacing:0.06em">Production Lead</div></div></div>
+            <div style="display:flex;flex-direction:column;gap:14px"><div style="aspect-ratio:1/1;background-color:#141414;background-image:repeating-linear-gradient(135deg,#1c1c1c 0 10px,#141414 10px 20px);border:1px solid #262626;display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6e6e6e">[ headshot ]</span></div><div><div style="font-size:17px;font-weight:700">Name Here</div><div style="font-size:14px;color:#ff2b06;letter-spacing:0.06em">Design Lead</div></div></div>
+            <div style="display:flex;flex-direction:column;gap:14px"><div style="aspect-ratio:1/1;background-color:#141414;background-image:repeating-linear-gradient(135deg,#1c1c1c 0 10px,#141414 10px 20px);border:1px solid #262626;display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6e6e6e">[ headshot ]</span></div><div><div style="font-size:17px;font-weight:700">Name Here</div><div style="font-size:14px;color:#ff2b06;letter-spacing:0.06em">Marketing Lead</div></div></div>
+            <div style="display:flex;flex-direction:column;gap:14px"><div style="aspect-ratio:1/1;background-color:#141414;background-image:repeating-linear-gradient(135deg,#1c1c1c 0 10px,#141414 10px 20px);border:1px solid #262626;display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6e6e6e">[ headshot ]</span></div><div><div style="font-size:17px;font-weight:700">Name Here</div><div style="font-size:14px;color:#ff2b06;letter-spacing:0.06em">Partnerships Lead</div></div></div>
+          </div>
+        </section>
+
+        <section style="padding:7vh 6vw">
+          <div style="max-width:760px;display:flex;flex-direction:column;gap:18px">
+            <h2 style="margin:0;font-size:clamp(24px,2.8vw,34px);letter-spacing:-0.02em">Join us</h2>
+            <p style="margin:0;font-size:17px;line-height:1.7;color:#a8a8a8">We recruit new organizers at the start of every fall semester — curation, video, graphic design, sponsorship, and event ops. Email us or reach out on Instagram and we'll tell you what's open.</p>
+            <a href="mailto:hello@tedxpurdueu.org" style="align-self:flex-start;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;border-bottom:2px solid #ff2b06;padding-bottom:4px">hello@tedxpurdueu.org</a>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="border-top:1px solid #1f1f1f;padding:56px 6vw 40px;display:flex;flex-direction:column;gap:36px">
+    <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:360px">
+        <img src="uploads/whitetext.png" alt="TEDx Purdue U" style="height:30px;width:auto;display:block" />
+        <p style="margin:0;font-size:14px;line-height:1.6;color:#8c8c8c">This independent TEDx event is operated under license from TED. West Lafayette, Indiana.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#6e6e6e">Follow</div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap">
+          <a href="https://instagram.com/tedxpurdueu" target="_blank" style="font-size:15px;letter-spacing:0.04em">Instagram</a>
+          <a href="https://twitter.com/tedxpurdueu" target="_blank" style="font-size:15px;letter-spacing:0.04em">Twitter</a>
+          <a href="https://facebook.com/tedxpurdueu" target="_blank" style="font-size:15px;letter-spacing:0.04em">Facebook</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#6e6e6e">Pages</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div onClick="{{ goHome }}" style="font-size:15px;color:#c4c4c4;cursor:pointer" style-hover="color:#ff2b06">About</div>
+          <div onClick="{{ goEvent }}" style="font-size:15px;color:#c4c4c4;cursor:pointer" style-hover="color:#ff2b06">Unseen 2027</div>
+          <div onClick="{{ goSalons }}" style="font-size:15px;color:#c4c4c4;cursor:pointer" style-hover="color:#ff2b06">Salons</div>
+          <div onClick="{{ goSpeakers }}" style="font-size:15px;color:#c4c4c4;cursor:pointer" style-hover="color:#ff2b06">Speaker Competition</div>
+          <div onClick="{{ goTeam }}" style="font-size:15px;color:#c4c4c4;cursor:pointer" style-hover="color:#ff2b06">Team</div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:#5c5c5c">© 2026 TEDx Purdue U · x = independently organized TED event</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { page: "home" };
+  go(page) {
+    this.setState({ page });
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  renderVals() {
+    const p = this.state.page;
+    const c = (k) => (p === k ? "#ff2b06" : "#c4c4c4");
+    return {
+      isHome: p === "home", isEvent: p === "event", isSalons: p === "salons",
+      isSpeakers: p === "speakers", isTeam: p === "team",
+      cHome: c("home"), cEvent: c("event"), cSalons: c("salons"),
+      cSpeakers: c("speakers"), cTeam: c("team"),
+      goHome: () => this.go("home"), goEvent: () => this.go("event"),
+      goSalons: () => this.go("salons"), goSpeakers: () => this.go("speakers"),
+      goTeam: () => this.go("team"),
+    };
+  }
+}
+</script>
+</body>
+</html>
