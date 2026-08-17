@@ -1,149 +1,386 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
 
-	const pillars = [
+	const programmes = [
 		{
-			title: 'The annual conference',
-			body: 'A full day of talks from students, faculty, alumni, and guests — one theme, eight speakers, one room of people who want to be changed by an idea.'
+			number: '01',
+			href: '/unseen',
+			title: 'TEDxPurdueU: Unseen',
+			body: 'The Annual TEDx Conference.'
 		},
 		{
+			number: '02',
+			href: '/salons',
 			title: 'Salons',
-			body: 'Smaller evening gatherings through the semester: one short talk or screening, then a conversation that runs as long as it needs to.'
+			body: 'Small events for the community bonding, free to attend.'
 		},
 		{
+			number: '03',
+			href: '/speakers',
 			title: 'Student Speaker Competition',
-			body: 'Every Purdue student gets a shot at the stage. Pitch an idea, get coached, and compete for a speaking slot at the conference.'
+			body: 'An opportunity for Purdue students to give an official TEDx talk while still in college.'
 		}
 	];
 
+	// TODO: drop the four gallery photos into static/ and set `src` on each.
+	const gallery = [
+		{ label: 'Photo 1' },
+		{ label: 'Photo 2' },
+		{ label: 'Photo 3' },
+		{ label: 'Photo 4' }
+	];
+
 	const stats = [
-		{ value: '8', label: 'Speakers per conference' },
-		{ value: '400', label: 'Seats in the room' },
+		{ value: '6', label: 'Speakers per conference' },
+		{ value: '300+', label: 'Attendees each year' },
 		{ value: '30+', label: 'Student organizers' },
 		{ value: '4', label: 'Salons each year' }
 	];
 </script>
 
 <svelte:head>
-	<title>TEDx Purdue U</title>
+	<title>TEDxPurdueU</title>
 	<meta
 		name="description"
-		content="TEDx Purdue U is a student-run organization at Purdue University that curates one independently organized TED event each year, plus salons and a student speaker competition."
+		content="TEDxPurdueU is a student-run organization at Purdue University that curates one independently organized TED event each year, plus salons and a student speaker competition."
 	/>
 </svelte:head>
 
-<section class="hero section--ruled">
-	<div class="hero-inner">
-		<div class="eyebrow">West Lafayette, Indiana</div>
-		<h1>Ideas worth spreading, <span class="accent">Purdue built</span>.</h1>
-		<p class="lede hero-lede">
-			We are a student-run organization that curates one independently organized TED event each
-			year, plus salons and a speaker competition that give the Purdue community a stage for its
-			boldest thinking.
+<section class="hero">
+	<div class="hero-copy">
+		<h1>Ideas worth<br />spreading.</h1>
+		<p class="hero-lede">
+			One independently organized TED event each year, salons all semester, and a competition that
+			puts a student in the spotlight.
 		</p>
 		<div class="actions">
 			<a class="btn btn--primary" href="/unseen">Unseen 2027</a>
 			<a class="btn btn--outline" href="/speakers">Speak on our stage</a>
 		</div>
 	</div>
-</section>
 
-<section class="section section--ruled">
-	<div class="pillars">
-		{#each pillars as pillar (pillar.title)}
-			<div class="pillar">
-				<div class="tick"></div>
-				<h3>{pillar.title}</h3>
-				<p class="body-text">{pillar.body}</p>
-			</div>
-		{/each}
-	</div>
-</section>
-
-<section class="section section--ruled">
-	<div class="stats">
-		{#each stats as stat (stat.label)}
-			<div class="stat">
-				<div class="stat-value">{stat.value}</div>
-				<div class="stat-label">{stat.label}</div>
-			</div>
-		{/each}
-	</div>
-</section>
-
-<section class="section">
-	<div class="explainer">
-		<div class="explainer-copy">
-			<h2>What TEDx means</h2>
-			<p class="explainer-body">
-				In the spirit of ideas worth spreading, TEDx is a program of local, self-organized events
-				that bring people together to share a TED-like experience. Ours is run entirely by Purdue
-				students, under license from TED.
-			</p>
-			<a class="link-rule" href="/team">Meet the team</a>
+	<div class="hero-media">
+		<div class="hero-media__wide">
+			<Placeholder ratio="16/10" label="Drop a photo from the last conference" />
 		</div>
-		<Placeholder ratio="4/3" label="photo — audience at last year's conference" />
+		<Placeholder ratio="4/3" label="Speaker on stage" />
+		<div class="next-card">
+			<div class="next-card__label">Next event</div>
+			<div class="next-card__title">Unseen</div>
+			<div class="next-card__meta">Spring 2027</div>
+		</div>
 	</div>
+</section>
+
+<div class="hero-rule"><div class="hero-rule__line"></div></div>
+
+<section class="who">
+	<div class="section-label">Who we are</div>
+	<div class="who__copy">
+		<p class="who__lead">
+			TEDxPurdueU is the official TEDx chapter at Purdue University.
+		</p>
+		<p class="who__body">
+			We organize an official TEDx conference every year with 300+ attendees, curating six
+			speakers from all across the world to share their ideas with the Greater Lafayette
+			community. Past speakers have included Las Vegas headliners, researchers, and founders.
+		</p>
+		<a class="link-rule" href="/team">Meet the team</a>
+	</div>
+</section>
+
+<section class="programmes">
+	<div class="programmes__head">
+		<div class="section-label">What we do</div>
+	</div>
+	{#each programmes as item (item.number)}
+		<a class="programme" href={item.href}>
+			<div class="programme__number">{item.number}</div>
+			<div class="programme__copy">
+				<h3>{item.title}</h3>
+				<p>{item.body}</p>
+			</div>
+			<div class="programme__arrow" aria-hidden="true">→</div>
+		</a>
+	{/each}
+</section>
+
+<section class="gallery">
+	<div class="gallery__head">
+		<h2>From the last conference</h2>
+	</div>
+	<div class="gallery__grid">
+		{#each gallery as photo (photo.label)}
+			<Placeholder ratio="3/4" label={photo.label} />
+		{/each}
+	</div>
+</section>
+
+<section class="stats">
+	{#each stats as stat (stat.label)}
+		<div class="stat">
+			<div class="stat__value">{stat.value}</div>
+			<div class="stat__label">{stat.label}</div>
+		</div>
+	{/each}
 </section>
 
 <style>
+	/* ---- Hero -------------------------------------------------------- */
+
 	.hero {
-		padding: 12vh var(--gutter) 10vh;
+		padding: 9vh var(--gutter) 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+		gap: 56px;
+		align-items: center;
 	}
 
-	.hero-inner {
-		max-width: 1100px;
+	.hero-copy {
 		display: flex;
 		flex-direction: column;
 		gap: 32px;
+		min-width: 0;
 	}
 
 	h1 {
-		font-size: clamp(44px, 7vw, 104px);
-		line-height: 0.95;
-		letter-spacing: -0.03em;
+		font-size: clamp(44px, 6.4vw, 104px);
+		line-height: 0.92;
+		letter-spacing: -0.045em;
 		text-wrap: balance;
 	}
 
-	.accent {
-		color: var(--red);
-	}
-
 	.hero-lede {
-		max-width: 620px;
-		line-height: 1.6;
+		max-width: 44ch;
+		font-size: 18px;
+		line-height: 1.65;
+		color: var(--text-dim);
+		text-wrap: pretty;
 	}
 
 	.actions {
 		display: flex;
-		gap: 16px;
+		gap: 14px;
 		flex-wrap: wrap;
-		padding-top: 8px;
 	}
 
-	.pillars {
+	.hero-media {
+		min-width: 0;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-		gap: 48px;
-		max-width: 1200px;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px;
 	}
 
-	.pillar {
+	.hero-media__wide {
+		grid-column: span 2;
+		min-width: 0;
+	}
+
+	/* The red tile that fills the fourth cell of the hero collage. */
+	.next-card {
+		min-width: 0;
+		aspect-ratio: 4/3;
+		background: var(--red);
+		color: #fff;
+		padding: 22px;
 		display: flex;
 		flex-direction: column;
-		gap: 14px;
+		justify-content: space-between;
+		gap: 16px;
+		overflow: hidden;
 	}
 
-	.pillar h3 {
-		font-size: 22px;
-		letter-spacing: -0.01em;
+	.next-card__label {
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		opacity: 0.85;
 	}
+
+	.next-card__title {
+		font-size: clamp(22px, 2.6vw, 44px);
+		line-height: 0.95;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: -0.03em;
+		overflow-wrap: anywhere;
+	}
+
+	.next-card__meta {
+		font-size: 13px;
+		letter-spacing: 0.06em;
+		opacity: 0.9;
+	}
+
+	/* The hairline that closes the hero, inset to the page gutter. */
+	.hero-rule {
+		padding: 9vh var(--gutter) 0;
+	}
+
+	.hero-rule__line {
+		border-bottom: 1px solid var(--rule);
+	}
+
+	/* ---- Who we are -------------------------------------------------- */
+
+	.who {
+		padding: 11vh var(--gutter);
+		border-bottom: 1px solid var(--rule);
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 64px;
+		max-width: 1300px;
+	}
+
+	/* Shared label for the two paired sections — "Who we are" / "What we do". */
+	.section-label {
+		font-size: 13px;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--red);
+	}
+
+	.who__copy {
+		grid-column: span 2;
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 26px;
+	}
+
+	.who__lead {
+		font-size: clamp(22px, 2.4vw, 32px);
+		line-height: 1.35;
+		letter-spacing: -0.015em;
+		color: var(--text);
+		text-wrap: pretty;
+	}
+
+	.who__body {
+		font-size: 17px;
+		line-height: 1.7;
+		color: var(--text-dim);
+		max-width: 70ch;
+		text-wrap: pretty;
+	}
+
+	/* ---- Programme rows ---------------------------------------------- */
+
+	.programmes {
+		border-bottom: 1px solid var(--rule);
+	}
+
+	/* Introduces the numbered rows so they don't start cold off the section
+	   rule above them. */
+	.programmes__head {
+		padding: 10vh var(--gutter) 44px;
+	}
+
+	.programme {
+		position: relative;
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 40px;
+		align-items: baseline;
+		padding: 44px var(--gutter);
+		border-bottom: 1px solid var(--rule);
+		color: inherit;
+		transition: background-color 0.25s ease;
+	}
+
+	/* The red marker wipes in from the page edge, so the hover reads as a
+	   pointer at one row rather than a slab dropped over the whole band. */
+	.programme::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: -1px;
+		bottom: -1px;
+		width: 0;
+		background: var(--red);
+		transition: width 0.25s ease;
+	}
+
+	.programme:last-child {
+		border-bottom: none;
+	}
+
+	.programme:hover {
+		background: var(--row-wash);
+		color: inherit;
+	}
+
+	.programme:hover::before {
+		width: 6px;
+	}
+
+	.programme__number {
+		font-size: 14px;
+		color: var(--red);
+		font-weight: 700;
+		letter-spacing: 0.1em;
+	}
+
+	.programme__copy {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+	}
+
+	.programme__copy h3 {
+		font-size: clamp(26px, 3.4vw, 46px);
+		letter-spacing: -0.025em;
+	}
+
+	.programme__copy p {
+		font-size: 16px;
+		line-height: 1.6;
+		color: var(--text-dim);
+	}
+
+	.programme__arrow {
+		font-size: 26px;
+		color: var(--red);
+		transition: transform 0.25s ease;
+	}
+
+	.programme:hover .programme__arrow {
+		transform: translateX(8px);
+	}
+
+	/* ---- Gallery ------------------------------------------------------ */
+
+	.gallery {
+		padding: 9vh 0 0;
+		display: flex;
+		flex-direction: column;
+		gap: 28px;
+	}
+
+	.gallery__head {
+		padding: 0 var(--gutter);
+	}
+
+	.gallery__head h2 {
+		font-size: clamp(24px, 2.6vw, 34px);
+		letter-spacing: -0.02em;
+	}
+
+	.gallery__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 12px;
+		padding: 0 var(--gutter);
+	}
+
+	/* ---- Stats -------------------------------------------------------- */
 
 	.stats {
+		padding: 9vh var(--gutter);
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		gap: 40px;
-		max-width: 1200px;
 	}
 
 	.stat {
@@ -152,44 +389,16 @@
 		gap: 6px;
 	}
 
-	.stat-value {
-		font-size: clamp(38px, 4vw, 58px);
+	.stat__value {
+		font-size: clamp(34px, 3.6vw, 52px);
 		font-weight: 700;
-		color: var(--red);
 		letter-spacing: -0.03em;
 	}
 
-	.stat-label {
-		font-size: 14px;
-		letter-spacing: 0.14em;
+	.stat__label {
+		font-size: 13px;
+		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--text-faint);
-	}
-
-	.explainer {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-		gap: 56px;
-		align-items: center;
-		max-width: 1200px;
-	}
-
-	.explainer-copy {
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-	}
-
-	.explainer-copy h2 {
-		font-size: clamp(28px, 3.4vw, 44px);
-		line-height: 1.1;
-		letter-spacing: -0.02em;
-	}
-
-	.explainer-body {
-		font-size: 17px;
-		line-height: 1.7;
-		color: var(--text-dim);
-		text-wrap: pretty;
 	}
 </style>

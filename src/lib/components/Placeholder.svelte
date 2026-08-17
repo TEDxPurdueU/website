@@ -1,27 +1,35 @@
 <script>
 	/**
-	 * The diagonally-hatched box that stands in for photography the club hasn't
-	 * supplied yet (conference shots, speaker portraits, team headshots).
-	 * Swap each one for a real <img> as the assets arrive.
+	 * A photo slot — the implementation of the design's <image-slot>.
+	 *
+	 * Once `src` is supplied it renders the real photo; until then it shows the
+	 * diagonally-hatched box from the design, captioned with `label` so it stays
+	 * obvious which asset is still outstanding. Drop a file into `static/` and
+	 * pass its path to fill a slot.
 	 */
-	/** @type {{ ratio?: '4/3' | '3/4' | '1/1', label: string }} */
-	let { ratio = '4/3', label } = $props();
+	/** @type {{ ratio?: string, label: string, src?: string, alt?: string }} */
+	let { ratio = '4/3', label, src, alt } = $props();
 
-	// Padding and caption size track the box size, per the design.
-	const sizing = {
-		'4/3': { padding: '18px', fontSize: '12px' },
-		'3/4': { padding: '16px', fontSize: '11px' },
-		'1/1': { padding: '14px', fontSize: '11px' }
-	};
-
-	const { padding, fontSize } = $derived(sizing[ratio]);
+	// The taller, narrower boxes get tighter padding and a smaller caption.
+	const compact = $derived(ratio === '3/4' || ratio === '1/1');
 </script>
 
-<div class="placeholder" style:aspect-ratio={ratio} style:padding>
-	<span style:font-size={fontSize}>[ {label} ]</span>
-</div>
+{#if src}
+	<img class="photo" {src} alt={alt ?? label} style:aspect-ratio={ratio} loading="lazy" />
+{:else}
+	<div class="placeholder" class:compact style:aspect-ratio={ratio}>
+		<span>[ {label} ]</span>
+	</div>
+{/if}
 
 <style>
+	.photo {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
 	.placeholder {
 		background-color: var(--fill);
 		background-image: repeating-linear-gradient(
@@ -32,10 +40,20 @@
 		border: 1px solid var(--border);
 		display: flex;
 		align-items: flex-end;
+		padding: 18px;
+	}
+
+	.placeholder.compact {
+		padding: 14px;
 	}
 
 	span {
 		font-family: var(--mono);
+		font-size: 12px;
 		color: var(--text-fainter);
+	}
+
+	.placeholder.compact span {
+		font-size: 11px;
 	}
 </style>

@@ -28,10 +28,10 @@
 </script>
 
 <svelte:head>
-	<title>Salons · TEDx Purdue U</title>
+	<title>Salons · TEDxPurdueU</title>
 	<meta
 		name="description"
-		content="Salons are TEDx Purdue U's mini-events: one idea, one small room, one long conversation. Free and open to everyone at Purdue."
+		content="Salons are TEDxPurdueU's mini-events: one idea, one small room, one long conversation. Free and open to everyone at Purdue."
 	/>
 </svelte:head>
 

@@ -5,7 +5,7 @@
 <footer>
 	<div class="columns">
 		<div class="about">
-			<img src="/whitetext.png" alt="TEDx Purdue U" width="492" height="92" />
+			<img src="/logo-dark.png" alt="TEDxPurdueU" width="492" height="92" />
 			<p>
 				This independent TEDx event is operated under license from TED. West Lafayette, Indiana.
 			</p>
@@ -30,7 +30,7 @@
 		</div>
 	</div>
 
-	<div class="colophon">© 2026 TEDx Purdue U · x = independently organized TED event</div>
+	<div class="colophon">© 2026 TEDxPurdueU · x = independently organized TED event</div>
 </footer>
 
 <style>

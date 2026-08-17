@@ -36,10 +36,10 @@
 </script>
 
 <svelte:head>
-	<title>Student Speaker Competition · TEDx Purdue U</title>
+	<title>Student Speaker Competition · TEDxPurdueU</title>
 	<meta
 		name="description"
-		content="Every Purdue student can compete for a speaking slot at the TEDx Purdue U conference. Pitch an idea, get coached, and take the Unseen stage."
+		content="Every Purdue student can compete for a speaking slot at the TEDxPurdueU conference. Pitch an idea, get coached, and take the Unseen stage."
 	/>
 </svelte:head>
 

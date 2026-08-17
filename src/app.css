@@ -1,24 +1,28 @@
 /*
- * TEDx Purdue U — global styles.
+ * TEDxPurdueU — global styles.
  *
  * Palette and type are lifted straight from the approved design:
- * near-black canvas, TEDx logo red for every accent, Helvetica throughout.
+ * warm off-white canvas, near-black ink, TEDx logo red for every accent,
+ * Helvetica throughout.
  */
 
 :root {
-	--bg: #0d0d0d;
+	--bg: #faf9f8;
 	--red: #ff2b06;
-	--text: #f5f5f5;
-	--text-muted: #c4c4c4;
-	--text-dim: #a8a8a8;
-	--text-faint: #8c8c8c;
-	--text-fainter: #6e6e6e;
-	--text-faintest: #5c5c5c;
-	--rule: #1f1f1f;
-	--border: #262626;
-	--border-strong: #3a3a3a;
-	--fill: #141414;
-	--fill-hatch: #1c1c1c;
+	--text: #14100f;
+	--text-muted: #443e3a;
+	--text-dim: #5f5852;
+	--text-faint: #7d766f;
+	--text-fainter: #8b847c;
+	--text-faintest: #948d85;
+	--rule: #e4dfd9;
+	--border: #d9d3cc;
+	--border-strong: #cbc4bc;
+	--fill: #f1ede8;
+	--fill-hatch: #e7e1da;
+	/* Hover wash for the full-bleed programme rows. Deliberately lighter than
+	   the placeholder fill so a hovered row reads as a tint, not a grey slab. */
+	--row-wash: #f5f2ee;
 	--gutter: 6vw;
 	--mono: ui-monospace, Menlo, monospace;
 }
@@ -41,7 +45,7 @@ a {
 }
 
 a:hover {
-	color: #fff;
+	color: var(--text);
 }
 
 ::selection {
@@ -142,12 +146,12 @@ p {
 }
 
 .btn--primary:hover {
-	background: #fff;
-	color: var(--bg);
+	background: var(--text);
+	color: #fff;
 }
 
 .btn--outline {
-	border: 1px solid var(--border-strong);
+	border: 2px solid var(--border-strong);
 	color: var(--text);
 }
 
@@ -169,13 +173,6 @@ p {
 }
 
 /* ---- Misc -------------------------------------------------------------- */
-
-/* The short red bar that heads each feature column on the About page. */
-.tick {
-	width: 40px;
-	height: 4px;
-	background: var(--red);
-}
 
 @media (prefers-reduced-motion: reduce) {
 	* {

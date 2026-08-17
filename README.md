@@ -1,4 +1,4 @@
-# TEDx Purdue U
+# TEDxPurdueU
 
 The club website — five pages, static, built with SvelteKit.
 

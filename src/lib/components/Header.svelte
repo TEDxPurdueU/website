@@ -7,8 +7,8 @@
 </script>
 
 <header>
-	<a href="/" class="logo" aria-label="TEDx Purdue U — home">
-		<img src="/whitetext.png" alt="TEDx Purdue U" width="492" height="92" />
+	<a href="/" class="logo" aria-label="TEDxPurdueU — home">
+		<img src="/logo-dark.png" alt="TEDxPurdueU" width="492" height="92" />
 	</a>
 	<nav aria-label="Primary">
 		{#each pages as item (item.href)}
@@ -34,7 +34,7 @@
 		justify-content: space-between;
 		gap: 32px;
 		padding: 20px var(--gutter);
-		background: rgba(13, 13, 13, 0.92);
+		background: rgba(250, 249, 248, 0.94);
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
 		border-bottom: 1px solid var(--rule);

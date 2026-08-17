@@ -15,10 +15,10 @@
 </script>
 
 <svelte:head>
-	<title>Team · TEDx Purdue U</title>
+	<title>Team · TEDxPurdueU</title>
 	<meta
 		name="description"
-		content="Curation, production, design, marketing, and partnerships — every part of the TEDx Purdue U conference is built by Purdue students."
+		content="Curation, production, design, marketing, and partnerships — every part of the TEDxPurdueU conference is built by Purdue students."
 	/>
 </svelte:head>
 
