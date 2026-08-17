@@ -1,5 +1,6 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
+	import Lightbox from '$lib/components/Lightbox.svelte';
 
 	const programmes = [
 		{
@@ -48,8 +49,10 @@
 		}
 	];
 
-	// Add or remove entries freely — the grid reflows to whatever length this
-	// is. Drop photos into static/ and set `src` on each to fill a slot.
+	// Add or remove entries freely — the grid reflows and repaginates to whatever
+	// length this is. Drop photos into static/ and set `src` (and ideally `alt`)
+	// on each to fill a slot: { label: 'Photo 1', src: '/gallery-01.jpg' }.
+	/** @type {{ label: string, src?: string, alt?: string }[]} */
 	const gallery = [
 		{ label: 'Photo 1' },
 		{ label: 'Photo 2' },
@@ -58,8 +61,33 @@
 		{ label: 'Photo 5' },
 		{ label: 'Photo 6' },
 		{ label: 'Photo 7' },
-		{ label: 'Photo 8' }
+		{ label: 'Photo 8' },
+		{ label: 'Photo 9' },
+		{ label: 'Photo 10' },
+		{ label: 'Photo 11' },
+		{ label: 'Photo 12' },
+		{ label: 'Photo 13' },
+		{ label: 'Photo 14' },
+		{ label: 'Photo 15' },
+		{ label: 'Photo 16' },
+		{ label: 'Photo 17' },
+		{ label: 'Photo 18' },
+		{ label: 'Photo 19' },
+		{ label: 'Photo 20' }
 	];
+
+	const PER_PAGE = 12;
+
+	let page = $state(0);
+	// -1 is "closed"; anything else is an index into the whole gallery, not into
+	// the current page, so the lightbox can run past a page boundary.
+	let openIndex = $state(-1);
+
+	const pageCount = $derived(Math.ceil(gallery.length / PER_PAGE));
+	const pageStart = $derived(page * PER_PAGE);
+	const pagePhotos = $derived(gallery.slice(pageStart, pageStart + PER_PAGE));
+	/** @type {number[]} */
+	const pageNumbers = $derived(Array.from({ length: pageCount }, (_, i) => i));
 </script>
 
 <svelte:head>
@@ -163,11 +191,61 @@
 		<h2>Gallery</h2>
 	</div>
 	<div class="gallery__grid">
-		{#each gallery as photo (photo.label)}
-			<Placeholder ratio="3/4" label={photo.label} />
+		{#each pagePhotos as photo, i (photo.label)}
+			<button
+				class="gallery__item"
+				type="button"
+				aria-label="View {photo.label} larger"
+				onclick={() => (openIndex = pageStart + i)}
+			>
+				<Placeholder ratio="3/4" label={photo.label} src={photo.src} alt={photo.alt} />
+			</button>
 		{/each}
 	</div>
+
+	{#if pageCount > 1}
+		<nav class="gallery__pager" aria-label="Gallery pages">
+			<button
+				class="pager__step"
+				type="button"
+				disabled={page === 0}
+				onclick={() => (page = Math.max(0, page - 1))}
+			>
+				Prev
+			</button>
+			<div class="pager__pages">
+				{#each pageNumbers as n (n)}
+					<button
+						class="pager__page"
+						type="button"
+						aria-label="Page {n + 1}"
+						aria-current={n === page ? 'page' : undefined}
+						onclick={() => (page = n)}
+					>
+						{n + 1}
+					</button>
+				{/each}
+			</div>
+			<button
+				class="pager__step"
+				type="button"
+				disabled={page === pageCount - 1}
+				onclick={() => (page = Math.min(pageCount - 1, page + 1))}
+			>
+				Next
+			</button>
+		</nav>
+	{/if}
 </section>
+
+{#if openIndex >= 0}
+	<Lightbox
+		photos={gallery}
+		index={openIndex}
+		onclose={() => (openIndex = -1)}
+		onnavigate={(i) => (openIndex = i)}
+	/>
+{/if}
 
 <style>
 	/* ---- Hero -------------------------------------------------------- */
@@ -533,4 +611,98 @@
 		padding: 0 var(--gutter);
 	}
 
+	/* The thumbnail is a real button so it is keyboard-operable; everything the
+	   UA gives a button is stripped back to a bare photo frame. */
+	.gallery__item {
+		position: relative;
+		display: block;
+		width: 100%;
+		min-width: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+		font: inherit;
+		color: inherit;
+		cursor: pointer;
+	}
+
+	/* A red hairline laid over the frame rather than a border on it, so hovering
+	   never nudges the grid by a pixel. */
+	.gallery__item::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border: 2px solid transparent;
+		pointer-events: none;
+		transition: border-color 0.25s ease;
+	}
+
+	.gallery__item:hover::after {
+		border-color: var(--red);
+	}
+
+	.gallery__pager {
+		padding: 4px var(--gutter) 0;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		flex-wrap: wrap;
+	}
+
+	.pager__step,
+	.pager__page {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 44px;
+		background: none;
+		border: 1px solid var(--border-strong);
+		color: var(--text);
+		font-family: inherit;
+		font-weight: 700;
+		cursor: pointer;
+		transition:
+			background-color 0.25s ease,
+			border-color 0.25s ease,
+			color 0.25s ease;
+	}
+
+	.pager__step {
+		/* Tightened on narrow screens so Prev / numbers / Next still share one
+		   row inside a 320px gutter rather than orphaning Next onto its own. */
+		padding: 0 clamp(14px, 5vw, 22px);
+		font-size: 13px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.pager__page {
+		min-width: 44px;
+		font-family: var(--mono);
+		font-size: 13px;
+	}
+
+	.pager__step:hover:not(:disabled),
+	.pager__page:hover {
+		border-color: var(--red);
+		color: var(--red);
+	}
+
+	.pager__page[aria-current='page'] {
+		background: var(--red);
+		border-color: var(--red);
+		color: #fff;
+	}
+
+	.pager__step:disabled {
+		border-color: var(--rule);
+		color: var(--text-fainter);
+		cursor: default;
+	}
+
+	.pager__pages {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
 </style>
