@@ -34,6 +34,14 @@
 		'Evidence you actually did the thinking',
 		'A reason this audience should care today'
 	];
+
+	// TODO: replace with the real winners — name, talk title, and a photo of
+	// them on the conference stage.
+	const winners = [
+		{ year: '2026', name: 'Name here', talk: 'Talk title', photo: '2026 winner on stage' },
+		{ year: '2025', name: 'Name here', talk: 'Talk title', photo: '2025 winner on stage' },
+		{ year: '2024', name: 'Name here', talk: 'Talk title', photo: '2024 winner on stage' }
+	];
 </script>
 
 <svelte:head>
@@ -75,8 +83,20 @@
 	</div>
 </section>
 
-<section class="band">
-	<Placeholder ratio="16/6" label="Competition finalists on stage" />
+<section class="sec section--ruled">
+	<div class="winners-wrap">
+		<h2 class="sub-title">Past winners</h2>
+		<div class="winners">
+			{#each winners as winner (winner.year)}
+				<article class="winner">
+					<Placeholder ratio="4/3" label={winner.photo} />
+					<div class="winner__year">{winner.year}</div>
+					<h3 class="winner__name">{winner.name}</h3>
+					<p class="winner__talk">{winner.talk}</p>
+				</article>
+			{/each}
+		</div>
+	</div>
 </section>
 
 <section class="sec">
@@ -120,11 +140,6 @@
 		min-width: 0;
 	}
 
-	/* Cinematic strip breaking the run of text between steps and rules. */
-	.band {
-		padding: 0 var(--gutter) 7vh;
-	}
-
 	h1 {
 		font-size: clamp(40px, 6.5vw, 86px);
 		line-height: 0.98;
@@ -148,7 +163,8 @@
 		padding: 7vh var(--gutter);
 	}
 
-	.steps-wrap {
+	.steps-wrap,
+	.winners-wrap {
 		max-width: 1100px;
 		display: flex;
 		flex-direction: column;
@@ -186,6 +202,38 @@
 	}
 
 	.step-body {
+		font-size: 15px;
+		line-height: 1.6;
+		color: var(--text-dim);
+	}
+
+	.winners {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 32px;
+	}
+
+	.winner {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		min-width: 0;
+	}
+
+	.winner__year {
+		font-size: 13px;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--text-faint);
+		padding-top: 4px;
+	}
+
+	.winner__name {
+		font-size: 20px;
+		letter-spacing: -0.01em;
+	}
+
+	.winner__talk {
 		font-size: 15px;
 		line-height: 1.6;
 		color: var(--text-dim);

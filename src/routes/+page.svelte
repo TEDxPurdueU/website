@@ -22,6 +22,32 @@
 		}
 	];
 
+	// TODO: replace with the real past speakers — their names and talk titles, the
+	// YouTube URL for each talk, the live view count, and a stage photo per card.
+	const pastSpeakers = [
+		{
+			name: 'Speaker One',
+			talk: 'Talk title one',
+			views: '0K',
+			href: '#',
+			photoLabel: 'Speaker 1 on stage'
+		},
+		{
+			name: 'Speaker Two',
+			talk: 'Talk title two',
+			views: '0K',
+			href: '#',
+			photoLabel: 'Speaker 2 on stage'
+		},
+		{
+			name: 'Speaker Three',
+			talk: 'Talk title three',
+			views: '0K',
+			href: '#',
+			photoLabel: 'Speaker 3 on stage'
+		}
+	];
+
 	// TODO: drop the four gallery photos into static/ and set `src` on each.
 	const gallery = [
 		{ label: 'Photo 1' },
@@ -103,6 +129,28 @@
 			<div class="programme__arrow" aria-hidden="true">→</div>
 		</a>
 	{/each}
+</section>
+
+<section class="speakers">
+	<div class="speakers__head">
+		<h2>Past speakers</h2>
+		<p>Every talk from our stage lives on the TEDx YouTube channel.</p>
+	</div>
+	<div class="speakers__grid">
+		{#each pastSpeakers as speaker (speaker.name)}
+			<a class="speaker" href={speaker.href} target="_blank" rel="noopener noreferrer">
+				<Placeholder ratio="4/3" label={speaker.photoLabel} />
+				<div class="speaker__copy">
+					<h3>{speaker.name}</h3>
+					<p class="speaker__talk">{speaker.talk}</p>
+				</div>
+				<div class="speaker__views">
+					<span class="speaker__count">{speaker.views}</span>
+					<span class="speaker__unit">views on YouTube</span>
+				</div>
+			</a>
+		{/each}
+	</div>
 </section>
 
 <section class="gallery">
@@ -347,6 +395,98 @@
 
 	.programme:hover .programme__arrow {
 		transform: translateX(8px);
+	}
+
+	/* ---- Past speakers ------------------------------------------------ */
+
+	.speakers {
+		padding: 10vh var(--gutter);
+		border-bottom: 1px solid var(--rule);
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	.speakers__head {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.speakers__head h2 {
+		font-size: clamp(24px, 2.6vw, 34px);
+		letter-spacing: -0.02em;
+	}
+
+	.speakers__head p {
+		font-size: 16px;
+		line-height: 1.6;
+		color: var(--text-dim);
+	}
+
+	.speakers__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 28px;
+	}
+
+	.speaker {
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+		color: inherit;
+		transition: transform 0.25s ease;
+	}
+
+	.speaker:hover {
+		color: inherit;
+		transform: translateY(-4px);
+	}
+
+	.speaker__copy {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		min-width: 0;
+	}
+
+	.speaker__copy h3 {
+		font-size: 20px;
+		letter-spacing: -0.02em;
+	}
+
+	.speaker__talk {
+		font-size: 15px;
+		line-height: 1.5;
+		color: var(--text-dim);
+		text-wrap: pretty;
+	}
+
+	/* The view count is the reason this section exists, so it is set at stat
+	   scale rather than as a caption under the talk title. */
+	.speaker__views {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		padding-top: 16px;
+		border-top: 1px solid var(--rule);
+		margin-top: auto;
+	}
+
+	.speaker__count {
+		font-size: clamp(30px, 3.2vw, 42px);
+		font-weight: 700;
+		line-height: 1;
+		letter-spacing: -0.03em;
+		color: var(--red);
+	}
+
+	.speaker__unit {
+		font-size: 12px;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--text-faint);
 	}
 
 	/* ---- Gallery ------------------------------------------------------ */

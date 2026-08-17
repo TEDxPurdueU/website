@@ -1,4 +1,6 @@
 <script>
+	import ComingSoon from '$lib/components/ComingSoon.svelte';
+
 	const facts = [
 		{ label: 'Date', value: '27 February 2027' },
 		{ label: 'Venue', value: 'Loeb Playhouse' },
@@ -41,11 +43,9 @@
 <section class="sec section--ruled">
 	<div class="speakers-wrap">
 		<h2 class="section-title">Speakers</h2>
-		<p class="coming-soon">Coming soon.</p>
-		<p class="speakers-pitch">
-			Know someone with an idea worth spreading — or is it you? Put a name forward, and if
-			you're a Purdue student, take your shot at the stage through our competition.
-		</p>
+		<ComingSoon
+			note="Know someone with an idea worth spreading — or is it you? Put a name forward, and if you're a Purdue student, take your shot at the stage through our competition."
+		/>
 		<div class="speaker-actions">
 			<a class="btn btn--primary" href={nominateUrl}>Nominate a speaker</a>
 			<a class="btn btn--outline" href="/speakers">Students: enter the competition</a>
@@ -56,7 +56,7 @@
 <section class="sec">
 	<div class="schedule-wrap">
 		<h2 class="section-title">Timeline</h2>
-		<p class="coming-soon">Coming soon.</p>
+		<ComingSoon />
 	</div>
 </section>
 
@@ -129,24 +129,11 @@
 		gap: 24px;
 	}
 
-	.coming-soon {
-		font-size: 17px;
-		color: var(--text-faint);
-	}
-
 	.speakers-wrap {
 		max-width: 900px;
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
-	}
-
-	.speakers-pitch {
-		font-size: 17px;
-		line-height: 1.7;
-		color: var(--text-dim);
-		max-width: 60ch;
-		text-wrap: pretty;
 	}
 
 	/* Stacked so the general nomination reads as the primary route and the

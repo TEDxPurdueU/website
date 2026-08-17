@@ -1,4 +1,5 @@
 <script>
+	import ComingSoon from '$lib/components/ComingSoon.svelte';
 	import Placeholder from '$lib/components/Placeholder.svelte';
 
 	// TODO: drop the salon photos into static/ and set `src` on each entry.
@@ -42,18 +43,13 @@
 	</div>
 	<div class="hero-media">
 		<Placeholder ratio="4/3" label="A salon in progress" />
-		<div class="hero-tile">
-			<div class="hero-tile__label">Always</div>
-			<div class="hero-tile__value">Free</div>
-			<div class="hero-tile__meta">No ticket needed</div>
-		</div>
 	</div>
 </section>
 
 <section class="sec section--ruled">
 	<div class="wrap">
 		<h2 class="list-heading">Upcoming</h2>
-		<p class="coming-soon">Coming soon.</p>
+		<ComingSoon />
 	</div>
 </section>
 
@@ -90,44 +86,7 @@
 	}
 
 	.hero-media {
-		display: grid;
-		grid-template-columns: 2fr 1fr;
-		gap: 16px;
 		min-width: 0;
-	}
-
-	/* Red tile carrying the one fact that matters most about a salon. */
-	.hero-tile {
-		background: var(--red);
-		color: #fff;
-		padding: 22px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		gap: 16px;
-		min-width: 0;
-		overflow: hidden;
-	}
-
-	.hero-tile__label {
-		font-size: 12px;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		opacity: 0.85;
-	}
-
-	.hero-tile__value {
-		font-size: clamp(28px, 3vw, 44px);
-		font-weight: 700;
-		line-height: 0.95;
-		letter-spacing: -0.03em;
-		text-transform: uppercase;
-	}
-
-	.hero-tile__meta {
-		font-size: 13px;
-		letter-spacing: 0.06em;
-		opacity: 0.9;
 	}
 
 	.sec {
@@ -144,11 +103,6 @@
 	.list-heading {
 		font-size: 22px;
 		letter-spacing: 0.02em;
-	}
-
-	.coming-soon {
-		font-size: 17px;
-		color: var(--text-faint);
 	}
 
 	.past {
