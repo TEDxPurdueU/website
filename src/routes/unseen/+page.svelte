@@ -145,4 +145,17 @@
 		gap: 14px;
 		padding-top: 4px;
 	}
+
+	/* Shrink-to-fit leaves the two buttons at mismatched widths, and the longer
+	   label wraps to a ragged second line. Matching their width and centring
+	   the text makes the pair read as one deliberate stack. */
+	@media (max-width: 560px) {
+		.speaker-actions {
+			align-items: stretch;
+		}
+
+		.speaker-actions .btn {
+			text-align: center;
+		}
+	}
 </style>
