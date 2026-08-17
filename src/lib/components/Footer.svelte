@@ -5,7 +5,7 @@
 <footer>
 	<div class="columns">
 		<div class="about">
-			<img src="/logo-dark.png" alt="TEDxPurdueU" width="492" height="92" />
+			<img src="/logo-dark.png" alt="TEDxPurdueU" width="1275" height="240" />
 			<p>
 				This independent TEDx event is operated under license from TED. West Lafayette, Indiana.
 			</p>
@@ -15,7 +15,14 @@
 			<div class="col-head">Follow</div>
 			<div class="socials">
 				{#each socials as social (social.name)}
-					<a href={social.href} target="_blank" rel="noopener noreferrer">{social.name}</a>
+					<a
+						href={social.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={social.name}
+					>
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d={social.icon} /></svg>
+					</a>
 				{/each}
 			</div>
 		</div>
@@ -83,13 +90,22 @@
 
 	.socials {
 		display: flex;
-		gap: 24px;
+		align-items: center;
+		gap: 20px;
 		flex-wrap: wrap;
 	}
 
 	.socials a {
-		font-size: 15px;
-		letter-spacing: 0.04em;
+		display: inline-flex;
+		transition: color 0.15s ease;
+	}
+
+	/* currentColor keeps the glyphs on the global link colour and its hover state. */
+	.socials svg {
+		width: 21px;
+		height: 21px;
+		display: block;
+		fill: currentColor;
 	}
 
 	.page-links {

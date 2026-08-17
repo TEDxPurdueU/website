@@ -8,7 +8,7 @@
 
 <header>
 	<a href="/" class="logo" aria-label="TEDxPurdueU — home">
-		<img src="/logo-dark.png" alt="TEDxPurdueU" width="492" height="92" />
+		<img src="/logo-dark.png" alt="TEDxPurdueU" width="1275" height="240" />
 	</a>
 	<nav aria-label="Primary">
 		{#each pages as item (item.href)}

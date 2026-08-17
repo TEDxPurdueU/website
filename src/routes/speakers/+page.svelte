@@ -35,12 +35,30 @@
 		'A reason this audience should care today'
 	];
 
-	// TODO: replace with the real winners — name, talk title, and a photo of
-	// them on the conference stage.
+	// TODO: replace with the real winners — name, talk title, the YouTube URL
+	// for their talk, and a photo of them on the conference stage.
 	const winners = [
-		{ year: '2026', name: 'Name here', talk: 'Talk title', photo: '2026 winner on stage' },
-		{ year: '2025', name: 'Name here', talk: 'Talk title', photo: '2025 winner on stage' },
-		{ year: '2024', name: 'Name here', talk: 'Talk title', photo: '2024 winner on stage' }
+		{
+			year: '2026',
+			name: 'Name here',
+			talk: 'Talk title',
+			href: '#',
+			photo: '2026 winner on stage'
+		},
+		{
+			year: '2025',
+			name: 'Name here',
+			talk: 'Talk title',
+			href: '#',
+			photo: '2025 winner on stage'
+		},
+		{
+			year: '2024',
+			name: 'Name here',
+			talk: 'Talk title',
+			href: '#',
+			photo: '2024 winner on stage'
+		}
 	];
 </script>
 
@@ -93,6 +111,14 @@
 					<div class="winner__year">{winner.year}</div>
 					<h3 class="winner__name">{winner.name}</h3>
 					<p class="winner__talk">{winner.talk}</p>
+					<a
+						class="btn btn--primary winner__cta"
+						href={winner.href}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Watch the talk
+					</a>
 				</article>
 			{/each}
 		</div>
@@ -237,6 +263,13 @@
 		font-size: 15px;
 		line-height: 1.6;
 		color: var(--text-dim);
+	}
+
+	/* Pinned to the card foot so the buttons line up across cards whose talk
+	   titles wrap to different heights. */
+	.winner__cta {
+		align-self: flex-start;
+		margin-top: auto;
 	}
 
 	.rules {

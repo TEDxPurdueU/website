@@ -138,17 +138,24 @@
 	</div>
 	<div class="speakers__grid">
 		{#each pastSpeakers as speaker (speaker.name)}
-			<a class="speaker" href={speaker.href} target="_blank" rel="noopener noreferrer">
+			<article class="speaker">
 				<Placeholder ratio="4/3" label={speaker.photoLabel} />
 				<div class="speaker__copy">
 					<h3>{speaker.name}</h3>
 					<p class="speaker__talk">{speaker.talk}</p>
+					<p class="speaker__views">
+						<span class="speaker__count">{speaker.views}</span> views on YouTube
+					</p>
 				</div>
-				<div class="speaker__views">
-					<span class="speaker__count">{speaker.views}</span>
-					<span class="speaker__unit">views on YouTube</span>
-				</div>
-			</a>
+				<a
+					class="btn btn--primary speaker__cta"
+					href={speaker.href}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Watch the talk
+				</a>
+			</article>
 		{/each}
 	</div>
 </section>
@@ -435,13 +442,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 18px;
-		color: inherit;
-		transition: transform 0.25s ease;
-	}
-
-	.speaker:hover {
-		color: inherit;
-		transform: translateY(-4px);
 	}
 
 	.speaker__copy {
@@ -463,30 +463,22 @@
 		text-wrap: pretty;
 	}
 
-	/* The view count is the reason this section exists, so it is set at stat
-	   scale rather than as a caption under the talk title. */
 	.speaker__views {
-		display: flex;
-		flex-direction: column;
-		gap: 4px;
-		padding-top: 16px;
-		border-top: 1px solid var(--rule);
-		margin-top: auto;
+		font-size: 13px;
+		color: var(--text-faint);
+		padding-top: 2px;
 	}
 
 	.speaker__count {
-		font-size: clamp(30px, 3.2vw, 42px);
 		font-weight: 700;
-		line-height: 1;
-		letter-spacing: -0.03em;
 		color: var(--red);
 	}
 
-	.speaker__unit {
-		font-size: 12px;
-		letter-spacing: 0.16em;
-		text-transform: uppercase;
-		color: var(--text-faint);
+	/* Pinned to the card foot so the buttons line up across cards whose talk
+	   titles wrap to different heights. */
+	.speaker__cta {
+		align-self: flex-start;
+		margin-top: auto;
 	}
 
 	/* ---- Gallery ------------------------------------------------------ */
