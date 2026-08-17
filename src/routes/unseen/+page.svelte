@@ -3,8 +3,7 @@
 
 	const facts = [
 		{ label: 'Date', value: '27 February 2027' },
-		{ label: 'Venue', value: 'Loeb Playhouse' },
-		{ label: 'Tickets', value: 'On sale now' }
+		{ label: 'Venue', value: 'Loeb Playhouse' }
 	];
 
 	// TODO: point these at the real ticketing page and nomination form.
