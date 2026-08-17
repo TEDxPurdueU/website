@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>Unseen 2027 · TEDxPurdueU</title>
+	<title>TEDxPurdueU</title>
 	<meta
 		name="description"
 		content="Unseen is the theme of the 2027 TEDxPurdueU annual conference — about what sits just outside our attention, and what changes the moment we look."

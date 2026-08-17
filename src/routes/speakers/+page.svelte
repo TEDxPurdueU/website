@@ -1,19 +1,21 @@
 <script>
+	import Placeholder from '$lib/components/Placeholder.svelte';
+
 	const steps = [
 		{
 			step: 'Step 01',
-			title: 'Submit a pitch',
-			body: '200 words on your idea and why it matters now.'
+			title: 'Apply',
+			body: 'Submit your application.'
 		},
 		{
 			step: 'Step 02',
-			title: 'Audition round',
-			body: 'Shortlisted students give a three-minute version to our curation team.'
+			title: 'The competition',
+			body: 'Selected students give a shortened version of their talk.'
 		},
 		{
 			step: 'Step 03',
 			title: 'Coaching',
-			body: 'Finalists get four weeks of rehearsal and script work with our speaker coaches.'
+			body: 'Winner gets mentored and coached by our team.'
 		},
 		{
 			step: 'Step 04',
@@ -24,8 +26,7 @@
 
 	const eligibility = [
 		'Any currently enrolled Purdue undergraduate or graduate student',
-		'Any discipline — engineering to art history',
-		'Ideas only: no product pitches, promotions, or fundraising'
+		'Any discipline — engineering to art history'
 	];
 
 	const criteria = [
@@ -36,7 +37,7 @@
 </script>
 
 <svelte:head>
-	<title>Student Speaker Competition · TEDxPurdueU</title>
+	<title>TEDxPurdueU</title>
 	<meta
 		name="description"
 		content="Every Purdue student can compete for a speaking slot at the TEDxPurdueU conference. Pitch an idea, get coached, and take the Unseen stage."
@@ -44,8 +45,7 @@
 </svelte:head>
 
 <section class="hero section--ruled">
-	<div class="hero-inner">
-		<div class="eyebrow">Open to every Purdue student</div>
+	<div class="hero-copy">
 		<h1>Student Speaker Competition</h1>
 		<p class="lede">
 			One slot on the Unseen stage goes to a student. You don't need a title, a lab, or a startup —
@@ -53,7 +53,10 @@
 		</p>
 		<!-- TODO: once the application form exists, make this an <a href="…">
 		     with the .btn .btn--primary classes so it becomes a real CTA. -->
-		<div class="status-badge">Applications open Fall 2026</div>
+		<div class="status-badge">Applications open soon</div>
+	</div>
+	<div class="hero-media">
+		<Placeholder ratio="4/3" label="A student speaker mid-talk" />
 	</div>
 </section>
 
@@ -70,6 +73,10 @@
 			{/each}
 		</div>
 	</div>
+</section>
+
+<section class="band">
+	<Placeholder ratio="16/6" label="Competition finalists on stage" />
 </section>
 
 <section class="sec">
@@ -96,13 +103,26 @@
 <style>
 	.hero {
 		padding: 10vh var(--gutter) 7vh;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 56px;
+		align-items: center;
 	}
 
-	.hero-inner {
-		max-width: 920px;
+	.hero-copy {
 		display: flex;
 		flex-direction: column;
 		gap: 26px;
+		min-width: 0;
+	}
+
+	.hero-media {
+		min-width: 0;
+	}
+
+	/* Cinematic strip breaking the run of text between steps and rules. */
+	.band {
+		padding: 0 var(--gutter) 7vh;
 	}
 
 	h1 {

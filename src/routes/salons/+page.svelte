@@ -25,7 +25,7 @@
 </script>
 
 <svelte:head>
-	<title>Salons · TEDxPurdueU</title>
+	<title>TEDxPurdueU</title>
 	<meta
 		name="description"
 		content="Salons are TEDxPurdueU's mini-events: one idea, one small room, one long conversation. Free and open to everyone at Purdue."
