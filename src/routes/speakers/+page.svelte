@@ -81,8 +81,11 @@
 		     with the .btn .btn--primary classes so it becomes a real CTA. -->
 		<div class="status-badge">Applications open soon</div>
 	</div>
-	<div class="hero-media">
-		<Placeholder ratio="4/3" label="A student speaker mid-talk" />
+	<div class="hero-media illustration-frame">
+		<img
+			src="/illustrations/speaker-path.svg"
+			alt="Four steps leading an idea to the TEDx stage"
+		/>
 	</div>
 </section>
 
@@ -164,6 +167,16 @@
 
 	.hero-media {
 		min-width: 0;
+	}
+
+	.illustration-frame {
+		border: 1px solid var(--border);
+	}
+
+	.illustration-frame img {
+		display: block;
+		width: 100%;
+		aspect-ratio: 4 / 3;
 	}
 
 	h1 {

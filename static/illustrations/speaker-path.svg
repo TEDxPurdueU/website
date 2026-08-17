@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Four steps from application to TEDx stage</title>
+  <desc id="desc">An application, a live competition, coaching, and a final stage microphone are linked in sequence.</desc>
+  <rect width="800" height="600" fill="#faf9f8"/>
+  <path d="M106 424h588" fill="none" stroke="#ff2b06" stroke-width="6"/>
+  <g fill="#faf9f8" stroke="#14100f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="106" cy="424" r="28"/><circle cx="302" cy="424" r="28"/>
+    <circle cx="498" cy="424" r="28"/><circle cx="694" cy="424" r="28"/>
+    <path d="M54 100h104v148H54zM82 138h48M82 170h48M82 202h30"/>
+    <path d="M238 248h128M254 248v-34h96v34M302 214V112"/>
+    <rect x="285" y="74" width="34" height="62" rx="17"/>
+    <circle cx="458" cy="126" r="24"/><circle cx="538" cy="126" r="24"/>
+    <path d="M414 224c4-56 20-82 44-82s40 26 44 82M494 224c4-56 20-82 44-82s40 26 44 82M478 166l40 22"/>
+    <path d="M644 248h100M694 248V122M694 160l-38-50"/>
+    <rect x="628" y="73" width="32" height="64" rx="16" transform="rotate(-34 644 105)"/>
+  </g>
+  <g fill="#14100f">
+    <circle cx="106" cy="424" r="8"/><circle cx="302" cy="424" r="8"/>
+    <circle cx="498" cy="424" r="8"/><circle cx="694" cy="424" r="8"/>
+    <path d="M628 248h132v34H628z"/>
+  </g>
+  <g fill="#ff2b06">
+    <circle cx="54" cy="100" r="11"/><circle cx="302" cy="74" r="11"/>
+    <circle cx="498" cy="188" r="11"/><circle cx="694" cy="90" r="11"/>
+  </g>
+</svg>

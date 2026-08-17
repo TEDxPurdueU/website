@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+  <title id="title">A speaker sharing an idea on stage</title>
+  <desc id="desc">A speaker stands at a microphone beneath a red spotlight, facing a seated audience.</desc>
+  <rect width="800" height="560" fill="#faf9f8"/>
+  <path d="M0 488h800" fill="none" stroke="#14100f" stroke-width="4"/>
+  <path d="M104 488h312v-44H104z" fill="#14100f"/>
+  <path d="M278 54l-92 390h184z" fill="#ff2b06" opacity=".12"/>
+  <circle cx="278" cy="54" r="26" fill="#ff2b06"/>
+  <g fill="none" stroke="#14100f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="254" cy="250" r="36"/>
+    <path d="M254 286v110M254 320l-50 56M254 320l56 42M254 396l-38 48M254 396l36 48"/>
+    <path d="M330 444V270M330 312l46-38"/>
+    <rect x="368" y="245" width="28" height="58" rx="14" transform="rotate(48 382 274)"/>
+    <path d="M302 444h124"/>
+  </g>
+  <g fill="#14100f">
+    <circle cx="514" cy="358" r="18"/>
+    <circle cx="580" cy="358" r="18"/>
+    <circle cx="646" cy="358" r="18"/>
+    <circle cx="712" cy="358" r="18"/>
+    <path d="M478 438c0-42 16-64 36-64s36 22 36 64zM544 438c0-42 16-64 36-64s36 22 36 64zM610 438c0-42 16-64 36-64s36 22 36 64zM676 438c0-42 16-64 36-64s36 22 36 64z"/>
+  </g>
+  <g fill="none" stroke="#ff2b06" stroke-width="4" stroke-linecap="round">
+    <path d="M184 196l-28-28M324 196l28-28M254 166v-42"/>
+  </g>
+</svg>

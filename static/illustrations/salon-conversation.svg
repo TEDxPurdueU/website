@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">A small salon discussion</title>
+  <desc id="desc">Four people sit together around a table, exchanging ideas in red speech bubbles.</desc>
+  <rect width="800" height="600" fill="#faf9f8"/>
+  <g fill="none" stroke="#14100f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M236 386h328M282 386l-34 136M518 386l34 136"/>
+    <circle cx="196" cy="294" r="34"/>
+    <path d="M130 448c0-82 28-120 66-120s66 38 66 120M148 448v74M244 448v74"/>
+    <circle cx="604" cy="294" r="34"/>
+    <path d="M538 448c0-82 28-120 66-120s66 38 66 120M556 448v74M652 448v74"/>
+    <circle cx="320" cy="340" r="26"/>
+    <path d="M276 386c5-38 21-58 44-58s39 20 44 58"/>
+    <circle cx="480" cy="340" r="26"/>
+    <path d="M436 386c5-38 21-58 44-58s39 20 44 58"/>
+  </g>
+  <g fill="#ff2b06">
+    <path d="M112 96h220v112H208l-44 42 10-42h-62z"/>
+    <path d="M474 122h214v104h-62l10 40-42-40H474z"/>
+  </g>
+  <g fill="#faf9f8">
+    <circle cx="174" cy="152" r="8"/>
+    <circle cx="220" cy="152" r="8"/>
+    <circle cx="266" cy="152" r="8"/>
+    <path d="M526 172h110v8H526z"/>
+  </g>
+</svg>

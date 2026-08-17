@@ -41,8 +41,11 @@
 			TED screening, then discussion over food. Free, open to everyone at Purdue, no ticket needed.
 		</p>
 	</div>
-	<div class="hero-media">
-		<Placeholder ratio="4/3" label="A salon in progress" />
+	<div class="hero-media illustration-frame">
+		<img
+			src="/illustrations/salon-conversation.svg"
+			alt="Four people exchanging ideas around a table"
+		/>
 	</div>
 </section>
 
@@ -87,6 +90,16 @@
 
 	.hero-media {
 		min-width: 0;
+	}
+
+	.illustration-frame {
+		border: 1px solid var(--border);
+	}
+
+	.illustration-frame img {
+		display: block;
+		width: 100%;
+		aspect-ratio: 4 / 3;
 	}
 
 	.sec {
