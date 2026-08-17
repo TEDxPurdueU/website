@@ -1,7 +1,7 @@
 /**
- * The five pages of the site, in the order they appear in the header.
- * `label` is the compact header wording; `footerLabel` is the longer form
- * the footer column uses.
+ * Every page of the site, in order. `label` is the compact header wording;
+ * `footerLabel` is the longer form the footer column uses. The footer lists
+ * all of these as a sitemap.
  */
 export const pages = [
 	{ href: '/', label: 'About', footerLabel: 'About' },
@@ -10,6 +10,9 @@ export const pages = [
 	{ href: '/speakers', label: 'Speaker Comp', footerLabel: 'Speaker Competition' },
 	{ href: '/team', label: 'Team', footerLabel: 'Team' }
 ];
+
+/** The header nav drops the home link — the logo beside it already goes there. */
+export const navPages = pages.filter((page) => page.href !== '/');
 
 /**
  * Social links shown in the footer. TODO: swap in the club's real handles.

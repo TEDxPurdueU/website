@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/state';
-	import { pages } from '$lib/nav.js';
+	import { navPages } from '$lib/nav.js';
 
 	/** @param {string} href */
 	const isCurrent = (href) => page.url.pathname === href;
@@ -11,7 +11,7 @@
 		<img src="/logo-dark.png" alt="TEDxPurdueU" width="1275" height="240" />
 	</a>
 	<nav aria-label="Primary">
-		{#each pages as item (item.href)}
+		{#each navPages as item (item.href)}
 			<a
 				href={item.href}
 				class="nav-link"
