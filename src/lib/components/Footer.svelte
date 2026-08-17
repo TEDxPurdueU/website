@@ -63,9 +63,12 @@
 		max-width: 360px;
 	}
 
+	/* align-self stops the column's default stretch from pulling the wordmark
+	   out to the container width while its height stays fixed. */
 	.about img {
 		height: 30px;
 		width: auto;
+		align-self: flex-start;
 		display: block;
 	}
 
