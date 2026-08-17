@@ -1,24 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
-  <title id="title">A Purdue student stepping onto the TEDx stage</title>
-  <desc id="desc">A student with a backpack walks from a campus bell tower into the red spotlight of the main stage.</desc>
+  <title id="title">A student supported on the TEDx stage</title>
+  <desc id="desc">One student stands at the microphone while four peers cheer and support them from both sides.</desc>
   <rect width="800" height="600" fill="#faf9f8"/>
-  <path d="M84 500h632" fill="none" stroke="#14100f" stroke-width="4"/>
+  <circle cx="400" cy="416" r="112" fill="#ff2b06"/>
+  <path d="M194 500h412" fill="none" stroke="#14100f" stroke-width="4"/>
   <g fill="none" stroke="#14100f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M76 500h166M104 500V258h110v242M126 258v-66h66v66M144 192v-54h30v54"/>
-    <circle cx="159" cy="226" r="18"/>
-    <path d="M130 306h58M130 350h58M130 394h58M130 438h58"/>
-    <circle cx="398" cy="318" r="34"/>
-    <path d="M398 352v102M398 376l-48 48M398 376l52 36M398 454l-34 46M398 454l38 46"/>
-    <path d="M366 358c-30 2-42 20-40 62l38 10"/>
-    <path d="M574 500V286M574 328l52-40"/>
-    <rect x="620" y="250" width="34" height="70" rx="17" transform="rotate(48 637 285)"/>
-    <path d="M520 500h184"/>
+    <circle cx="400" cy="238" r="38"/>
+    <path d="M400 276v142M400 318l-62 62M400 318l66 50M400 418l-42 82M400 418l44 82"/>
+    <path d="M484 500V238M484 286l48-38"/>
+    <rect x="524" y="214" width="34" height="68" rx="17" transform="rotate(48 541 248)"/>
+    <circle cx="172" cy="338" r="28"/><path d="M172 366v94M172 390l-54-58M172 390l46-44M172 460l-28 40"/>
+    <circle cx="276" cy="366" r="26"/><path d="M276 392v72M276 414l-42-36M276 414l38-48M276 464l-20 36"/>
+    <circle cx="628" cy="338" r="28"/><path d="M628 366v94M628 390l54-58M628 390l-46-44M628 460l28 40"/>
+    <circle cx="524" cy="366" r="26"/><path d="M524 392v72M524 414l42-36M524 414l-38-48M524 464l20 36"/>
   </g>
-  <path d="M520 500h184v34H520z" fill="#14100f"/>
-  <path d="M574 82l-112 418h224z" fill="#ff2b06" opacity=".13"/>
-  <circle cx="574" cy="82" r="28" fill="#ff2b06"/>
-  <path d="M242 500c76 0 96-42 158-42s86 42 120 42" fill="none" stroke="#ff2b06" stroke-width="8"/>
-  <g fill="#14100f">
-    <circle cx="590" cy="430" r="12"/><circle cx="630" cy="430" r="12"/><circle cx="670" cy="430" r="12"/>
+  <g fill="none" stroke="#ff2b06" stroke-width="4" stroke-linecap="round">
+    <path d="M400 150v-54M354 168l-34-38M446 168l34-38"/>
   </g>
 </svg>

@@ -1,27 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
-  <title id="title">A relaxed community salon</title>
-  <desc id="desc">Students chat from casual seats around snacks and drinks at a small community event.</desc>
+  <title id="title">A hands-on community salon</title>
+  <desc id="desc">Friends reach around a shared workshop table to make tie-dye shirts and small potted plants.</desc>
   <rect width="800" height="600" fill="#faf9f8"/>
-  <ellipse cx="400" cy="474" rx="286" ry="70" fill="#ff2b06" opacity=".12"/>
+  <rect x="138" y="88" width="524" height="424" fill="#ff2b06" opacity=".08"/>
   <g fill="none" stroke="#14100f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="174" cy="296" r="32"/>
-    <path d="M110 446c2-86 24-120 64-120s62 34 64 120M126 424l-34 68M222 424l34 68"/>
-    <circle cx="626" cy="296" r="32"/>
-    <path d="M562 446c2-86 24-120 64-120s62 34 64 120M578 424l-34 68M674 424l34 68"/>
-    <circle cx="320" cy="354" r="27"/>
-    <path d="M274 454c4-64 18-92 46-92s42 28 46 92M286 436l-30 58"/>
-    <circle cx="480" cy="354" r="27"/>
-    <path d="M434 454c4-64 18-92 46-92s42 28 46 92M514 436l30 58"/>
-    <path d="M332 424h136M350 424v54M450 424v54"/>
-    <path d="M380 402l18-30 18 30zM430 380v24M448 380v24M430 380h18"/>
+    <path d="M250 224l62-30 40 36 40-36 62 30-34 70-38-18v126H322V276l-38 18z"/>
+    <path d="M492 316h106l-12 86h-82z"/>
+    <path d="M512 316c0-62 30-102 30-102M542 316c0-68 26-126 26-126M566 316c0-54 28-88 28-88"/>
+    <path d="M542 250c-34-2-50-18-50-42 34 2 50 18 50 42zM568 226c26-6 44-24 44-48-28 4-44 20-44 48zM566 278c30-2 48-18 50-42-32 0-48 16-50 42z"/>
+    <path d="M188 148h52v80h-52zM200 130h28v18M198 178h32"/>
+    <path d="M102 340h92l78-56M698 346h-88l-50-42M276 556v-82l40-56M524 556v-82l-42-58"/>
+    <circle cx="272" cy="284" r="12"/><circle cx="560" cy="304" r="12"/>
+    <circle cx="316" cy="418" r="12"/><circle cx="482" cy="416" r="12"/>
   </g>
-  <g fill="#ff2b06">
-    <path d="M104 104h214v108H206l-38 36 8-36h-72z"/>
-    <path d="M484 128h204v96h-62l8 34-36-34H484z"/>
+  <g fill="none" stroke="#ff2b06" stroke-width="5" stroke-linecap="round">
+    <circle cx="352" cy="294" r="48"/>
+    <path d="M352 246c28 12 34 40 14 58s-42 2-34-16 34-10 38 10"/>
+    <path d="M542 214v-42M522 186l-26-26M584 180l24-28"/>
   </g>
-  <g fill="#faf9f8">
-    <circle cx="166" cy="158" r="8"/><circle cx="212" cy="158" r="8"/><circle cx="258" cy="158" r="8"/>
-    <path d="M532 172h106v8H532z"/>
-  </g>
-  <path d="M246 300l56 42M554 300l-56 42" fill="none" stroke="#ff2b06" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="214" cy="198" r="9" fill="#ff2b06"/>
 </svg>

@@ -115,11 +115,6 @@
 		<div class="hero-photo">
 			<Placeholder ratio="16/10" label="Drop a photo from the last conference" />
 		</div>
-		<img
-			class="hero-illustration"
-			src="/illustrations/ideas-stage.svg"
-			alt="A speaker sharing an idea with a TEDx audience"
-		/>
 		<div class="next-card">
 			<div class="next-card__label">Next event</div>
 			<div class="next-card__title">Unseen</div>
@@ -292,27 +287,20 @@
 
 	.hero-media {
 		min-width: 0;
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 16px;
+		position: relative;
+		padding: 0 0 clamp(54px, 7vw, 82px) clamp(26px, 4vw, 56px);
 	}
 
 	.hero-photo {
-		grid-column: 1 / -1;
 		min-width: 0;
-	}
-
-	.hero-illustration {
-		display: block;
-		width: 100%;
-		aspect-ratio: 4 / 3;
-		object-fit: cover;
-		border: 1px solid var(--border);
 	}
 
 	/* The red tile that fills the fourth cell of the hero collage. */
 	.next-card {
-		min-width: 0;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: clamp(150px, 34%, 210px);
 		aspect-ratio: 4 / 3;
 		/* Once the tile is phone-narrow the label wraps and the 4/3 box can no
 		   longer hold the copy; letting it outgrow the ratio beats clipping. */
@@ -327,6 +315,13 @@
 		justify-content: space-between;
 		gap: clamp(6px, 2vw, 16px);
 		overflow: hidden;
+	}
+
+	@media (max-width: 520px) {
+		.hero-media {
+			padding-left: 20px;
+			padding-bottom: 62px;
+		}
 	}
 
 	.next-card__label {

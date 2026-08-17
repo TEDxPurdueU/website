@@ -1,20 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
-  <title id="title">Students building a TEDx event together</title>
-  <desc id="desc">A student team works together on the microphone, camera, ideas, and production around a shared stage.</desc>
+  <title id="title">A student team working around one table</title>
+  <desc id="desc">Six student organizers sit around a shared table with a laptop, notes, and event plans.</desc>
   <rect width="800" height="560" fill="#faf9f8"/>
-  <path d="M144 474h512v40H144z" fill="#14100f"/>
-  <circle cx="400" cy="420" r="74" fill="#ff2b06"/>
+  <ellipse cx="400" cy="292" rx="214" ry="132" fill="#ff2b06" opacity=".13" stroke="#14100f" stroke-width="4"/>
   <g fill="none" stroke="#14100f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="154" cy="250" r="30"/><path d="M154 280v132M154 320l-64 52M154 320l70 42M154 412l-34 62M154 412l40 62"/>
-    <path d="M84 338h62v48H84zM146 350l34-22v68l-34-22"/>
-    <circle cx="646" cy="250" r="30"/><path d="M646 280v132M646 320l-70 42M646 320l64 52M646 412l-40 62M646 412l34 62"/>
-    <path d="M654 330h92v66h-92zM672 350h56M672 370h36"/>
-    <circle cx="304" cy="204" r="28"/><path d="M304 232v126M304 270l-62 56M304 270l54 50M304 358l-34 62"/>
-    <circle cx="496" cy="204" r="28"/><path d="M496 232v126M496 270l-54 50M496 270l62 56M496 358l34 62"/>
-    <path d="M400 346V174M400 216l48-38"/>
-    <rect x="440" y="146" width="32" height="66" rx="16" transform="rotate(48 456 179)"/>
+    <circle cx="252" cy="112" r="28"/><path d="M210 174c5-42 19-62 42-62s37 20 42 62"/>
+    <circle cx="400" cy="82" r="28"/><path d="M358 144c5-42 19-62 42-62s37 20 42 62"/>
+    <circle cx="548" cy="112" r="28"/><path d="M506 174c5-42 19-62 42-62s37 20 42 62"/>
+    <circle cx="236" cy="434" r="28"/><path d="M194 496c5-42 19-62 42-62s37 20 42 62"/>
+    <circle cx="400" cy="468" r="28"/><path d="M358 530c5-42 19-62 42-62s37 20 42 62"/>
+    <circle cx="564" cy="434" r="28"/><path d="M522 496c5-42 19-62 42-62s37 20 42 62"/>
+    <path d="M252 174l44 74M400 144v90M548 174l-44 74M236 434l54-80M400 440v-88M564 434l-54-80"/>
+    <path d="M328 242h144v88H328zM352 330h96"/>
+    <path d="M234 286h58v44h-58zM508 270h62v46h-62zM508 342h46"/>
   </g>
-  <g fill="none" stroke="#ff2b06" stroke-width="4" stroke-linecap="round">
-    <path d="M356 116l-28-28M444 116l28-28M400 94V54"/>
+  <g fill="none" stroke="#ff2b06" stroke-width="5" stroke-linecap="round">
+    <path d="M260 304h20M526 294h20M520 364h28"/>
+    <circle cx="400" cy="286" r="18"/>
   </g>
 </svg>
