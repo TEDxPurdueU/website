@@ -76,7 +76,7 @@
 		{ label: 'Photo 20' }
 	];
 
-	const PER_PAGE = 12;
+	const PER_PAGE = 10;
 
 	let page = $state(0);
 	// -1 is "closed"; anything else is an index into the whole gallery, not into
