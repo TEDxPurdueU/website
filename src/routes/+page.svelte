@@ -48,19 +48,17 @@
 		}
 	];
 
-	// TODO: drop the four gallery photos into static/ and set `src` on each.
+	// Add or remove entries freely — the grid reflows to whatever length this
+	// is. Drop photos into static/ and set `src` on each to fill a slot.
 	const gallery = [
 		{ label: 'Photo 1' },
 		{ label: 'Photo 2' },
 		{ label: 'Photo 3' },
-		{ label: 'Photo 4' }
-	];
-
-	const stats = [
-		{ value: '6', label: 'Speakers per conference' },
-		{ value: '300+', label: 'Attendees each year' },
-		{ value: '30+', label: 'Student organizers' },
-		{ value: '4', label: 'Salons each year' }
+		{ label: 'Photo 4' },
+		{ label: 'Photo 5' },
+		{ label: 'Photo 6' },
+		{ label: 'Photo 7' },
+		{ label: 'Photo 8' }
 	];
 </script>
 
@@ -162,22 +160,13 @@
 
 <section class="gallery">
 	<div class="gallery__head">
-		<h2>From the last conference</h2>
+		<h2>Gallery</h2>
 	</div>
 	<div class="gallery__grid">
 		{#each gallery as photo (photo.label)}
 			<Placeholder ratio="3/4" label={photo.label} />
 		{/each}
 	</div>
-</section>
-
-<section class="stats">
-	{#each stats as stat (stat.label)}
-		<div class="stat">
-			<div class="stat__value">{stat.value}</div>
-			<div class="stat__label">{stat.label}</div>
-		</div>
-	{/each}
 </section>
 
 <style>
@@ -516,8 +505,10 @@
 
 	/* ---- Gallery ------------------------------------------------------ */
 
+	/* Last section on the page, so it carries its own bottom space off the
+	   footer rather than borrowing it from a section below. */
 	.gallery {
-		padding: 9vh 0 0;
+		padding: 9vh 0;
 		display: flex;
 		flex-direction: column;
 		gap: 28px;
@@ -542,31 +533,4 @@
 		padding: 0 var(--gutter);
 	}
 
-	/* ---- Stats -------------------------------------------------------- */
-
-	.stats {
-		padding: 9vh var(--gutter);
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-		gap: 40px;
-	}
-
-	.stat {
-		display: flex;
-		flex-direction: column;
-		gap: 6px;
-	}
-
-	.stat__value {
-		font-size: clamp(34px, 3.6vw, 52px);
-		font-weight: 700;
-		letter-spacing: -0.03em;
-	}
-
-	.stat__label {
-		font-size: 13px;
-		letter-spacing: 0.16em;
-		text-transform: uppercase;
-		color: var(--text-faint);
-	}
 </style>

@@ -24,7 +24,6 @@
 
 <section class="hero section--ruled">
 	<div class="hero-inner">
-		<div class="eyebrow">Entirely student-run</div>
 		<h1 class="page-title">The team</h1>
 		<p class="lede">
 			Curation, production, design, marketing, and partnerships — every part of the conference is
