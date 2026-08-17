@@ -128,4 +128,26 @@
 		font-size: 13px;
 		color: var(--text-faintest);
 	}
+
+	/* On touch-sized screens the gaps move inside the links so each one is a
+	   comfortable tap target while the visual rhythm stays put. */
+	@media (max-width: 720px) {
+		.page-links {
+			gap: 0;
+			margin-block: -11px;
+		}
+
+		.page-links a {
+			padding: 11px 0;
+		}
+
+		.socials {
+			gap: 0;
+			margin-inline: -10px;
+		}
+
+		.socials a {
+			padding: 10px;
+		}
+	}
 </style>

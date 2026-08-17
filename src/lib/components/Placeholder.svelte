@@ -40,11 +40,13 @@
 		border: 1px solid var(--border);
 		display: flex;
 		align-items: flex-end;
-		padding: 18px;
+		/* Small collage tiles can be ~130px wide on a phone; fixed padding would
+		   leave the caption almost no room. */
+		padding: clamp(10px, 4vw, 18px);
 	}
 
 	.placeholder.compact {
-		padding: 14px;
+		padding: clamp(8px, 3vw, 14px);
 	}
 
 	span {

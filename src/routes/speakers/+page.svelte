@@ -150,7 +150,7 @@
 	.hero {
 		padding: 10vh var(--gutter) 7vh;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
 		gap: 56px;
 		align-items: center;
 	}
@@ -204,7 +204,7 @@
 
 	.steps {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
 		gap: 36px;
 	}
 
@@ -235,7 +235,7 @@
 
 	.winners {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
 		gap: 32px;
 	}
 
@@ -274,7 +274,7 @@
 
 	.rules {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 		gap: 48px;
 		max-width: 1100px;
 	}

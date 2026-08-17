@@ -71,16 +71,30 @@
 		color: var(--red);
 	}
 
-	/* On narrow screens the logo keeps its row and the links wrap beneath it. */
-	@media (max-width: 720px) {
+	/* Logo plus the five links needs ~820px of viewport; below that the single
+	   row wraps and strands a link, so the links move beneath the logo instead.
+	   The bar is sticky, so everything tightens to keep it off a phone's
+	   viewport — and the nav's row gap moves into the links themselves, which
+	   buys taller tap targets at the same visual rhythm. */
+	@media (max-width: 820px) {
 		header {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 16px;
+			gap: 10px;
+			padding: 14px var(--gutter);
+		}
+
+		.logo img {
+			height: 28px;
 		}
 
 		nav {
-			gap: 18px 20px;
+			gap: 0 20px;
+			margin-block: -8px;
+		}
+
+		.nav-link {
+			padding: 8px 0;
 		}
 	}
 </style>

@@ -75,9 +75,12 @@
 		padding: 7vh var(--gutter);
 	}
 
+	/* The 42% floor holds the roster two-up on a phone — six full-width square
+	   headshots would otherwise be most of the page. Above ~450px the 210px min
+	   takes over again, so wider layouts are untouched. */
 	.roster {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(210px, 42%), 1fr));
 		gap: 32px;
 		max-width: 1200px;
 	}

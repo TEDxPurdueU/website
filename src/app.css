@@ -23,7 +23,9 @@
 	/* Hover wash for the full-bleed programme rows. Deliberately lighter than
 	   the placeholder fill so a hovered row reads as a tint, not a grey slab. */
 	--row-wash: #f5f2ee;
-	--gutter: 6vw;
+	/* Floored so the page still has a real margin on a 320px phone, where a bare
+	   6vw would leave only 19px. */
+	--gutter: max(20px, 6vw);
 	--mono: ui-monospace, Menlo, monospace;
 }
 
@@ -170,6 +172,15 @@ p {
 	color: var(--red);
 	border-bottom: 2px solid var(--red);
 	padding-bottom: 4px;
+}
+
+/* On touch-sized screens the rule link grows a tap target upwards, cancelled
+   by an equal negative margin so the underline stays exactly where it was. */
+@media (max-width: 720px) {
+	.link-rule {
+		padding-top: 21px;
+		margin-top: -21px;
+	}
 }
 
 /* ---- Misc -------------------------------------------------------------- */

@@ -186,7 +186,7 @@
 	.hero {
 		padding: 9vh var(--gutter) 0;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
 		gap: 56px;
 		align-items: center;
 	}
@@ -235,13 +235,18 @@
 	.next-card {
 		min-width: 0;
 		aspect-ratio: 4/3;
+		/* Once the tile is phone-narrow the label wraps and the 4/3 box can no
+		   longer hold the copy; letting it outgrow the ratio beats clipping. */
+		min-height: min-content;
 		background: var(--red);
 		color: #fff;
-		padding: 22px;
+		/* The tile is a quarter of the collage, so on a phone it is only ~130px
+		   across — desktop's fixed padding and gap would clip the date out. */
+		padding: clamp(13px, 4vw, 22px);
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		gap: 16px;
+		gap: clamp(6px, 2vw, 16px);
 		overflow: hidden;
 	}
 
@@ -282,7 +287,7 @@
 		padding: 11vh var(--gutter);
 		border-bottom: 1px solid var(--rule);
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 		gap: 64px;
 		max-width: 1300px;
 	}
@@ -317,6 +322,19 @@
 		color: var(--text-dim);
 		max-width: 70ch;
 		text-wrap: pretty;
+	}
+
+	/* Below the three-column threshold the label already sits on its own row, so
+	   the copy's span would only conjure an implicit track and push the page
+	   sideways. Collapse to a single column and let both stack full width. */
+	@media (max-width: 900px) {
+		.who {
+			grid-template-columns: 1fr;
+		}
+
+		.who__copy {
+			grid-column: auto;
+		}
 	}
 
 	/* ---- Programme rows ---------------------------------------------- */
@@ -404,6 +422,21 @@
 		transform: translateX(8px);
 	}
 
+	/* The number and arrow columns plus two 40px gaps take ~130px, which leaves
+	   the title nothing on a phone. Lift the number onto its own line and pull
+	   the gap in so the copy gets the full measure. */
+	@media (max-width: 620px) {
+		.programme {
+			grid-template-columns: 1fr auto;
+			gap: 10px 20px;
+			padding: 34px var(--gutter);
+		}
+
+		.programme__number {
+			grid-column: 1 / -1;
+		}
+	}
+
 	/* ---- Past speakers ------------------------------------------------ */
 
 	.speakers {
@@ -433,7 +466,7 @@
 
 	.speakers__grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
 		gap: 28px;
 	}
 
@@ -499,9 +532,12 @@
 		letter-spacing: -0.02em;
 	}
 
+	/* The 45% floor keeps the portrait frames two-up on a phone — one 3/4 photo
+	   per row would run most of a screen tall. Above ~490px the 220px min wins
+	   again, so wider layouts are untouched. */
 	.gallery__grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(220px, 45%), 1fr));
 		gap: 12px;
 		padding: 0 var(--gutter);
 	}
@@ -511,7 +547,7 @@
 	.stats {
 		padding: 9vh var(--gutter);
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
 		gap: 40px;
 	}
 

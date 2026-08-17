@@ -49,15 +49,18 @@
 	.panel {
 		display: flex;
 		align-items: center;
-		gap: 48px;
+		gap: clamp(20px, 5vw, 48px);
 		flex-wrap: wrap;
-		padding: 44px 48px;
+		padding: clamp(24px, 4.6vw, 44px) clamp(20px, 5vw, 48px);
 		border: 1px dashed var(--border-strong);
 		background: var(--fill);
 	}
 
+	/* Once the panel wraps, the mark sits above the copy rather than beside it —
+	   the desktop floor would then take most of a phone screen's width, so it
+	   scales down with the viewport instead. */
 	.mark {
-		width: clamp(170px, 26vw, 270px);
+		width: clamp(120px, 26vw, 270px);
 		flex-shrink: 0;
 	}
 
