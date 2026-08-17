@@ -1,26 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
-  <title id="title">Four steps from application to TEDx stage</title>
-  <desc id="desc">An application, a live competition, coaching, and a final stage microphone are linked in sequence.</desc>
+  <title id="title">A Purdue student stepping onto the TEDx stage</title>
+  <desc id="desc">A student with a backpack walks from a campus bell tower into the red spotlight of the main stage.</desc>
   <rect width="800" height="600" fill="#faf9f8"/>
-  <path d="M106 424h588" fill="none" stroke="#ff2b06" stroke-width="6"/>
-  <g fill="#faf9f8" stroke="#14100f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="106" cy="424" r="28"/><circle cx="302" cy="424" r="28"/>
-    <circle cx="498" cy="424" r="28"/><circle cx="694" cy="424" r="28"/>
-    <path d="M54 100h104v148H54zM82 138h48M82 170h48M82 202h30"/>
-    <path d="M238 248h128M254 248v-34h96v34M302 214V112"/>
-    <rect x="285" y="74" width="34" height="62" rx="17"/>
-    <circle cx="458" cy="126" r="24"/><circle cx="538" cy="126" r="24"/>
-    <path d="M414 224c4-56 20-82 44-82s40 26 44 82M494 224c4-56 20-82 44-82s40 26 44 82M478 166l40 22"/>
-    <path d="M644 248h100M694 248V122M694 160l-38-50"/>
-    <rect x="628" y="73" width="32" height="64" rx="16" transform="rotate(-34 644 105)"/>
+  <path d="M84 500h632" fill="none" stroke="#14100f" stroke-width="4"/>
+  <g fill="none" stroke="#14100f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M76 500h166M104 500V258h110v242M126 258v-66h66v66M144 192v-54h30v54"/>
+    <circle cx="159" cy="226" r="18"/>
+    <path d="M130 306h58M130 350h58M130 394h58M130 438h58"/>
+    <circle cx="398" cy="318" r="34"/>
+    <path d="M398 352v102M398 376l-48 48M398 376l52 36M398 454l-34 46M398 454l38 46"/>
+    <path d="M366 358c-30 2-42 20-40 62l38 10"/>
+    <path d="M574 500V286M574 328l52-40"/>
+    <rect x="620" y="250" width="34" height="70" rx="17" transform="rotate(48 637 285)"/>
+    <path d="M520 500h184"/>
   </g>
+  <path d="M520 500h184v34H520z" fill="#14100f"/>
+  <path d="M574 82l-112 418h224z" fill="#ff2b06" opacity=".13"/>
+  <circle cx="574" cy="82" r="28" fill="#ff2b06"/>
+  <path d="M242 500c76 0 96-42 158-42s86 42 120 42" fill="none" stroke="#ff2b06" stroke-width="8"/>
   <g fill="#14100f">
-    <circle cx="106" cy="424" r="8"/><circle cx="302" cy="424" r="8"/>
-    <circle cx="498" cy="424" r="8"/><circle cx="694" cy="424" r="8"/>
-    <path d="M628 248h132v34H628z"/>
-  </g>
-  <g fill="#ff2b06">
-    <circle cx="54" cy="100" r="11"/><circle cx="302" cy="74" r="11"/>
-    <circle cx="498" cy="188" r="11"/><circle cx="694" cy="90" r="11"/>
+    <circle cx="590" cy="430" r="12"/><circle cx="630" cy="430" r="12"/><circle cx="670" cy="430" r="12"/>
   </g>
 </svg>

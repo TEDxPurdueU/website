@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+  <title id="title">Students building a TEDx event together</title>
+  <desc id="desc">A student team works together on the microphone, camera, ideas, and production around a shared stage.</desc>
+  <rect width="800" height="560" fill="#faf9f8"/>
+  <path d="M144 474h512v40H144z" fill="#14100f"/>
+  <circle cx="400" cy="420" r="74" fill="#ff2b06"/>
+  <g fill="none" stroke="#14100f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="154" cy="250" r="30"/><path d="M154 280v132M154 320l-64 52M154 320l70 42M154 412l-34 62M154 412l40 62"/>
+    <path d="M84 338h62v48H84zM146 350l34-22v68l-34-22"/>
+    <circle cx="646" cy="250" r="30"/><path d="M646 280v132M646 320l-70 42M646 320l64 52M646 412l-40 62M646 412l34 62"/>
+    <path d="M654 330h92v66h-92zM672 350h56M672 370h36"/>
+    <circle cx="304" cy="204" r="28"/><path d="M304 232v126M304 270l-62 56M304 270l54 50M304 358l-34 62"/>
+    <circle cx="496" cy="204" r="28"/><path d="M496 232v126M496 270l-54 50M496 270l62 56M496 358l34 62"/>
+    <path d="M400 346V174M400 216l48-38"/>
+    <rect x="440" y="146" width="32" height="66" rx="16" transform="rotate(48 456 179)"/>
+  </g>
+  <g fill="none" stroke="#ff2b06" stroke-width="4" stroke-linecap="round">
+    <path d="M356 116l-28-28M444 116l28-28M400 94V54"/>
+  </g>
+</svg>

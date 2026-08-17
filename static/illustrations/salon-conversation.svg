@@ -1,26 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
-  <title id="title">A small salon discussion</title>
-  <desc id="desc">Four people sit together around a table, exchanging ideas in red speech bubbles.</desc>
+  <title id="title">A relaxed community salon</title>
+  <desc id="desc">Students chat from casual seats around snacks and drinks at a small community event.</desc>
   <rect width="800" height="600" fill="#faf9f8"/>
+  <ellipse cx="400" cy="474" rx="286" ry="70" fill="#ff2b06" opacity=".12"/>
   <g fill="none" stroke="#14100f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M236 386h328M282 386l-34 136M518 386l34 136"/>
-    <circle cx="196" cy="294" r="34"/>
-    <path d="M130 448c0-82 28-120 66-120s66 38 66 120M148 448v74M244 448v74"/>
-    <circle cx="604" cy="294" r="34"/>
-    <path d="M538 448c0-82 28-120 66-120s66 38 66 120M556 448v74M652 448v74"/>
-    <circle cx="320" cy="340" r="26"/>
-    <path d="M276 386c5-38 21-58 44-58s39 20 44 58"/>
-    <circle cx="480" cy="340" r="26"/>
-    <path d="M436 386c5-38 21-58 44-58s39 20 44 58"/>
+    <circle cx="174" cy="296" r="32"/>
+    <path d="M110 446c2-86 24-120 64-120s62 34 64 120M126 424l-34 68M222 424l34 68"/>
+    <circle cx="626" cy="296" r="32"/>
+    <path d="M562 446c2-86 24-120 64-120s62 34 64 120M578 424l-34 68M674 424l34 68"/>
+    <circle cx="320" cy="354" r="27"/>
+    <path d="M274 454c4-64 18-92 46-92s42 28 46 92M286 436l-30 58"/>
+    <circle cx="480" cy="354" r="27"/>
+    <path d="M434 454c4-64 18-92 46-92s42 28 46 92M514 436l30 58"/>
+    <path d="M332 424h136M350 424v54M450 424v54"/>
+    <path d="M380 402l18-30 18 30zM430 380v24M448 380v24M430 380h18"/>
   </g>
   <g fill="#ff2b06">
-    <path d="M112 96h220v112H208l-44 42 10-42h-62z"/>
-    <path d="M474 122h214v104h-62l10 40-42-40H474z"/>
+    <path d="M104 104h214v108H206l-38 36 8-36h-72z"/>
+    <path d="M484 128h204v96h-62l8 34-36-34H484z"/>
   </g>
   <g fill="#faf9f8">
-    <circle cx="174" cy="152" r="8"/>
-    <circle cx="220" cy="152" r="8"/>
-    <circle cx="266" cy="152" r="8"/>
-    <path d="M526 172h110v8H526z"/>
+    <circle cx="166" cy="158" r="8"/><circle cx="212" cy="158" r="8"/><circle cx="258" cy="158" r="8"/>
+    <path d="M532 172h106v8H532z"/>
   </g>
+  <path d="M246 300l56 42M554 300l-56 42" fill="none" stroke="#ff2b06" stroke-width="4" stroke-linecap="round"/>
 </svg>

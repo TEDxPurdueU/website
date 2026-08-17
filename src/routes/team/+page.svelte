@@ -24,11 +24,18 @@
 
 <section class="hero section--ruled">
 	<div class="hero-inner">
-		<h1 class="page-title">The team</h1>
-		<p class="lede">
-			Curation, production, design, marketing, and partnerships — every part of the conference is
-			built by Purdue students who volunteer their semesters to it.
-		</p>
+		<div class="hero-copy">
+			<h1 class="page-title">The team</h1>
+			<p class="lede">
+				Curation, production, design, marketing, and partnerships — every part of the conference is
+				built by Purdue students who volunteer their semesters to it.
+			</p>
+		</div>
+		<img
+			class="team-illustration"
+			src="/illustrations/team-builds-stage.svg"
+			alt="Student organizers building a TEDx stage together"
+		/>
 	</div>
 </section>
 
@@ -64,10 +71,26 @@
 	}
 
 	.hero-inner {
-		max-width: 900px;
+		max-width: 1200px;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+		gap: 56px;
+		align-items: center;
+	}
+
+	.hero-copy {
 		display: flex;
 		flex-direction: column;
 		gap: 26px;
+		min-width: 0;
+	}
+
+	.team-illustration {
+		display: block;
+		width: 100%;
+		aspect-ratio: 10 / 7;
+		object-fit: cover;
+		border: 1px solid var(--border);
 	}
 
 	.sec {
