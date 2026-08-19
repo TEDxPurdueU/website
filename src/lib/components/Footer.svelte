@@ -98,12 +98,19 @@
 		flex-wrap: wrap;
 	}
 
+	/* Overrides the global red link colour: three red glyphs in a row pulled
+	   more attention than a footer warrants. Red is kept for the hover. */
 	.socials a {
 		display: inline-flex;
+		color: var(--text);
 		transition: color 0.15s ease;
 	}
 
-	/* currentColor keeps the glyphs on the global link colour and its hover state. */
+	.socials a:hover {
+		color: var(--red);
+	}
+
+	/* currentColor carries the link colour and its hover state into the glyph. */
 	.socials svg {
 		width: 21px;
 		height: 21px;
