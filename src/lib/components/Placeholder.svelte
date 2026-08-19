@@ -23,10 +23,14 @@
 {/if}
 
 <style>
+	/* height:auto leaves `aspect-ratio` in charge, so every slot with the same
+	   ratio renders at identical dimensions whatever the source photo's shape;
+	   object-fit crops rather than distorts. The lightbox overrides both to fit
+	   the photo to its frame instead. */
 	.photo {
 		display: block;
 		width: 100%;
-		height: 100%;
+		height: auto;
 		object-fit: cover;
 	}
 

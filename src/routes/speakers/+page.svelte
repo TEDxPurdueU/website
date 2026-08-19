@@ -26,7 +26,7 @@
 
 	const eligibility = [
 		'Any currently enrolled Purdue undergraduate or graduate student',
-		'Any discipline — engineering to art history'
+		'Any discipline'
 	];
 
 

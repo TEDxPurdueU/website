@@ -1,11 +1,12 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
 	import Lightbox from '$lib/components/Lightbox.svelte';
+	import { gallery as galleryPhotos } from '$lib/gallery.js';
 
 	const programmes = [
 		{
 			number: '01',
-			href: '/unseen',
+			href: '/2027-event',
 			title: 'TEDxPurdueU: Unseen',
 			body: 'The Annual TEDx Conference.'
 		},
@@ -65,259 +66,31 @@
 		}
 	];
 
-	// Every photo on the site, thumbnails in the grid and full size in the
-	// lightbox. Shuffled once with a fixed seed rather than at runtime, so the
-	// mix is stable across the prerender and the pages stay put on reload.
-	// Regenerate with `npm run images` after adding to _originals.
-	/** @type {{ label: string, thumb: string, src: string }[]} */
-	const gallery = [
-		{
-			label: 'Conference photo 21',
-			thumb: '/img/gallery-21-thumb.webp',
-			src: '/img/gallery-21.webp'
-		},
-		{
-			label: 'Conference photo 34',
-			thumb: '/img/gallery-34-thumb.webp',
-			src: '/img/gallery-34.webp'
-		},
-		{
-			label: 'Conference photo 13',
-			thumb: '/img/gallery-13-thumb.webp',
-			src: '/img/gallery-13.webp'
-		},
-		{
-			label: 'Conference photo 14',
-			thumb: '/img/gallery-14-thumb.webp',
-			src: '/img/gallery-14.webp'
-		},
-		{
-			label: 'Conference photo 09',
-			thumb: '/img/gallery-09-thumb.webp',
-			src: '/img/gallery-09.webp'
-		},
-		{
-			label: 'Student speaker, 2025 finals',
-			thumb: '/img/winner-2025-b-thumb.webp',
-			src: '/img/winner-2025-b.webp'
-		},
-		{
-			label: 'Conference photo 10',
-			thumb: '/img/gallery-10-thumb.webp',
-			src: '/img/gallery-10.webp'
-		},
-		{
-			label: 'Conference photo 15',
-			thumb: '/img/gallery-15-thumb.webp',
-			src: '/img/gallery-15.webp'
-		},
-		{
-			label: 'Student speaker, 2025',
-			thumb: '/img/winner-2025-a-thumb.webp',
-			src: '/img/winner-2025-a.webp'
-		},
-		{
-			label: 'Conference photo 25',
-			thumb: '/img/gallery-25-thumb.webp',
-			src: '/img/gallery-25.webp'
-		},
-		{
-			label: 'Nicole Johnston — When Being \'Too Much\' Is Actually Just Enough',
-			thumb: '/img/speaker-nicole-thumb.webp',
-			src: '/img/speaker-nicole.webp'
-		},
-		{
-			label: 'The Loeb Playhouse stage',
-			thumb: '/img/student-speaker-hero-thumb.webp',
-			src: '/img/student-speaker-hero.webp'
-		},
-		{
-			label: 'Conference photo 30',
-			thumb: '/img/gallery-30-thumb.webp',
-			src: '/img/gallery-30.webp'
-		},
-		{
-			label: 'Conference photo 07',
-			thumb: '/img/gallery-07-thumb.webp',
-			src: '/img/gallery-07.webp'
-		},
-		{
-			label: 'The audience',
-			thumb: '/img/audience-thumb.webp',
-			src: '/img/audience.webp'
-		},
-		{
-			label: 'Conference photo 20',
-			thumb: '/img/gallery-20-thumb.webp',
-			src: '/img/gallery-20.webp'
-		},
-		{
-			label: 'Conference photo 18',
-			thumb: '/img/gallery-18-thumb.webp',
-			src: '/img/gallery-18.webp'
-		},
-		{
-			label: 'Conference photo 11',
-			thumb: '/img/gallery-11-thumb.webp',
-			src: '/img/gallery-11.webp'
-		},
-		{
-			label: 'Conference photo 23',
-			thumb: '/img/gallery-23-thumb.webp',
-			src: '/img/gallery-23.webp'
-		},
-		{
-			label: 'Chase Boehringer — How to do impossible things',
-			thumb: '/img/speaker-chase-thumb.webp',
-			src: '/img/speaker-chase.webp'
-		},
-		{
-			label: 'Aastha Patel, 2026 student speaker',
-			thumb: '/img/winner-2026-thumb.webp',
-			src: '/img/winner-2026.webp'
-		},
-		{
-			label: 'Conference photo 27',
-			thumb: '/img/gallery-27-thumb.webp',
-			src: '/img/gallery-27.webp'
-		},
-		{
-			label: 'Aastha Patel — To Learn a Language is to Live It',
-			thumb: '/img/speaker-aastha-thumb.webp',
-			src: '/img/speaker-aastha.webp'
-		},
-		{
-			label: 'Conference photo 17',
-			thumb: '/img/gallery-17-thumb.webp',
-			src: '/img/gallery-17.webp'
-		},
-		{
-			label: 'The team on stage',
-			thumb: '/img/conference-group-thumb.webp',
-			src: '/img/conference-group.webp'
-		},
-		{
-			label: 'Conference photo 29',
-			thumb: '/img/gallery-29-thumb.webp',
-			src: '/img/gallery-29.webp'
-		},
-		{
-			label: 'Conference photo 16',
-			thumb: '/img/gallery-16-thumb.webp',
-			src: '/img/gallery-16.webp'
-		},
-		{
-			label: 'Conference photo 28',
-			thumb: '/img/gallery-28-thumb.webp',
-			src: '/img/gallery-28.webp'
-		},
-		{
-			label: 'Conference photo 06',
-			thumb: '/img/gallery-06-thumb.webp',
-			src: '/img/gallery-06.webp'
-		},
-		{
-			label: 'Conference photo 32',
-			thumb: '/img/gallery-32-thumb.webp',
-			src: '/img/gallery-32.webp'
-		},
-		{
-			label: 'Prady Modukuru — From Building to Founding',
-			thumb: '/img/speaker-prady-thumb.webp',
-			src: '/img/speaker-prady.webp'
-		},
-		{
-			label: 'Conference photo 26',
-			thumb: '/img/gallery-26-thumb.webp',
-			src: '/img/gallery-26.webp'
-		},
-		{
-			label: 'Conference photo 04',
-			thumb: '/img/gallery-04-thumb.webp',
-			src: '/img/gallery-04.webp'
-		},
-		{
-			label: 'Conference photo 01',
-			thumb: '/img/gallery-01-thumb.webp',
-			src: '/img/gallery-01.webp'
-		},
-		{
-			label: 'Conference photo 12',
-			thumb: '/img/gallery-12-thumb.webp',
-			src: '/img/gallery-12.webp'
-		},
-		{
-			label: 'Conference photo 31',
-			thumb: '/img/gallery-31-thumb.webp',
-			src: '/img/gallery-31.webp'
-		},
-		{
-			label: 'The team after the show',
-			thumb: '/img/stage-group-thumb.webp',
-			src: '/img/stage-group.webp'
-		},
-		{
-			label: 'Bo Parfet — How Do You Light Your Soul on Fire?',
-			thumb: '/img/speaker-bo-thumb.webp',
-			src: '/img/speaker-bo.webp'
-		},
-		{
-			label: 'Conference photo 22',
-			thumb: '/img/gallery-22-thumb.webp',
-			src: '/img/gallery-22.webp'
-		},
-		{
-			label: 'Conference photo 05',
-			thumb: '/img/gallery-05-thumb.webp',
-			src: '/img/gallery-05.webp'
-		},
-		{
-			label: 'Conference photo 33',
-			thumb: '/img/gallery-33-thumb.webp',
-			src: '/img/gallery-33.webp'
-		},
-		{
-			label: 'Conference photo 03',
-			thumb: '/img/gallery-03-thumb.webp',
-			src: '/img/gallery-03.webp'
-		},
-		{
-			label: 'Conference photo 02',
-			thumb: '/img/gallery-02-thumb.webp',
-			src: '/img/gallery-02.webp'
-		},
-		{
-			label: 'Sid Thatham — Energy for AI and Everybody Else',
-			thumb: '/img/speaker-sid-thumb.webp',
-			src: '/img/speaker-sid.webp'
-		},
-		{
-			label: 'Conference photo 24',
-			thumb: '/img/gallery-24-thumb.webp',
-			src: '/img/gallery-24.webp'
-		},
-		{
-			label: 'Conference photo 08',
-			thumb: '/img/gallery-08-thumb.webp',
-			src: '/img/gallery-08.webp'
-		},
-		{
-			label: 'Conference photo 19',
-			thumb: '/img/gallery-19-thumb.webp',
-			src: '/img/gallery-19.webp'
-		}
-	];
-
 	const PER_PAGE = 10;
+
+	// The prerendered HTML carries one fixed order, so the reshuffle has to wait
+	// until after hydration or the client markup would disagree with it. Fifty-odd
+	// array items cost nothing to shuffle, and the image URLs are unchanged, so
+	// the browser cache still hits.
+	let photos = $state(galleryPhotos);
+
+	$effect(() => {
+		const next = [...galleryPhotos];
+		for (let i = next.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[next[i], next[j]] = [next[j], next[i]];
+		}
+		photos = next;
+	});
 
 	let page = $state(0);
 	// -1 is "closed"; anything else is an index into the whole gallery, not into
 	// the current page, so the lightbox can run past a page boundary.
 	let openIndex = $state(-1);
 
-	const pageCount = $derived(Math.ceil(gallery.length / PER_PAGE));
+	const pageCount = $derived(Math.ceil(photos.length / PER_PAGE));
 	const pageStart = $derived(page * PER_PAGE);
-	const pagePhotos = $derived(gallery.slice(pageStart, pageStart + PER_PAGE));
+	const pagePhotos = $derived(photos.slice(pageStart, pageStart + PER_PAGE));
 	/** @type {number[]} */
 	const pageNumbers = $derived(Array.from({ length: pageCount }, (_, i) => i));
 </script>
@@ -338,7 +111,7 @@
 			puts a student in the spotlight.
 		</p>
 		<div class="actions">
-			<a class="btn btn--primary" href="/unseen">Unseen 2027</a>
+			<a class="btn btn--primary" href="/2027-event">Unseen 2027</a>
 			<a class="btn btn--outline" href="/speakers">Speak on our stage</a>
 		</div>
 	</div>
@@ -352,11 +125,11 @@
 			/>
 		</div>
 		<Placeholder ratio="4/3" src="/img/audience.webp" label="The audience at Odyssey" />
-		<div class="next-card">
+		<a class="next-card" href="/2027-event">
 			<div class="next-card__label">Next event</div>
 			<div class="next-card__title">Unseen</div>
 			<div class="next-card__meta">Spring 2027</div>
-		</div>
+		</a>
 	</div>
 </section>
 
@@ -478,7 +251,7 @@
 
 {#if openIndex >= 0}
 	<Lightbox
-		photos={gallery}
+		{photos}
 		index={openIndex}
 		onclose={() => (openIndex = -1)}
 		onnavigate={(i) => (openIndex = i)}
@@ -536,7 +309,8 @@
 		min-width: 0;
 	}
 
-	/* The red tile that fills the fourth cell of the hero collage. */
+	/* The red tile that fills the fourth cell of the hero collage. Links to the
+	   event page, so it overrides the global red link colour. */
 	.next-card {
 		min-width: 0;
 		aspect-ratio: 4/3;
@@ -553,6 +327,12 @@
 		justify-content: space-between;
 		gap: clamp(6px, 2vw, 16px);
 		overflow: hidden;
+		transition: background-color 0.25s ease;
+	}
+
+	.next-card:hover {
+		background: var(--text);
+		color: #fff;
 	}
 
 	.next-card__label {
@@ -769,10 +549,24 @@
 		color: var(--text-dim);
 	}
 
+	/* Fixed three across so the six talks read as two even rows rather than
+	   reflowing to four-and-two. */
 	.speakers__grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 28px;
+	}
+
+	@media (max-width: 900px) {
+		.speakers__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.speakers__grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
 	}
 
 	.speaker {
