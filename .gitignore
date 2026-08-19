@@ -6,3 +6,7 @@ node_modules
 .env.*
 !.env.example
 .DS_Store
+
+# Raw camera files (300MB+). Optimised output in static/img is committed;
+# regenerate it with `npm run images`. Keep these backed up elsewhere.
+_originals/

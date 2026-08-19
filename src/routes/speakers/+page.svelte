@@ -35,29 +35,28 @@
 		'A reason this audience should care today'
 	];
 
-	// TODO: replace with the real winners — name, talk title, the YouTube URL
-	// for their talk, and a photo of them on the conference stage.
+	// TODO: names and talk titles for the student winners are still needed.
 	const winners = [
 		{
 			year: '2026',
 			name: 'Name here',
 			talk: 'Talk title',
 			href: '#',
-			photo: '2026 winner on stage'
+			photo: '/img/winner-2026.webp'
 		},
 		{
 			year: '2025',
 			name: 'Name here',
 			talk: 'Talk title',
 			href: '#',
-			photo: '2025 winner on stage'
+			photo: '/img/winner-2025-a.webp'
 		},
 		{
-			year: '2024',
+			year: '2025',
 			name: 'Name here',
 			talk: 'Talk title',
 			href: '#',
-			photo: '2024 winner on stage'
+			photo: '/img/winner-2025-b.webp'
 		}
 	];
 </script>
@@ -82,7 +81,7 @@
 		<div class="status-badge">Applications open soon</div>
 	</div>
 	<div class="hero-media">
-		<Placeholder ratio="4/3" label="A student speaker mid-talk" />
+		<Placeholder ratio="4/3" src="/img/stage-group.webp" label="Student speakers on stage" />
 	</div>
 </section>
 
@@ -105,20 +104,21 @@
 	<div class="winners-wrap">
 		<h2 class="sub-title">Past winners</h2>
 		<div class="winners">
-			{#each winners as winner (winner.year)}
+			{#each winners as winner (winner.photo)}
 				<article class="winner">
-					<Placeholder ratio="4/3" label={winner.photo} />
+					<Placeholder
+						ratio="4/3"
+						src={winner.photo}
+						label="{winner.year} winner"
+						alt="The {winner.year} student speaker on stage"
+					/>
 					<div class="winner__year">{winner.year}</div>
 					<h3 class="winner__name">{winner.name}</h3>
 					<p class="winner__talk">{winner.talk}</p>
-					<a
-						class="btn btn--primary winner__cta"
-						href={winner.href}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Watch the talk
-					</a>
+					<a class="winner__cta" href={winner.href} target="_blank" rel="noopener noreferrer">
+							<svg class="cta__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+							Watch the talk
+						</a>
 				</article>
 			{/each}
 		</div>
@@ -265,11 +265,32 @@
 		color: var(--text-dim);
 	}
 
-	/* Pinned to the card foot so the buttons line up across cards whose talk
-	   titles wrap to different heights. */
+	/* A quiet text link rather than a filled button: six red slabs in a row
+	   overwhelmed the cards and the photos they sit under. */
 	.winner__cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
 		align-self: flex-start;
 		margin-top: auto;
+		min-height: 44px;
+		font-size: 13px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: var(--text);
+		transition: color 0.15s ease;
+	}
+
+	.winner__cta:hover {
+		color: var(--red);
+	}
+
+	.cta__play {
+		width: 15px;
+		height: 15px;
+		flex-shrink: 0;
+		fill: var(--red);
 	}
 
 	.rules {

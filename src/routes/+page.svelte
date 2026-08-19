@@ -23,57 +23,264 @@
 		}
 	];
 
-	// TODO: replace with the real past speakers — their names and talk titles, the
-	// YouTube URL for each talk, the live view count, and a stage photo per card.
+	// Talk titles and speaker names are taken from the TEDxPurdueU YouTube
+	// uploads. `views` is optional — add a figure to surface it on the card.
+	/** @type {{ name: string, talk: string, href: string, photo: string, views?: string }[]} */
 	const pastSpeakers = [
 		{
-			name: 'Speaker One',
-			talk: 'Talk title one',
-			views: '0K',
-			href: '#',
-			photoLabel: 'Speaker 1 on stage'
+			name: 'Bo Parfet',
+			talk: 'How Do You Light Your Soul on Fire?',
+			href: 'https://youtu.be/DoqgKo-wfhU',
+			photo: '/img/speaker-bo.webp'
 		},
 		{
-			name: 'Speaker Two',
-			talk: 'Talk title two',
-			views: '0K',
-			href: '#',
-			photoLabel: 'Speaker 2 on stage'
+			name: 'Prady Modukuru',
+			talk: 'From Building to Founding',
+			href: 'https://youtu.be/2xmzJzK44b4',
+			photo: '/img/speaker-prady.webp'
 		},
 		{
-			name: 'Speaker Three',
-			talk: 'Talk title three',
-			views: '0K',
-			href: '#',
-			photoLabel: 'Speaker 3 on stage'
+			name: 'Aastha Patel',
+			talk: 'To Learn a Language is to Live It',
+			href: 'https://youtu.be/X00wenuNgtc',
+			photo: '/img/speaker-aastha.webp'
+		},
+		{
+			name: 'Chase Boehringer',
+			talk: 'How to do impossible things',
+			href: 'https://youtu.be/8dD20w6lrRQ',
+			photo: '/img/speaker-chase.webp'
+		},
+		{
+			name: 'Nicole Johnston',
+			talk: 'When Being \'Too Much\' Is Actually Just Enough',
+			href: 'https://youtu.be/4vCDnJiGDaA',
+			photo: '/img/speaker-nicole.webp'
+		},
+		{
+			name: 'Sid Thatham',
+			talk: 'Energy for AI and Everybody Else',
+			href: 'https://youtu.be/zTFQAHrZHxA',
+			photo: '/img/speaker-sid.webp'
 		}
 	];
 
-	// Add or remove entries freely — the grid reflows and repaginates to whatever
-	// length this is. Drop photos into static/ and set `src` (and ideally `alt`)
-	// on each to fill a slot: { label: 'Photo 1', src: '/gallery-01.jpg' }.
-	/** @type {{ label: string, src?: string, alt?: string }[]} */
+	// Every photo on the site, thumbnails in the grid and full size in the
+	// lightbox. Shuffled once with a fixed seed rather than at runtime, so the
+	// mix is stable across the prerender and the pages stay put on reload.
+	// Regenerate with `npm run images` after adding to _originals.
+	/** @type {{ label: string, thumb: string, src: string }[]} */
 	const gallery = [
-		{ label: 'Photo 1' },
-		{ label: 'Photo 2' },
-		{ label: 'Photo 3' },
-		{ label: 'Photo 4' },
-		{ label: 'Photo 5' },
-		{ label: 'Photo 6' },
-		{ label: 'Photo 7' },
-		{ label: 'Photo 8' },
-		{ label: 'Photo 9' },
-		{ label: 'Photo 10' },
-		{ label: 'Photo 11' },
-		{ label: 'Photo 12' },
-		{ label: 'Photo 13' },
-		{ label: 'Photo 14' },
-		{ label: 'Photo 15' },
-		{ label: 'Photo 16' },
-		{ label: 'Photo 17' },
-		{ label: 'Photo 18' },
-		{ label: 'Photo 19' },
-		{ label: 'Photo 20' }
+		{
+			label: 'Conference photo 13',
+			thumb: '/img/gallery-13-thumb.webp',
+			src: '/img/gallery-13.webp'
+		},
+		{
+			label: 'Conference photo 04',
+			thumb: '/img/gallery-04-thumb.webp',
+			src: '/img/gallery-04.webp'
+		},
+		{
+			label: 'Conference photo 21',
+			thumb: '/img/gallery-21-thumb.webp',
+			src: '/img/gallery-21.webp'
+		},
+		{
+			label: 'Student speaker, 2026',
+			thumb: '/img/winner-2026-thumb.webp',
+			src: '/img/winner-2026.webp'
+		},
+		{
+			label: 'Student speaker, 2025 finals',
+			thumb: '/img/winner-2025-b-thumb.webp',
+			src: '/img/winner-2025-b.webp'
+		},
+		{
+			label: 'Conference photo 15',
+			thumb: '/img/gallery-15-thumb.webp',
+			src: '/img/gallery-15.webp'
+		},
+		{
+			label: 'Conference photo 09',
+			thumb: '/img/gallery-09-thumb.webp',
+			src: '/img/gallery-09.webp'
+		},
+		{
+			label: 'Conference photo 14',
+			thumb: '/img/gallery-14-thumb.webp',
+			src: '/img/gallery-14.webp'
+		},
+		{
+			label: 'Conference photo 10',
+			thumb: '/img/gallery-10-thumb.webp',
+			src: '/img/gallery-10.webp'
+		},
+		{
+			label: 'Nicole Johnston — When Being \'Too Much\' Is Actually Just Enough',
+			thumb: '/img/speaker-nicole-thumb.webp',
+			src: '/img/speaker-nicole.webp'
+		},
+		{
+			label: 'Sid Thatham — Energy for AI and Everybody Else',
+			thumb: '/img/speaker-sid-thumb.webp',
+			src: '/img/speaker-sid.webp'
+		},
+		{
+			label: 'Conference photo 23',
+			thumb: '/img/gallery-23-thumb.webp',
+			src: '/img/gallery-23.webp'
+		},
+		{
+			label: 'Conference photo 07',
+			thumb: '/img/gallery-07-thumb.webp',
+			src: '/img/gallery-07.webp'
+		},
+		{
+			label: 'The audience',
+			thumb: '/img/audience-thumb.webp',
+			src: '/img/audience.webp'
+		},
+		{
+			label: 'Conference photo 18',
+			thumb: '/img/gallery-18-thumb.webp',
+			src: '/img/gallery-18.webp'
+		},
+		{
+			label: 'Prady Modukuru — From Building to Founding',
+			thumb: '/img/speaker-prady-thumb.webp',
+			src: '/img/speaker-prady.webp'
+		},
+		{
+			label: 'Conference photo 11',
+			thumb: '/img/gallery-11-thumb.webp',
+			src: '/img/gallery-11.webp'
+		},
+		{
+			label: 'Conference photo 20',
+			thumb: '/img/gallery-20-thumb.webp',
+			src: '/img/gallery-20.webp'
+		},
+		{
+			label: 'Student speaker, 2025',
+			thumb: '/img/winner-2025-a-thumb.webp',
+			src: '/img/winner-2025-a.webp'
+		},
+		{
+			label: 'Bo Parfet — How Do You Light Your Soul on Fire?',
+			thumb: '/img/speaker-bo-thumb.webp',
+			src: '/img/speaker-bo.webp'
+		},
+		{
+			label: 'Conference photo 17',
+			thumb: '/img/gallery-17-thumb.webp',
+			src: '/img/gallery-17.webp'
+		},
+		{
+			label: 'Conference photo 29',
+			thumb: '/img/gallery-29-thumb.webp',
+			src: '/img/gallery-29.webp'
+		},
+		{
+			label: 'Conference photo 26',
+			thumb: '/img/gallery-26-thumb.webp',
+			src: '/img/gallery-26.webp'
+		},
+		{
+			label: 'Conference photo 16',
+			thumb: '/img/gallery-16-thumb.webp',
+			src: '/img/gallery-16.webp'
+		},
+		{
+			label: 'Conference photo 25',
+			thumb: '/img/gallery-25-thumb.webp',
+			src: '/img/gallery-25.webp'
+		},
+		{
+			label: 'Conference photo 06',
+			thumb: '/img/gallery-06-thumb.webp',
+			src: '/img/gallery-06.webp'
+		},
+		{
+			label: 'Conference photo 28',
+			thumb: '/img/gallery-28-thumb.webp',
+			src: '/img/gallery-28.webp'
+		},
+		{
+			label: 'Conference photo 27',
+			thumb: '/img/gallery-27-thumb.webp',
+			src: '/img/gallery-27.webp'
+		},
+		{
+			label: 'Conference photo 30',
+			thumb: '/img/gallery-30-thumb.webp',
+			src: '/img/gallery-30.webp'
+		},
+		{
+			label: 'Conference photo 01',
+			thumb: '/img/gallery-01-thumb.webp',
+			src: '/img/gallery-01.webp'
+		},
+		{
+			label: 'The team on stage',
+			thumb: '/img/conference-group-thumb.webp',
+			src: '/img/conference-group.webp'
+		},
+		{
+			label: 'Conference photo 12',
+			thumb: '/img/gallery-12-thumb.webp',
+			src: '/img/gallery-12.webp'
+		},
+		{
+			label: 'Aastha Patel — To Learn a Language is to Live It',
+			thumb: '/img/speaker-aastha-thumb.webp',
+			src: '/img/speaker-aastha.webp'
+		},
+		{
+			label: 'The team after the show',
+			thumb: '/img/stage-group-thumb.webp',
+			src: '/img/stage-group.webp'
+		},
+		{
+			label: 'Conference photo 22',
+			thumb: '/img/gallery-22-thumb.webp',
+			src: '/img/gallery-22.webp'
+		},
+		{
+			label: 'Conference photo 05',
+			thumb: '/img/gallery-05-thumb.webp',
+			src: '/img/gallery-05.webp'
+		},
+		{
+			label: 'Chase Boehringer — How to do impossible things',
+			thumb: '/img/speaker-chase-thumb.webp',
+			src: '/img/speaker-chase.webp'
+		},
+		{
+			label: 'Conference photo 03',
+			thumb: '/img/gallery-03-thumb.webp',
+			src: '/img/gallery-03.webp'
+		},
+		{
+			label: 'Conference photo 02',
+			thumb: '/img/gallery-02-thumb.webp',
+			src: '/img/gallery-02.webp'
+		},
+		{
+			label: 'Conference photo 24',
+			thumb: '/img/gallery-24-thumb.webp',
+			src: '/img/gallery-24.webp'
+		},
+		{
+			label: 'Conference photo 08',
+			thumb: '/img/gallery-08-thumb.webp',
+			src: '/img/gallery-08.webp'
+		},
+		{
+			label: 'Conference photo 19',
+			thumb: '/img/gallery-19-thumb.webp',
+			src: '/img/gallery-19.webp'
+		}
 	];
 
 	const PER_PAGE = 10;
@@ -113,9 +320,13 @@
 
 	<div class="hero-media">
 		<div class="hero-media__wide">
-			<Placeholder ratio="16/10" label="Drop a photo from the last conference" />
+			<Placeholder
+				ratio="16/10"
+				src="/img/conference-group.webp"
+				label="The TEDxPurdueU team on stage"
+			/>
 		</div>
-		<Placeholder ratio="4/3" label="Speaker on stage" />
+		<Placeholder ratio="4/3" src="/img/audience.webp" label="The audience at Odyssey" />
 		<div class="next-card">
 			<div class="next-card__label">Next event</div>
 			<div class="next-card__title">Unseen</div>
@@ -159,26 +370,29 @@
 
 <section class="speakers">
 	<div class="speakers__head">
-		<h2>Past speakers</h2>
+		<h2>Odyssey 2026 Talks</h2>
 		<p>Every talk from our stage lives on the TEDx YouTube channel.</p>
 	</div>
 	<div class="speakers__grid">
-		{#each pastSpeakers as speaker (speaker.name)}
+		{#each pastSpeakers as speaker (speaker.href)}
 			<article class="speaker">
-				<Placeholder ratio="4/3" label={speaker.photoLabel} />
+				<Placeholder
+					ratio="4/3"
+					src={speaker.photo}
+					label={speaker.name}
+					alt="{speaker.name} on stage"
+				/>
 				<div class="speaker__copy">
 					<h3>{speaker.name}</h3>
 					<p class="speaker__talk">{speaker.talk}</p>
-					<p class="speaker__views">
-						<span class="speaker__count">{speaker.views}</span> views on YouTube
-					</p>
+					{#if speaker.views}
+						<p class="speaker__views">
+							<span class="speaker__count">{speaker.views}</span> views on YouTube
+						</p>
+					{/if}
 				</div>
-				<a
-					class="btn btn--primary speaker__cta"
-					href={speaker.href}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
+				<a class="speaker__cta" href={speaker.href} target="_blank" rel="noopener noreferrer">
+					<svg class="cta__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
 					Watch the talk
 				</a>
 			</article>
@@ -191,14 +405,14 @@
 		<h2>Gallery</h2>
 	</div>
 	<div class="gallery__grid">
-		{#each pagePhotos as photo, i (photo.label)}
+		{#each pagePhotos as photo, i (photo.src)}
 			<button
 				class="gallery__item"
 				type="button"
 				aria-label="View {photo.label} larger"
 				onclick={() => (openIndex = pageStart + i)}
 			>
-				<Placeholder ratio="3/4" label={photo.label} src={photo.src} alt={photo.alt} />
+				<Placeholder ratio="3/4" label={photo.label} src={photo.thumb} alt={photo.label} />
 			</button>
 		{/each}
 	</div>
@@ -574,11 +788,32 @@
 		color: var(--red);
 	}
 
-	/* Pinned to the card foot so the buttons line up across cards whose talk
-	   titles wrap to different heights. */
+	/* A quiet text link rather than a filled button: six red slabs in a row
+	   overwhelmed the cards and the photos they sit under. */
 	.speaker__cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
 		align-self: flex-start;
 		margin-top: auto;
+		min-height: 44px;
+		font-size: 13px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: var(--text);
+		transition: color 0.15s ease;
+	}
+
+	.speaker__cta:hover {
+		color: var(--red);
+	}
+
+	.cta__play {
+		width: 15px;
+		height: 15px;
+		flex-shrink: 0;
+		fill: var(--red);
 	}
 
 	/* ---- Gallery ------------------------------------------------------ */
