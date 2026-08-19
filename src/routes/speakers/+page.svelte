@@ -29,33 +29,27 @@
 		'Any discipline — engineering to art history'
 	];
 
-	const criteria = [
-		'One clear idea, not a summary of a field',
-		'Evidence you actually did the thinking',
-		'A reason this audience should care today'
-	];
 
-	// TODO: names and talk titles for the student winners are still needed.
 	const winners = [
 		{
 			year: '2026',
-			name: 'Name here',
-			talk: 'Talk title',
-			href: '#',
+			name: 'Aastha Patel',
+			talk: 'To Learn a Language is to Live It',
+			href: 'https://youtu.be/X00wenuNgtc',
 			photo: '/img/winner-2026.webp'
 		},
 		{
 			year: '2025',
-			name: 'Name here',
-			talk: 'Talk title',
-			href: '#',
+			name: 'Giselle Ferrao',
+			talk: 'Rising Beyond Limits: The Power of Perspective',
+			href: 'https://youtu.be/YOTD5AarNxw',
 			photo: '/img/winner-2025-a.webp'
 		},
 		{
 			year: '2025',
-			name: 'Name here',
-			talk: 'Talk title',
-			href: '#',
+			name: 'Jyotisman Rath',
+			talk: "What You Don't See is Definitely True!",
+			href: 'https://youtu.be/fM4kM2u3znY',
 			photo: '/img/winner-2025-b.webp'
 		}
 	];
@@ -81,7 +75,11 @@
 		<div class="status-badge">Applications open soon</div>
 	</div>
 	<div class="hero-media">
-		<Placeholder ratio="4/3" src="/img/stage-group.webp" label="Student speakers on stage" />
+		<Placeholder
+			ratio="4/3"
+			src="/img/student-speaker-hero.webp"
+			label="A student speaker on the Loeb Playhouse stage"
+		/>
 	</div>
 </section>
 
@@ -131,14 +129,6 @@
 			<h2>Who can enter</h2>
 			<ul>
 				{#each eligibility as item (item)}
-					<li>{item}</li>
-				{/each}
-			</ul>
-		</div>
-		<div class="rule-col">
-			<h2>What judges look for</h2>
-			<ul>
-				{#each criteria as item (item)}
 					<li>{item}</li>
 				{/each}
 			</ul>

@@ -72,39 +72,19 @@
 	/** @type {{ label: string, thumb: string, src: string }[]} */
 	const gallery = [
 		{
-			label: 'Conference photo 13',
-			thumb: '/img/gallery-13-thumb.webp',
-			src: '/img/gallery-13.webp'
-		},
-		{
-			label: 'Conference photo 04',
-			thumb: '/img/gallery-04-thumb.webp',
-			src: '/img/gallery-04.webp'
-		},
-		{
 			label: 'Conference photo 21',
 			thumb: '/img/gallery-21-thumb.webp',
 			src: '/img/gallery-21.webp'
 		},
 		{
-			label: 'Student speaker, 2026',
-			thumb: '/img/winner-2026-thumb.webp',
-			src: '/img/winner-2026.webp'
+			label: 'Conference photo 34',
+			thumb: '/img/gallery-34-thumb.webp',
+			src: '/img/gallery-34.webp'
 		},
 		{
-			label: 'Student speaker, 2025 finals',
-			thumb: '/img/winner-2025-b-thumb.webp',
-			src: '/img/winner-2025-b.webp'
-		},
-		{
-			label: 'Conference photo 15',
-			thumb: '/img/gallery-15-thumb.webp',
-			src: '/img/gallery-15.webp'
-		},
-		{
-			label: 'Conference photo 09',
-			thumb: '/img/gallery-09-thumb.webp',
-			src: '/img/gallery-09.webp'
+			label: 'Conference photo 13',
+			thumb: '/img/gallery-13-thumb.webp',
+			src: '/img/gallery-13.webp'
 		},
 		{
 			label: 'Conference photo 14',
@@ -112,9 +92,34 @@
 			src: '/img/gallery-14.webp'
 		},
 		{
+			label: 'Conference photo 09',
+			thumb: '/img/gallery-09-thumb.webp',
+			src: '/img/gallery-09.webp'
+		},
+		{
+			label: 'Student speaker, 2025 finals',
+			thumb: '/img/winner-2025-b-thumb.webp',
+			src: '/img/winner-2025-b.webp'
+		},
+		{
 			label: 'Conference photo 10',
 			thumb: '/img/gallery-10-thumb.webp',
 			src: '/img/gallery-10.webp'
+		},
+		{
+			label: 'Conference photo 15',
+			thumb: '/img/gallery-15-thumb.webp',
+			src: '/img/gallery-15.webp'
+		},
+		{
+			label: 'Student speaker, 2025',
+			thumb: '/img/winner-2025-a-thumb.webp',
+			src: '/img/winner-2025-a.webp'
+		},
+		{
+			label: 'Conference photo 25',
+			thumb: '/img/gallery-25-thumb.webp',
+			src: '/img/gallery-25.webp'
 		},
 		{
 			label: 'Nicole Johnston — When Being \'Too Much\' Is Actually Just Enough',
@@ -122,14 +127,14 @@
 			src: '/img/speaker-nicole.webp'
 		},
 		{
-			label: 'Sid Thatham — Energy for AI and Everybody Else',
-			thumb: '/img/speaker-sid-thumb.webp',
-			src: '/img/speaker-sid.webp'
+			label: 'The Loeb Playhouse stage',
+			thumb: '/img/student-speaker-hero-thumb.webp',
+			src: '/img/student-speaker-hero.webp'
 		},
 		{
-			label: 'Conference photo 23',
-			thumb: '/img/gallery-23-thumb.webp',
-			src: '/img/gallery-23.webp'
+			label: 'Conference photo 30',
+			thumb: '/img/gallery-30-thumb.webp',
+			src: '/img/gallery-30.webp'
 		},
 		{
 			label: 'Conference photo 07',
@@ -142,14 +147,14 @@
 			src: '/img/audience.webp'
 		},
 		{
+			label: 'Conference photo 20',
+			thumb: '/img/gallery-20-thumb.webp',
+			src: '/img/gallery-20.webp'
+		},
+		{
 			label: 'Conference photo 18',
 			thumb: '/img/gallery-18-thumb.webp',
 			src: '/img/gallery-18.webp'
-		},
-		{
-			label: 'Prady Modukuru — From Building to Founding',
-			thumb: '/img/speaker-prady-thumb.webp',
-			src: '/img/speaker-prady.webp'
 		},
 		{
 			label: 'Conference photo 11',
@@ -157,54 +162,19 @@
 			src: '/img/gallery-11.webp'
 		},
 		{
-			label: 'Conference photo 20',
-			thumb: '/img/gallery-20-thumb.webp',
-			src: '/img/gallery-20.webp'
+			label: 'Conference photo 23',
+			thumb: '/img/gallery-23-thumb.webp',
+			src: '/img/gallery-23.webp'
 		},
 		{
-			label: 'Student speaker, 2025',
-			thumb: '/img/winner-2025-a-thumb.webp',
-			src: '/img/winner-2025-a.webp'
+			label: 'Chase Boehringer — How to do impossible things',
+			thumb: '/img/speaker-chase-thumb.webp',
+			src: '/img/speaker-chase.webp'
 		},
 		{
-			label: 'Bo Parfet — How Do You Light Your Soul on Fire?',
-			thumb: '/img/speaker-bo-thumb.webp',
-			src: '/img/speaker-bo.webp'
-		},
-		{
-			label: 'Conference photo 17',
-			thumb: '/img/gallery-17-thumb.webp',
-			src: '/img/gallery-17.webp'
-		},
-		{
-			label: 'Conference photo 29',
-			thumb: '/img/gallery-29-thumb.webp',
-			src: '/img/gallery-29.webp'
-		},
-		{
-			label: 'Conference photo 26',
-			thumb: '/img/gallery-26-thumb.webp',
-			src: '/img/gallery-26.webp'
-		},
-		{
-			label: 'Conference photo 16',
-			thumb: '/img/gallery-16-thumb.webp',
-			src: '/img/gallery-16.webp'
-		},
-		{
-			label: 'Conference photo 25',
-			thumb: '/img/gallery-25-thumb.webp',
-			src: '/img/gallery-25.webp'
-		},
-		{
-			label: 'Conference photo 06',
-			thumb: '/img/gallery-06-thumb.webp',
-			src: '/img/gallery-06.webp'
-		},
-		{
-			label: 'Conference photo 28',
-			thumb: '/img/gallery-28-thumb.webp',
-			src: '/img/gallery-28.webp'
+			label: 'Aastha Patel, 2026 student speaker',
+			thumb: '/img/winner-2026-thumb.webp',
+			src: '/img/winner-2026.webp'
 		},
 		{
 			label: 'Conference photo 27',
@@ -212,14 +182,14 @@
 			src: '/img/gallery-27.webp'
 		},
 		{
-			label: 'Conference photo 30',
-			thumb: '/img/gallery-30-thumb.webp',
-			src: '/img/gallery-30.webp'
+			label: 'Aastha Patel — To Learn a Language is to Live It',
+			thumb: '/img/speaker-aastha-thumb.webp',
+			src: '/img/speaker-aastha.webp'
 		},
 		{
-			label: 'Conference photo 01',
-			thumb: '/img/gallery-01-thumb.webp',
-			src: '/img/gallery-01.webp'
+			label: 'Conference photo 17',
+			thumb: '/img/gallery-17-thumb.webp',
+			src: '/img/gallery-17.webp'
 		},
 		{
 			label: 'The team on stage',
@@ -227,19 +197,69 @@
 			src: '/img/conference-group.webp'
 		},
 		{
+			label: 'Conference photo 29',
+			thumb: '/img/gallery-29-thumb.webp',
+			src: '/img/gallery-29.webp'
+		},
+		{
+			label: 'Conference photo 16',
+			thumb: '/img/gallery-16-thumb.webp',
+			src: '/img/gallery-16.webp'
+		},
+		{
+			label: 'Conference photo 28',
+			thumb: '/img/gallery-28-thumb.webp',
+			src: '/img/gallery-28.webp'
+		},
+		{
+			label: 'Conference photo 06',
+			thumb: '/img/gallery-06-thumb.webp',
+			src: '/img/gallery-06.webp'
+		},
+		{
+			label: 'Conference photo 32',
+			thumb: '/img/gallery-32-thumb.webp',
+			src: '/img/gallery-32.webp'
+		},
+		{
+			label: 'Prady Modukuru — From Building to Founding',
+			thumb: '/img/speaker-prady-thumb.webp',
+			src: '/img/speaker-prady.webp'
+		},
+		{
+			label: 'Conference photo 26',
+			thumb: '/img/gallery-26-thumb.webp',
+			src: '/img/gallery-26.webp'
+		},
+		{
+			label: 'Conference photo 04',
+			thumb: '/img/gallery-04-thumb.webp',
+			src: '/img/gallery-04.webp'
+		},
+		{
+			label: 'Conference photo 01',
+			thumb: '/img/gallery-01-thumb.webp',
+			src: '/img/gallery-01.webp'
+		},
+		{
 			label: 'Conference photo 12',
 			thumb: '/img/gallery-12-thumb.webp',
 			src: '/img/gallery-12.webp'
 		},
 		{
-			label: 'Aastha Patel — To Learn a Language is to Live It',
-			thumb: '/img/speaker-aastha-thumb.webp',
-			src: '/img/speaker-aastha.webp'
+			label: 'Conference photo 31',
+			thumb: '/img/gallery-31-thumb.webp',
+			src: '/img/gallery-31.webp'
 		},
 		{
 			label: 'The team after the show',
 			thumb: '/img/stage-group-thumb.webp',
 			src: '/img/stage-group.webp'
+		},
+		{
+			label: 'Bo Parfet — How Do You Light Your Soul on Fire?',
+			thumb: '/img/speaker-bo-thumb.webp',
+			src: '/img/speaker-bo.webp'
 		},
 		{
 			label: 'Conference photo 22',
@@ -252,9 +272,9 @@
 			src: '/img/gallery-05.webp'
 		},
 		{
-			label: 'Chase Boehringer — How to do impossible things',
-			thumb: '/img/speaker-chase-thumb.webp',
-			src: '/img/speaker-chase.webp'
+			label: 'Conference photo 33',
+			thumb: '/img/gallery-33-thumb.webp',
+			src: '/img/gallery-33.webp'
 		},
 		{
 			label: 'Conference photo 03',
@@ -265,6 +285,11 @@
 			label: 'Conference photo 02',
 			thumb: '/img/gallery-02-thumb.webp',
 			src: '/img/gallery-02.webp'
+		},
+		{
+			label: 'Sid Thatham — Energy for AI and Everybody Else',
+			thumb: '/img/speaker-sid-thumb.webp',
+			src: '/img/speaker-sid.webp'
 		},
 		{
 			label: 'Conference photo 24',
@@ -348,7 +373,6 @@
 			speakers from all across the world to share their ideas with the Greater Lafayette
 			community. Past speakers have included Las Vegas headliners, researchers, and founders.
 		</p>
-		<a class="link-rule" href="/team">Meet the team</a>
 	</div>
 </section>
 

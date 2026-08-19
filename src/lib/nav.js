@@ -7,8 +7,9 @@ export const pages = [
 	{ href: '/', label: 'About', footerLabel: 'About' },
 	{ href: '/unseen', label: 'Unseen 2027', footerLabel: 'Unseen 2027' },
 	{ href: '/salons', label: 'Salons', footerLabel: 'Salons' },
-	{ href: '/speakers', label: 'Speaker Comp', footerLabel: 'Speaker Competition' },
-	{ href: '/team', label: 'Team', footerLabel: 'Team' }
+	{ href: '/speakers', label: 'Speaker Comp', footerLabel: 'Speaker Competition' }
+	// /team is hidden until the team headshots arrive. The route still exists;
+	// add it back here to relink it from the header and footer.
 ];
 
 /** The header nav drops the home link — the logo beside it already goes there. */
@@ -39,5 +40,4 @@ export const socials = [
 	}
 ];
 
-/** TODO: replace with the club's real contact address. */
-export const contactEmail = 'hello@tedxpurdueu.org';
+export const contactEmail = 'tedx@purdue.edu';

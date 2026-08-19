@@ -4,7 +4,7 @@
 Originals run 7-12MB each and 300MB+ in total, which is far too heavy to
 commit or to serve. This resizes each one twice — a full size for the
 lightbox and a thumbnail for grids — converts to WebP, bakes in EXIF
-rotation (13 of the originals are stored sideways) and drops all other
+rotation (many of the originals are stored sideways) and drops all other
 metadata.
 
 Re-runnable: it rewrites static/img from scratch each time, so adding a
@@ -36,14 +36,14 @@ NAMED = {
     'landing_page/speakers/nicole.JPG': 'speaker-nicole',
     'landing_page/speakers/prady.jpg': 'speaker-prady',
     'landing_page/speakers/sid.JPG': 'speaker-sid',
+    'student_speaker/DSCF7870.JPG': 'student-speaker-hero',
     'student_speaker/2026/DSC_7481.JPG': 'winner-2026',
     'student_speaker/2025/speaker_1.JPG': 'winner-2025-a',
     'student_speaker/2025/speaker_2.JPG': 'winner-2025-b',
     'DSC_7722.jpg': 'stage-group',
 }
 
-# Byte-identical copy of student_speaker/2026/DSC_7481.JPG.
-SKIP = {'student_speaker/DSC_7481.JPG'}
+SKIP = set()
 
 EXTS = {'.jpg', '.jpeg', '.png', '.webp'}
 
