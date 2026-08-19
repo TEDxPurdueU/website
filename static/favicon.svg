@@ -1,9 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 	<rect width="32" height="32" fill="#ffffff" />
-	<path
-		d="M5 5 L27 27 M27 5 L5 27"
-		stroke="#ff2b06"
-		stroke-width="4.5"
-		fill="none"
-	/>
+	<path d="M4 4 H12.8 L28 28 H19.2 Z M19.2 4 H28 L12.8 28 H4 Z" fill="#ff2b06" />
 </svg>
