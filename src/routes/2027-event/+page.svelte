@@ -21,12 +21,21 @@
 
 <section class="hero section--ruled">
 	<div class="hero-inner">
-		<h1>Unseen</h1>
-		<p class="lede theme-lede">
-			The work nobody claps for. The data we never collected. The people in the room who were never
-			asked. Unseen is about what sits just outside our attention — and what changes the moment we
-			look.
-		</p>
+		<div class="hero-title">
+			<div class="hero-copy">
+				<h1>Unseen</h1>
+				<p class="lede theme-lede">
+					The work nobody claps for. The data we never collected. The people in the room who were never
+					asked. Unseen is about what sits just outside our attention — and what changes the moment we
+					look.
+				</p>
+			</div>
+			<img
+				class="theme-illustration"
+				src="/illustrations/unseen-reveal.svg"
+				alt="A red idea emerging from behind black shutters"
+			/>
+		</div>
 		<div class="facts">
 			{#each facts as fact (fact.label)}
 				<div class="fact">
@@ -65,14 +74,36 @@
 	}
 
 	.hero-inner {
-		max-width: 1150px;
+		max-width: 1280px;
 		display: flex;
 		flex-direction: column;
 		gap: 28px;
 	}
 
+	.hero-title {
+		display: grid;
+		grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+		gap: clamp(32px, 5vw, 72px);
+		align-items: center;
+	}
+
+	.hero-copy {
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 28px;
+	}
+
+	.theme-illustration {
+		display: block;
+		width: 100%;
+		aspect-ratio: 10 / 7;
+		object-fit: cover;
+		border: 1px solid var(--border);
+	}
+
 	h1 {
-		font-size: clamp(72px, 17vw, 240px);
+		font-size: clamp(72px, 12vw, 170px);
 		line-height: 0.82;
 		letter-spacing: -0.05em;
 		text-transform: uppercase;
@@ -101,6 +132,14 @@
 	}
 
 	@media (max-width: 720px) {
+		.hero-title {
+			grid-template-columns: 1fr;
+		}
+
+		.theme-illustration {
+			max-height: 360px;
+		}
+
 		.tickets {
 			margin-left: 0;
 		}

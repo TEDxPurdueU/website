@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title desc">
+  <title id="title">An upcoming date</title>
+  <desc id="desc">A calendar waits beside a red clock, representing an announcement that is coming soon.</desc>
+  <rect width="600" height="420" fill="#f1ede8"/>
+  <g fill="none" stroke="#14100f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 104h330v260H70zM70 168h330"/>
+    <path d="M138 72v64M332 72v64"/>
+    <path d="M122 218h34M214 218h34M306 218h34M122 278h34M214 278h34M306 278h34M122 338h34M214 338h34"/>
+  </g>
+  <circle cx="444" cy="286" r="98" fill="#ff2b06"/>
+  <circle cx="444" cy="286" r="72" fill="#faf9f8"/>
+  <g fill="none" stroke="#14100f" stroke-width="5" stroke-linecap="round">
+    <path d="M444 236v54l38 24"/>
+    <path d="M444 198v14M444 360v14M356 286h14M518 286h14"/>
+  </g>
+  <circle cx="444" cy="286" r="7" fill="#14100f"/>
+  <path d="M458 102h72M494 66v72" fill="none" stroke="#ff2b06" stroke-width="5" stroke-linecap="round"/>
+</svg>

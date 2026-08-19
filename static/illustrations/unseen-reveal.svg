@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+  <title id="title">An eye finding what was hidden</title>
+  <desc id="desc">An open eye focuses on a red point while black panels obscure the edges of its field of view.</desc>
+  <rect width="800" height="560" fill="#faf9f8"/>
+  <g fill="none" stroke="#14100f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M130 280c72-116 162-174 270-174s198 58 270 174c-72 116-162 174-270 174S202 396 130 280z"/>
+    <circle cx="400" cy="280" r="102"/>
+  </g>
+  <circle cx="400" cy="280" r="48" fill="#ff2b06"/>
+  <circle cx="400" cy="280" r="15" fill="#14100f"/>
+  <path d="M0 0h214l70 280-70 280H0zM800 0H586l-70 280 70 280h214z" fill="#14100f"/>
+  <g fill="none" stroke="#ff2b06" stroke-width="3" opacity=".65">
+    <path d="M400 36v74M400 450v74M84 280h48M668 280h48"/>
+  </g>
+</svg>
