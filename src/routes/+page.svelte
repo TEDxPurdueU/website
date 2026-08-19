@@ -125,11 +125,11 @@
 			/>
 		</div>
 		<Placeholder ratio="4/3" src="/img/audience.webp" label="The audience at Odyssey" />
-		<div class="next-card">
+		<a class="next-card" href="/2027-event">
 			<div class="next-card__label">Next event</div>
 			<div class="next-card__title">Unseen</div>
 			<div class="next-card__meta">Spring 2027</div>
-		</div>
+		</a>
 	</div>
 </section>
 
@@ -309,7 +309,8 @@
 		min-width: 0;
 	}
 
-	/* The red tile that fills the fourth cell of the hero collage. */
+	/* The red tile that fills the fourth cell of the hero collage. Links to the
+	   event page, so it overrides the global red link colour. */
 	.next-card {
 		min-width: 0;
 		aspect-ratio: 4/3;
@@ -326,6 +327,12 @@
 		justify-content: space-between;
 		gap: clamp(6px, 2vw, 16px);
 		overflow: hidden;
+		transition: background-color 0.25s ease;
+	}
+
+	.next-card:hover {
+		background: var(--text);
+		color: #fff;
 	}
 
 	.next-card__label {
