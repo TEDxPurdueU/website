@@ -3,8 +3,7 @@
 
 	const facts = [
 		{ label: 'Date', value: '27 February 2027' },
-		{ label: 'Venue', value: 'Loeb Playhouse' },
-		{ label: 'Tickets', value: 'On sale now' }
+		{ label: 'Venue', value: 'Loeb Playhouse' }
 	];
 
 	// TODO: point these at the real ticketing page and nomination form.
@@ -183,5 +182,18 @@
 		align-items: flex-start;
 		gap: 14px;
 		padding-top: 4px;
+	}
+
+	/* Shrink-to-fit leaves the two buttons at mismatched widths, and the longer
+	   label wraps to a ragged second line. Matching their width and centring
+	   the text makes the pair read as one deliberate stack. */
+	@media (max-width: 560px) {
+		.speaker-actions {
+			align-items: stretch;
+		}
+
+		.speaker-actions .btn {
+			text-align: center;
+		}
 	}
 </style>

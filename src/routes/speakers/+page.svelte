@@ -29,35 +29,28 @@
 		'Any discipline — engineering to art history'
 	];
 
-	const criteria = [
-		'One clear idea, not a summary of a field',
-		'Evidence you actually did the thinking',
-		'A reason this audience should care today'
-	];
 
-	// TODO: replace with the real winners — name, talk title, the YouTube URL
-	// for their talk, and a photo of them on the conference stage.
 	const winners = [
 		{
 			year: '2026',
-			name: 'Name here',
-			talk: 'Talk title',
-			href: '#',
-			photo: '2026 winner on stage'
+			name: 'Aastha Patel',
+			talk: 'To Learn a Language is to Live It',
+			href: 'https://youtu.be/X00wenuNgtc',
+			photo: '/img/winner-2026.webp'
 		},
 		{
 			year: '2025',
-			name: 'Name here',
-			talk: 'Talk title',
-			href: '#',
-			photo: '2025 winner on stage'
+			name: 'Giselle Ferrao',
+			talk: 'Rising Beyond Limits: The Power of Perspective',
+			href: 'https://youtu.be/YOTD5AarNxw',
+			photo: '/img/winner-2025-a.webp'
 		},
 		{
-			year: '2024',
-			name: 'Name here',
-			talk: 'Talk title',
-			href: '#',
-			photo: '2024 winner on stage'
+			year: '2025',
+			name: 'Jyotisman Rath',
+			talk: "What You Don't See is Definitely True!",
+			href: 'https://youtu.be/fM4kM2u3znY',
+			photo: '/img/winner-2025-b.webp'
 		}
 	];
 </script>
@@ -81,10 +74,11 @@
 		     with the .btn .btn--primary classes so it becomes a real CTA. -->
 		<div class="status-badge">Applications open soon</div>
 	</div>
-	<div class="hero-media illustration-frame">
-		<img
-			src="/illustrations/speaker-path.svg"
-			alt="Four steps leading an idea to the TEDx stage"
+	<div class="hero-media">
+		<Placeholder
+			ratio="4/3"
+			src="/img/student-speaker-hero.webp"
+			label="A student speaker on the Loeb Playhouse stage"
 		/>
 	</div>
 </section>
@@ -108,20 +102,21 @@
 	<div class="winners-wrap">
 		<h2 class="sub-title">Past winners</h2>
 		<div class="winners">
-			{#each winners as winner (winner.year)}
+			{#each winners as winner (winner.photo)}
 				<article class="winner">
-					<Placeholder ratio="4/3" label={winner.photo} />
+					<Placeholder
+						ratio="4/3"
+						src={winner.photo}
+						label="{winner.year} winner"
+						alt="The {winner.year} student speaker on stage"
+					/>
 					<div class="winner__year">{winner.year}</div>
 					<h3 class="winner__name">{winner.name}</h3>
 					<p class="winner__talk">{winner.talk}</p>
-					<a
-						class="btn btn--primary winner__cta"
-						href={winner.href}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Watch the talk
-					</a>
+					<a class="winner__cta" href={winner.href} target="_blank" rel="noopener noreferrer">
+							<svg class="cta__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+							Watch the talk
+						</a>
 				</article>
 			{/each}
 		</div>
@@ -134,14 +129,6 @@
 			<h2>Who can enter</h2>
 			<ul>
 				{#each eligibility as item (item)}
-					<li>{item}</li>
-				{/each}
-			</ul>
-		</div>
-		<div class="rule-col">
-			<h2>What judges look for</h2>
-			<ul>
-				{#each criteria as item (item)}
 					<li>{item}</li>
 				{/each}
 			</ul>
@@ -167,16 +154,6 @@
 
 	.hero-media {
 		min-width: 0;
-	}
-
-	.illustration-frame {
-		border: 1px solid var(--border);
-	}
-
-	.illustration-frame img {
-		display: block;
-		width: 100%;
-		aspect-ratio: 4 / 3;
 	}
 
 	h1 {
@@ -278,11 +255,32 @@
 		color: var(--text-dim);
 	}
 
-	/* Pinned to the card foot so the buttons line up across cards whose talk
-	   titles wrap to different heights. */
+	/* A quiet text link rather than a filled button: six red slabs in a row
+	   overwhelmed the cards and the photos they sit under. */
 	.winner__cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
 		align-self: flex-start;
 		margin-top: auto;
+		min-height: 44px;
+		font-size: 13px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: var(--text);
+		transition: color 0.15s ease;
+	}
+
+	.winner__cta:hover {
+		color: var(--red);
+	}
+
+	.cta__play {
+		width: 15px;
+		height: 15px;
+		flex-shrink: 0;
+		fill: var(--red);
 	}
 
 	.rules {
