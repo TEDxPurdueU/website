@@ -70,9 +70,7 @@
 			One slot on the Unseen stage goes to a student. You don't need a title, a lab, or a startup —
 			you need one idea you can defend in six minutes.
 		</p>
-		<!-- TODO: once the application form exists, make this an <a href="…">
-		     with the .btn .btn--primary classes so it becomes a real CTA. -->
-		<div class="status-badge">Applications open soon</div>
+		<a class="btn btn--primary" href="/coming-soon">Applications open soon</a>
 	</div>
 	<div class="hero-media">
 		<Placeholder
@@ -161,18 +159,6 @@
 		line-height: 0.98;
 		letter-spacing: -0.03em;
 		text-wrap: balance;
-	}
-
-	/* Announcement, not a control — there's nowhere to send applicants yet. */
-	.status-badge {
-		align-self: flex-start;
-		padding: 15px 30px;
-		background: var(--red);
-		color: #fff;
-		font-size: 14px;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		font-weight: 700;
 	}
 
 	.sec {

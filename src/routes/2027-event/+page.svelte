@@ -6,9 +6,9 @@
 		{ label: 'Venue', value: 'Loeb Playhouse' }
 	];
 
-	// TODO: point these at the real ticketing page and nomination form.
-	const ticketsUrl = '#';
-	const nominateUrl = '#';
+	const ticketsUrl = 'https://convocations.purdue.edu/event/tedxpurdue-unseen/';
+	// No nomination form yet; the shared coming-soon page stands in.
+	const nominateUrl = '/coming-soon';
 </script>
 
 <svelte:head>
@@ -43,7 +43,9 @@
 					<div class="fact-value">{fact.value}</div>
 				</div>
 			{/each}
-			<a class="btn btn--primary tickets" href={ticketsUrl}>Get tickets now</a>
+			<a class="btn btn--primary tickets" href={ticketsUrl} target="_blank" rel="noopener noreferrer">
+				Get tickets now
+			</a>
 		</div>
 	</div>
 </section>
