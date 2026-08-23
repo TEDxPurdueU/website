@@ -20,7 +20,7 @@
 		</p>
 	</div>
 	<div class="hero-media">
-		<Placeholder ratio="4/3" src="/img/gallery-22.webp" label="A TEDxPurdueU gathering" />
+		<Placeholder ratio="4/3" src="/img/salon.webp" label="A salon in session" />
 	</div>
 </section>
 

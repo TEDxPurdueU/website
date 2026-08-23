@@ -13,3 +13,4 @@ _originals/
 
 # Local Netlify folder
 .netlify
+.vercel

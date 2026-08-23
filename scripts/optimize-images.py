@@ -44,6 +44,7 @@ NAMED = {
     'student_speaker/2025/speaker_1.JPG': 'winner-2025-a',
     'student_speaker/2025/speaker_2.JPG': 'winner-2025-b',
     'DSC_7722.jpg': 'stage-group',
+    'salons.jpg': 'salon',
 }
 
 SKIP = set()
@@ -56,6 +57,7 @@ CAPTIONS = {
     'audience': 'The audience',
     'stage-group': 'The team after the show',
     'student-speaker-hero': 'The Loeb Playhouse stage',
+    'salon': 'A salon in session',
     'winner-2026': 'Aastha Patel, 2026 student speaker',
     'winner-2025-a': 'Giselle Ferrao, 2025 student speaker',
     'winner-2025-b': 'Jyotisman Rath, 2025 student speaker',

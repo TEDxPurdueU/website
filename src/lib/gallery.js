@@ -3,6 +3,96 @@
 /** @type {{ label: string, thumb: string, src: string }[]} */
 export const gallery = [
 	{
+		label: "Conference photo 28",
+		thumb: "/img/gallery-28-thumb.webp",
+		src: "/img/gallery-28.webp"
+	},
+	{
+		label: "Conference photo 43",
+		thumb: "/img/gallery-43-thumb.webp",
+		src: "/img/gallery-43.webp"
+	},
+	{
+		label: "Conference photo 11",
+		thumb: "/img/gallery-11-thumb.webp",
+		src: "/img/gallery-11.webp"
+	},
+	{
+		label: "Conference photo 40",
+		thumb: "/img/gallery-40-thumb.webp",
+		src: "/img/gallery-40.webp"
+	},
+	{
+		label: "Nicole Johnston \u2014 When Being 'Too Much' Is Actually Just Enough",
+		thumb: "/img/speaker-nicole-thumb.webp",
+		src: "/img/speaker-nicole.webp"
+	},
+	{
+		label: "The team after the show",
+		thumb: "/img/stage-group-thumb.webp",
+		src: "/img/stage-group.webp"
+	},
+	{
+		label: "The Loeb Playhouse stage",
+		thumb: "/img/student-speaker-hero-thumb.webp",
+		src: "/img/student-speaker-hero.webp"
+	},
+	{
+		label: "Conference photo 21",
+		thumb: "/img/gallery-21-thumb.webp",
+		src: "/img/gallery-21.webp"
+	},
+	{
+		label: "Conference photo 08",
+		thumb: "/img/gallery-08-thumb.webp",
+		src: "/img/gallery-08.webp"
+	},
+	{
+		label: "Jyotisman Rath, 2025 student speaker",
+		thumb: "/img/winner-2025-b-thumb.webp",
+		src: "/img/winner-2025-b.webp"
+	},
+	{
+		label: "Conference photo 16",
+		thumb: "/img/gallery-16-thumb.webp",
+		src: "/img/gallery-16.webp"
+	},
+	{
+		label: "Conference photo 38",
+		thumb: "/img/gallery-38-thumb.webp",
+		src: "/img/gallery-38.webp"
+	},
+	{
+		label: "Conference photo 10",
+		thumb: "/img/gallery-10-thumb.webp",
+		src: "/img/gallery-10.webp"
+	},
+	{
+		label: "The audience",
+		thumb: "/img/audience-thumb.webp",
+		src: "/img/audience.webp"
+	},
+	{
+		label: "Conference photo 19",
+		thumb: "/img/gallery-19-thumb.webp",
+		src: "/img/gallery-19.webp"
+	},
+	{
+		label: "Conference photo 29",
+		thumb: "/img/gallery-29-thumb.webp",
+		src: "/img/gallery-29.webp"
+	},
+	{
+		label: "Bo Parfet \u2014 How Do You Light Your Soul on Fire?",
+		thumb: "/img/speaker-bo-thumb.webp",
+		src: "/img/speaker-bo.webp"
+	},
+	{
+		label: "Conference photo 22",
+		thumb: "/img/gallery-22-thumb.webp",
+		src: "/img/gallery-22.webp"
+	},
+	{
 		label: "Conference photo 31",
 		thumb: "/img/gallery-31-thumb.webp",
 		src: "/img/gallery-31.webp"
@@ -13,104 +103,9 @@ export const gallery = [
 		src: "/img/gallery-24.webp"
 	},
 	{
-		label: "Conference photo 11",
-		thumb: "/img/gallery-11-thumb.webp",
-		src: "/img/gallery-11.webp"
-	},
-	{
-		label: "Conference photo 22",
-		thumb: "/img/gallery-22-thumb.webp",
-		src: "/img/gallery-22.webp"
-	},
-	{
 		label: "Chase Boehringer \u2014 How to do impossible things",
 		thumb: "/img/speaker-chase-thumb.webp",
 		src: "/img/speaker-chase.webp"
-	},
-	{
-		label: "Conference photo 29",
-		thumb: "/img/gallery-29-thumb.webp",
-		src: "/img/gallery-29.webp"
-	},
-	{
-		label: "The team after the show",
-		thumb: "/img/stage-group-thumb.webp",
-		src: "/img/stage-group.webp"
-	},
-	{
-		label: "Conference photo 36",
-		thumb: "/img/gallery-36-thumb.webp",
-		src: "/img/gallery-36.webp"
-	},
-	{
-		label: "Aastha Patel \u2014 To Learn a Language is to Live It",
-		thumb: "/img/speaker-aastha-thumb.webp",
-		src: "/img/speaker-aastha.webp"
-	},
-	{
-		label: "Conference photo 21",
-		thumb: "/img/gallery-21-thumb.webp",
-		src: "/img/gallery-21.webp"
-	},
-	{
-		label: "Conference photo 42",
-		thumb: "/img/gallery-42-thumb.webp",
-		src: "/img/gallery-42.webp"
-	},
-	{
-		label: "Conference photo 10",
-		thumb: "/img/gallery-10-thumb.webp",
-		src: "/img/gallery-10.webp"
-	},
-	{
-		label: "Conference photo 08",
-		thumb: "/img/gallery-08-thumb.webp",
-		src: "/img/gallery-08.webp"
-	},
-	{
-		label: "Conference photo 16",
-		thumb: "/img/gallery-16-thumb.webp",
-		src: "/img/gallery-16.webp"
-	},
-	{
-		label: "Jyotisman Rath, 2025 student speaker",
-		thumb: "/img/winner-2025-b-thumb.webp",
-		src: "/img/winner-2025-b.webp"
-	},
-	{
-		label: "Conference photo 33",
-		thumb: "/img/gallery-33-thumb.webp",
-		src: "/img/gallery-33.webp"
-	},
-	{
-		label: "Conference photo 19",
-		thumb: "/img/gallery-19-thumb.webp",
-		src: "/img/gallery-19.webp"
-	},
-	{
-		label: "Conference photo 43",
-		thumb: "/img/gallery-43-thumb.webp",
-		src: "/img/gallery-43.webp"
-	},
-	{
-		label: "Aastha Patel, 2026 student speaker",
-		thumb: "/img/winner-2026-thumb.webp",
-		src: "/img/winner-2026.webp"
-	},
-	{
-		label: "Conference photo 38",
-		thumb: "/img/gallery-38-thumb.webp",
-		src: "/img/gallery-38.webp"
-	},
-	{
-		label: "Conference photo 17",
-		thumb: "/img/gallery-17-thumb.webp",
-		src: "/img/gallery-17.webp"
-	},
-	{
-		label: "Bo Parfet \u2014 How Do You Light Your Soul on Fire?",
-		thumb: "/img/speaker-bo-thumb.webp",
-		src: "/img/speaker-bo.webp"
 	},
 	{
 		label: "The team on stage",
@@ -118,14 +113,9 @@ export const gallery = [
 		src: "/img/conference-group.webp"
 	},
 	{
-		label: "Nicole Johnston \u2014 When Being 'Too Much' Is Actually Just Enough",
-		thumb: "/img/speaker-nicole-thumb.webp",
-		src: "/img/speaker-nicole.webp"
-	},
-	{
-		label: "Conference photo 12",
-		thumb: "/img/gallery-12-thumb.webp",
-		src: "/img/gallery-12.webp"
+		label: "Aastha Patel, 2026 student speaker",
+		thumb: "/img/winner-2026-thumb.webp",
+		src: "/img/winner-2026.webp"
 	},
 	{
 		label: "Conference photo 39",
@@ -133,9 +123,19 @@ export const gallery = [
 		src: "/img/gallery-39.webp"
 	},
 	{
-		label: "Conference photo 28",
-		thumb: "/img/gallery-28-thumb.webp",
-		src: "/img/gallery-28.webp"
+		label: "Conference photo 17",
+		thumb: "/img/gallery-17-thumb.webp",
+		src: "/img/gallery-17.webp"
+	},
+	{
+		label: "Conference photo 36",
+		thumb: "/img/gallery-36-thumb.webp",
+		src: "/img/gallery-36.webp"
+	},
+	{
+		label: "Conference photo 33",
+		thumb: "/img/gallery-33-thumb.webp",
+		src: "/img/gallery-33.webp"
 	},
 	{
 		label: "Conference photo 01",
@@ -143,9 +143,9 @@ export const gallery = [
 		src: "/img/gallery-01.webp"
 	},
 	{
-		label: "Conference photo 18",
-		thumb: "/img/gallery-18-thumb.webp",
-		src: "/img/gallery-18.webp"
+		label: "Conference photo 12",
+		thumb: "/img/gallery-12-thumb.webp",
+		src: "/img/gallery-12.webp"
 	},
 	{
 		label: "Conference photo 30",
@@ -153,9 +153,14 @@ export const gallery = [
 		src: "/img/gallery-30.webp"
 	},
 	{
-		label: "The Loeb Playhouse stage",
-		thumb: "/img/student-speaker-hero-thumb.webp",
-		src: "/img/student-speaker-hero.webp"
+		label: "Conference photo 18",
+		thumb: "/img/gallery-18-thumb.webp",
+		src: "/img/gallery-18.webp"
+	},
+	{
+		label: "Prady Modukuru \u2014 From Building to Founding",
+		thumb: "/img/speaker-prady-thumb.webp",
+		src: "/img/speaker-prady.webp"
 	},
 	{
 		label: "Conference photo 14",
@@ -168,19 +173,9 @@ export const gallery = [
 		src: "/img/gallery-07.webp"
 	},
 	{
-		label: "The audience",
-		thumb: "/img/audience-thumb.webp",
-		src: "/img/audience.webp"
-	},
-	{
-		label: "Conference photo 40",
-		thumb: "/img/gallery-40-thumb.webp",
-		src: "/img/gallery-40.webp"
-	},
-	{
-		label: "Conference photo 35",
-		thumb: "/img/gallery-35-thumb.webp",
-		src: "/img/gallery-35.webp"
+		label: "Aastha Patel \u2014 To Learn a Language is to Live It",
+		thumb: "/img/speaker-aastha-thumb.webp",
+		src: "/img/speaker-aastha.webp"
 	},
 	{
 		label: "Giselle Ferrao, 2025 student speaker",
@@ -188,14 +183,24 @@ export const gallery = [
 		src: "/img/winner-2025-a.webp"
 	},
 	{
+		label: "Conference photo 35",
+		thumb: "/img/gallery-35-thumb.webp",
+		src: "/img/gallery-35.webp"
+	},
+	{
+		label: "Conference photo 42",
+		thumb: "/img/gallery-42-thumb.webp",
+		src: "/img/gallery-42.webp"
+	},
+	{
 		label: "Conference photo 15",
 		thumb: "/img/gallery-15-thumb.webp",
 		src: "/img/gallery-15.webp"
 	},
 	{
-		label: "Prady Modukuru \u2014 From Building to Founding",
-		thumb: "/img/speaker-prady-thumb.webp",
-		src: "/img/speaker-prady.webp"
+		label: "Sid Thatham \u2014 Energy for AI and Everybody Else",
+		thumb: "/img/speaker-sid-thumb.webp",
+		src: "/img/speaker-sid.webp"
 	},
 	{
 		label: "Conference photo 26",
@@ -228,9 +233,9 @@ export const gallery = [
 		src: "/img/gallery-32.webp"
 	},
 	{
-		label: "Sid Thatham \u2014 Energy for AI and Everybody Else",
-		thumb: "/img/speaker-sid-thumb.webp",
-		src: "/img/speaker-sid.webp"
+		label: "A salon in session",
+		thumb: "/img/salon-thumb.webp",
+		src: "/img/salon.webp"
 	},
 	{
 		label: "Conference photo 37",
