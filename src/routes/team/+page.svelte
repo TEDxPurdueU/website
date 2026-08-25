@@ -2,6 +2,9 @@
 	import Placeholder from '$lib/components/Placeholder.svelte';
 	import { contactEmail } from '$lib/nav.js';
 	import { team } from '$lib/team.js';
+
+	const applicationUrl =
+		'https://docs.google.com/forms/d/e/1FAIpQLSf-SRXWs6FQpU1LTH3kL_09_m6OxzovRzeSJYTuRoXSsRn6sg/viewform';
 </script>
 
 <svelte:head>
@@ -49,10 +52,14 @@
 			operations, marketing, salons, and outreach. Fill out our application below by the
 			deadline.
 		</p>
-		<!-- No application form yet, so this points at the shared coming-soon page
-		     the same way the student speaker CTA does. Swap the href for the real
-		     form once it exists. -->
-		<a class="btn btn--primary" href="/coming-soon">Apply to join</a>
+		<a
+			class="btn btn--primary"
+			href={applicationUrl}
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			Apply to join
+		</a>
 		<a class="link-rule" href="mailto:{contactEmail}">{contactEmail}</a>
 	</div>
 </section>
