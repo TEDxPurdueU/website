@@ -12,9 +12,9 @@
  */
 export const team = [
 	{ name: 'Aayan Agarwal', role: 'President', photo: '/headshots/aayan-agarwal.webp' },
-	{ name: 'Ben Packer', role: 'Vice President', photo: null },
-	{ name: 'Sophia Smith', role: 'Marketing Director', photo: null },
-	{ name: 'Laiba Farooqi', role: 'Curations Chair', photo: null },
-	{ name: 'Alaina Salsaa', role: 'Salons Chair', photo: null },
-	{ name: 'Gia Sareen', role: 'Operations Chair', photo: null }
+	{ name: 'Ben Packer', role: 'Vice President', photo: '/headshots/ben-packer.webp' },
+	{ name: 'Sophia Smith', role: 'Marketing Director', photo: '/headshots/sophia-smith.webp' },
+	{ name: 'Laiba Farooqi', role: 'Curations Chair', photo: '/headshots/laiba-farooqi.webp' },
+	{ name: 'Alaina Salsaa', role: 'Salons Chair', photo: '/headshots/alaina-salsaa.webp' },
+	{ name: 'Gia Sareen', role: 'Operations Chair', photo: '/headshots/gia-sareen.webp' }
 ];
