@@ -1,24 +1,14 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
 	import { contactEmail } from '$lib/nav.js';
-
-	// TODO: swap "Name Here" for real names and drop each headshot in place of
-	// the hatched placeholder.
-	const team = [
-		{ name: 'Name Here', role: 'Licensee & Organizer' },
-		{ name: 'Name Here', role: 'Curation Lead' },
-		{ name: 'Name Here', role: 'Production Lead' },
-		{ name: 'Name Here', role: 'Design Lead' },
-		{ name: 'Name Here', role: 'Marketing Lead' },
-		{ name: 'Name Here', role: 'Partnerships Lead' }
-	];
+	import { team } from '$lib/team.js';
 </script>
 
 <svelte:head>
 	<title>TEDxPurdueU</title>
 	<meta
 		name="description"
-		content="Curation, production, design, marketing, and partnerships — every part of the TEDxPurdueU conference is built by Purdue students."
+		content="Curation, salons, marketing, and operations — every part of the TEDxPurdueU conference is built by Purdue students."
 	/>
 </svelte:head>
 
@@ -26,17 +16,22 @@
 	<div class="hero-inner">
 		<h1 class="page-title">The team</h1>
 		<p class="lede">
-			Curation, production, design, marketing, and partnerships — every part of the conference is
-			built by Purdue students who volunteer their semesters to it.
+			Curation, salons, marketing, and operations — every part of the conference is built by
+			Purdue students who volunteer their semesters to it.
 		</p>
 	</div>
 </section>
 
 <section class="sec section--ruled">
 	<div class="roster">
-		{#each team as member (member.role)}
+		{#each team as member (member.name)}
 			<div class="member">
-				<Placeholder ratio="1/1" label="headshot" />
+				<Placeholder
+					ratio="1/1"
+					label={member.name}
+					src={member.photo ?? undefined}
+					alt="{member.name}, {member.role}"
+				/>
 				<div>
 					<div class="member-name">{member.name}</div>
 					<div class="member-role">{member.role}</div>
