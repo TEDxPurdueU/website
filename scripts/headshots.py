@@ -3,7 +3,8 @@
 
 Separate from optimize-images.py on purpose. That script owns static/img and
 wipes it on every run, so anything dropped there by hand disappears; headshots
-get their own output directory, static/team, and their own re-runnable script.
+get their own output directory, static/headshots, and their own re-runnable
+script.
 
 Sources are whatever organizers send in — phone portraits, DSLR frames, the
 occasional landscape crop — so the shape has to be normalised here rather than
@@ -18,7 +19,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / '_originals' / 'team'
-OUT = ROOT / 'static' / 'team'
+OUT = ROOT / 'static' / 'headshots'
 
 EDGE = 600  # roster tiles cap around 300px, so this covers 2x displays
 QUALITY = 80

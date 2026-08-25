@@ -8,7 +8,7 @@ node_modules
 .DS_Store
 
 # Raw camera files (300MB+), including the team headshots under team/.
-# Optimised output in static/img and static/team is committed; regenerate
+# Optimised output in static/img and static/headshots is committed; regenerate
 # with `npm run images` and `npm run headshots`. Keep these backed up
 # elsewhere.
 _originals/
