@@ -9,6 +9,7 @@ been moved once, and the build should not need changing to move again.
 - `npm run build` — prerender to `build/`
 - `npm run check` — svelte-check; must be 0 errors, 0 warnings
 - `npm run images` — regenerate `static/img/` and `src/lib/gallery.js` from `_originals/`
+- `npm run headshots` — regenerate `static/headshots/` from `_originals/team/`
 
 ## Photos
 Raw camera files live in `_originals/` (gitignored, ~400MB). `npm run images`
@@ -16,6 +17,12 @@ resizes each to a 1600px full and a 600px thumbnail, converts to WebP, bakes in
 EXIF rotation and strips metadata. It also generates `src/lib/gallery.js`, so
 adding a photo is: drop it in `_originals/`, run the script, commit. Never hand-edit
 `gallery.js`.
+
+Team headshots are separate: originals go in `_originals/team/<slug>.jpg` and
+`npm run headshots` writes one 600px square WebP per person to `static/headshots/`.
+They are not part of `npm run images` because that script wipes `static/img/`
+on every run. After adding one, point the matching row in `src/lib/team.js` at
+`/headshots/<slug>.webp`; rows left at `photo: null` render the hatched placeholder.
 
 ## Deploy Configuration (configured by /setup-deploy)
 - Platform: Vercel

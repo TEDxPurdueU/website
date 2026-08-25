@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
-    "images": "python3 scripts/optimize-images.py"
+    "images": "python3 scripts/optimize-images.py",
+    "headshots": "python3 scripts/headshots.py"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.10",

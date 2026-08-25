@@ -7,8 +7,10 @@ node_modules
 !.env.example
 .DS_Store
 
-# Raw camera files (300MB+). Optimised output in static/img is committed;
-# regenerate it with `npm run images`. Keep these backed up elsewhere.
+# Raw camera files (300MB+), including the team headshots under team/.
+# Optimised output in static/img and static/headshots is committed; regenerate
+# with `npm run images` and `npm run headshots`. Keep these backed up
+# elsewhere.
 _originals/
 
 # Local Netlify folder

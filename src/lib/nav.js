@@ -7,9 +7,8 @@ export const pages = [
 	{ href: '/', label: 'Home', footerLabel: 'Home' },
 	{ href: '/2027-event', label: 'Unseen 2027', footerLabel: 'Unseen 2027' },
 	{ href: '/salons', label: 'Salons', footerLabel: 'Salons' },
-	{ href: '/speakers', label: 'Student Speaker', footerLabel: 'Student Speaker Competition' }
-	// /team is hidden until the team headshots arrive. The route still exists;
-	// add it back here to relink it from the header and footer.
+	{ href: '/speakers', label: 'Student Speaker', footerLabel: 'Student Speaker Competition' },
+	{ href: '/team', label: 'Team', footerLabel: 'Team' }
 ];
 
 /**

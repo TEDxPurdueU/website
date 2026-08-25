@@ -1,24 +1,14 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
 	import { contactEmail } from '$lib/nav.js';
-
-	// TODO: swap "Name Here" for real names and drop each headshot in place of
-	// the hatched placeholder.
-	const team = [
-		{ name: 'Name Here', role: 'Licensee & Organizer' },
-		{ name: 'Name Here', role: 'Curation Lead' },
-		{ name: 'Name Here', role: 'Production Lead' },
-		{ name: 'Name Here', role: 'Design Lead' },
-		{ name: 'Name Here', role: 'Marketing Lead' },
-		{ name: 'Name Here', role: 'Partnerships Lead' }
-	];
+	import { team } from '$lib/team.js';
 </script>
 
 <svelte:head>
 	<title>TEDxPurdueU</title>
 	<meta
 		name="description"
-		content="Curation, production, design, marketing, and partnerships — every part of the TEDxPurdueU conference is built by Purdue students."
+		content="Logistics, marketing, design, partnerships, and the talks — every aspect of the TEDxPurdueU conference is built by Purdue students."
 	/>
 </svelte:head>
 
@@ -26,17 +16,22 @@
 	<div class="hero-inner">
 		<h1 class="page-title">The team</h1>
 		<p class="lede">
-			Curation, production, design, marketing, and partnerships — every part of the conference is
-			built by Purdue students who volunteer their semesters to it.
+			Logistics, marketing, design, partnerships, and the talks — every aspect of the
+			TEDxPurdueU conference is built by Purdue students.
 		</p>
 	</div>
 </section>
 
 <section class="sec section--ruled">
 	<div class="roster">
-		{#each team as member (member.role)}
+		{#each team as member (member.name)}
 			<div class="member">
-				<Placeholder ratio="1/1" label="headshot" />
+				<Placeholder
+					ratio="1/1"
+					label={member.name}
+					src={member.photo ?? undefined}
+					alt="{member.name}, {member.role}"
+				/>
 				<div>
 					<div class="member-name">{member.name}</div>
 					<div class="member-role">{member.role}</div>
@@ -50,10 +45,14 @@
 	<div class="join">
 		<h2>Join us</h2>
 		<p class="join-body">
-			We recruit new organizers at the start of every fall semester — curation, video, graphic
-			design, sponsorship, and event ops. Email us or reach out on Instagram and we'll tell you
-			what's open.
+			We recruit every year in Fall for students to join one of our committees — curations,
+			operations, marketing, salons, and outreach. Fill out our application below by the
+			deadline.
 		</p>
+		<!-- No application form yet, so this points at the shared coming-soon page
+		     the same way the student speaker CTA does. Swap the href for the real
+		     form once it exists. -->
+		<a class="btn btn--primary" href="/coming-soon">Apply to join</a>
 		<a class="link-rule" href="mailto:{contactEmail}">{contactEmail}</a>
 	</div>
 </section>
@@ -117,5 +116,11 @@
 		font-size: 17px;
 		line-height: 1.7;
 		color: var(--text-dim);
+	}
+
+	/* .join is a flex column, so the button would otherwise stretch the full
+	   760px of it. .link-rule below already sets this on itself. */
+	.join .btn {
+		align-self: flex-start;
 	}
 </style>
