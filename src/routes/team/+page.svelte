@@ -1,10 +1,7 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
-	import { contactEmail } from '$lib/nav.js';
+	import { applicationUrl, contactEmail } from '$lib/nav.js';
 	import { team } from '$lib/team.js';
-
-	const applicationUrl =
-		'https://docs.google.com/forms/d/e/1FAIpQLSf-SRXWs6FQpU1LTH3kL_09_m6OxzovRzeSJYTuRoXSsRn6sg/viewform';
 </script>
 
 <svelte:head>

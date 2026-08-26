@@ -37,3 +37,24 @@ export const socials = [
 ];
 
 export const contactEmail = 'tedx@purdue.edu';
+
+/**
+ * Recruitment application. Lives here because both the header call to action
+ * and the team page's "Join us" block have to point at the same form.
+ */
+export const applicationUrl =
+	'https://docs.google.com/forms/d/e/1FAIpQLSf-SRXWs6FQpU1LTH3kL_09_m6OxzovRzeSJYTuRoXSsRn6sg/viewform';
+
+/**
+ * Applications close at the end of September 9. Held as one absolute instant
+ * (midnight Eastern, where the club is) rather than a bare calendar date, so
+ * the deadline lands at the same moment for a reader in any timezone.
+ */
+export const applicationClosesAt = Date.parse('2026-09-10T04:00:00Z');
+
+/**
+ * Evaluated per render rather than once at module load: the build is
+ * prerendered, so a module-level constant would freeze whatever was true on
+ * the build machine and keep serving it for the life of the deployment.
+ */
+export const applicationOpen = () => Date.now() < applicationClosesAt;
