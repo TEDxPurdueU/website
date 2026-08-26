@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/state';
-	import { pages } from '$lib/nav.js';
+	import { pages, socials } from '$lib/nav.js';
 
 	/** @param {string} href */
 	const isCurrent = (href) => page.url.pathname === href;
@@ -39,7 +39,7 @@
 	 * left open would strand the reader behind a panel with no visible close.
 	 */
 	$effect(() => {
-		const desktop = window.matchMedia('(min-width: 821px)');
+		const desktop = window.matchMedia('(min-width: 1025px)');
 		/** @param {MediaQueryListEvent} event */
 		const onChange = (event) => {
 			if (event.matches) open = false;
@@ -117,20 +117,35 @@
 			</a>
 		{/each}
 	</nav>
-	<button
-		type="button"
-		class="toggle"
-		aria-label="Menu"
-		aria-expanded={open}
-		aria-controls="site-menu"
-		onclick={() => (open = !open)}
-		bind:this={toggle}
-	>
-		<span class="toggle__bars" aria-hidden="true">
-			<span></span>
-			<span></span>
-		</span>
-	</button>
+	<div class="actions">
+		<div class="socials">
+			{#each socials as social (social.name)}
+				<a
+					href={social.href}
+					class="social"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={social.name}
+				>
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d={social.icon} /></svg>
+				</a>
+			{/each}
+		</div>
+		<button
+			type="button"
+			class="toggle"
+			aria-label="Menu"
+			aria-expanded={open}
+			aria-controls="site-menu"
+			onclick={() => (open = !open)}
+			bind:this={toggle}
+		>
+			<span class="toggle__bars" aria-hidden="true">
+				<span></span>
+				<span></span>
+			</span>
+		</button>
+	</div>
 </header>
 
 <!-- Always rendered so `aria-controls` resolves; `display: none` keeps it out of
@@ -156,6 +171,21 @@
 			<span>{item.label}</span>
 		</a>
 	{/each}
+
+	<div class="menu__socials">
+		{#each socials as social (social.name)}
+			<a
+				href={social.href}
+				class="menu__social"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label={social.name}
+				onclick={() => (open = false)}
+			>
+				<svg viewBox="0 0 24 24" aria-hidden="true"><path d={social.icon} /></svg>
+			</a>
+		{/each}
+	</div>
 </nav>
 
 <style>
@@ -203,6 +233,47 @@
 	.nav-link:hover,
 	.nav-link.active {
 		color: var(--red);
+	}
+
+	/* The right-hand group. Holding the social set and the toggle together
+	   keeps the bar a three-part row at every width, so the two never have to
+	   negotiate for the same slot. */
+	.actions {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		flex-shrink: 0;
+	}
+
+	/* A hairline in front of the set is what makes three marks in the bar read
+	   as their own group rather than as more nav. */
+	.socials {
+		display: flex;
+		align-items: center;
+		padding-left: 14px;
+		border-left: 1px solid var(--rule);
+	}
+
+	/* The breathing room lives in each link's padding rather than in a gap, so
+	   every mark has a real pointer target while the set still reads as one
+	   cluster. */
+	.social {
+		display: inline-flex;
+		padding: 8px;
+		color: var(--text);
+		transition: color 0.15s ease;
+	}
+
+	.social:hover {
+		color: var(--red);
+	}
+
+	/* currentColor carries the link colour and its hover into the glyph. */
+	.social svg {
+		width: 20px;
+		height: 20px;
+		display: block;
+		fill: currentColor;
 	}
 
 	/* Hairline square, same control language as the lightbox buttons. */
@@ -301,6 +372,33 @@
 		color: var(--red);
 	}
 
+	/* Bigger than the bar's set and sized for thumbs: the panel has the room,
+	   and these are the only social links a phone reader is offered. */
+	.menu__socials {
+		display: flex;
+		align-items: center;
+		margin-top: 24px;
+		margin-inline: -12px;
+	}
+
+	.menu__social {
+		display: inline-flex;
+		padding: 12px;
+		color: var(--text);
+		transition: color 0.15s ease;
+	}
+
+	.menu__social:hover {
+		color: var(--red);
+	}
+
+	.menu__social svg {
+		width: 26px;
+		height: 26px;
+		display: block;
+		fill: currentColor;
+	}
+
 	.menu__index {
 		flex-shrink: 0;
 		font-family: var(--mono);
@@ -310,10 +408,32 @@
 		color: var(--text-faint);
 	}
 
-	/* The logo and the four links need ~820px of viewport; below that the single
-	   row wraps and strands a link, so the links move into the panel and the bar
-	   keeps only the logo and the toggle. */
-	@media (max-width: 820px) {
+	/* Between the breakpoint and roughly 1140px the row fits, but only just.
+	   Tightening the gaps there keeps the full bar on small laptops instead of
+	   spending another 120px of viewport on the hamburger. */
+	@media (min-width: 1025px) and (max-width: 1140px) {
+		header {
+			gap: 20px;
+		}
+
+		.nav {
+			gap: 18px;
+		}
+
+		.socials {
+			padding-left: 12px;
+		}
+
+		.social {
+			padding: 6px;
+		}
+	}
+
+	/* The logo, the five links and the social set need ~1025px of viewport;
+	   below that the single row wraps and strands a link, so the links and the
+	   social set move into the panel and the bar keeps the logo and the
+	   toggle. */
+	@media (max-width: 1024px) {
 		header {
 			/* 44px control plus 8px either side — a tighter bar than the two-row
 			   stack this replaces, which is the point. */
@@ -325,6 +445,12 @@
 		}
 
 		.nav {
+			display: none;
+		}
+
+		/* No room beside the logo and the toggle, and the panel already carries
+		   the set at a size worth tapping. */
+		.socials {
 			display: none;
 		}
 
@@ -357,6 +483,15 @@
 		.menu--open .menu__link:nth-child(4) {
 			animation-delay: 0.15s;
 		}
+
+		.menu--open .menu__link:nth-child(5) {
+			animation-delay: 0.19s;
+		}
+
+		.menu--open .menu__socials {
+			animation: menu-link-in 0.25s ease backwards;
+			animation-delay: 0.23s;
+		}
 	}
 
 	@keyframes menu-in {
@@ -375,7 +510,8 @@
 	/* The global block neutralises durations but not delays, which would leave
 	   the links blank for a beat. */
 	@media (prefers-reduced-motion: reduce) {
-		.menu--open .menu__link {
+		.menu--open .menu__link,
+		.menu--open .menu__socials {
 			animation-delay: 0s !important;
 		}
 	}
