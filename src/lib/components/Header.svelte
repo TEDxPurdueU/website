@@ -1,9 +1,18 @@
 <script>
 	import { page } from '$app/state';
-	import { pages, socials } from '$lib/nav.js';
+	import { applicationOpen, applicationUrl, pages, socials } from '$lib/nav.js';
 
 	/** @param {string} href */
 	const isCurrent = (href) => page.url.pathname === href;
+
+	/**
+	 * Read once per render rather than from a module constant: the site is
+	 * prerendered, so this is evaluated on the build machine for the served
+	 * HTML and again in the browser when that HTML hydrates. The second read is
+	 * the one that counts — a build that predates the deadline still stops
+	 * offering the form once the reader's own clock passes it.
+	 */
+	const joinOpen = applicationOpen();
 
 	/**
 	 * Below the breakpoint the link row is replaced by a toggle that reveals a
@@ -131,6 +140,16 @@
 				</a>
 			{/each}
 		</div>
+		{#if joinOpen}
+			<a
+				class="join"
+				href={applicationUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Join
+			</a>
+		{/if}
 		<button
 			type="button"
 			class="toggle"
@@ -276,6 +295,26 @@
 		fill: currentColor;
 	}
 
+	/* Shorter and tighter than the page buttons: it has to hold its own beside
+	   the logo on a 320px phone, where the full .btn padding would not fit. */
+	.join {
+		flex-shrink: 0;
+		padding: 12px 18px;
+		background: var(--red);
+		color: #fff;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		white-space: nowrap;
+		transition: background-color 0.15s ease;
+	}
+
+	.join:hover {
+		background: var(--text);
+		color: #fff;
+	}
+
 	/* Hairline square, same control language as the lightbox buttons. */
 	.toggle {
 		display: none;
@@ -408,24 +447,32 @@
 		color: var(--text-faint);
 	}
 
-	/* Between the breakpoint and roughly 1140px the row fits, but only just.
-	   Tightening the gaps there keeps the full bar on small laptops instead of
-	   spending another 120px of viewport on the hamburger. */
-	@media (min-width: 1025px) and (max-width: 1140px) {
+	/* Between the breakpoint and roughly 1200px the row fits, but only just.
+	   Tightening every gap there keeps the full bar on small laptops instead of
+	   spending another 175px of viewport on the hamburger. */
+	@media (min-width: 1025px) and (max-width: 1200px) {
 		header {
-			gap: 20px;
-		}
-
-		.nav {
 			gap: 18px;
 		}
 
+		.nav {
+			gap: 14px;
+		}
+
+		.actions {
+			gap: 12px;
+		}
+
 		.socials {
-			padding-left: 12px;
+			padding-left: 10px;
 		}
 
 		.social {
 			padding: 6px;
+		}
+
+		.join {
+			padding: 11px 15px;
 		}
 	}
 
@@ -438,6 +485,15 @@
 			/* 44px control plus 8px either side — a tighter bar than the two-row
 			   stack this replaces, which is the point. */
 			padding: 8px var(--gutter);
+			/* The desktop gap is generous because it separates the logo from a
+			   link row; here it only has to separate two controls, and on a
+			   320px phone the logo, the CTA and the toggle need every pixel of
+			   the difference. */
+			gap: 12px;
+		}
+
+		.actions {
+			gap: 10px;
 		}
 
 		.logo img {
@@ -448,10 +504,17 @@
 			display: none;
 		}
 
-		/* No room beside the logo and the toggle, and the panel already carries
-		   the set at a size worth tapping. */
+		/* No room beside the logo, the CTA and the toggle, and the panel already
+		   carries the set at a size worth tapping. */
 		.socials {
 			display: none;
+		}
+
+		/* The CTA stays out of the panel: it is the one time-limited thing in
+		   the bar, so it should not need a tap to find. */
+		.join {
+			padding: 11px 13px;
+			font-size: 11px;
 		}
 
 		.toggle {
