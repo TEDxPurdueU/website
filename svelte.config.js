@@ -15,7 +15,13 @@ const config = {
 			fallback: '404.html',
 			precompress: false,
 			strict: true
-		})
+		}),
+		prerender: {
+			// Nothing on the site links to /apply — it exists for posters, slides
+			// and anywhere else the short URL gets typed by hand — so the crawler
+			// would never reach it. Naming it here is what gets it built.
+			entries: ['*', '/apply']
+		}
 	}
 };
 
