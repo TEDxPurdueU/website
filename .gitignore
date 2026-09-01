@@ -19,3 +19,8 @@ _originals/
 
 # Machine-local Conductor settings (lives in the repo root .conductor/)
 .conductor/settings.local.toml
+
+# Prod builds from package-lock.json (Vercel runs npm). A local `pnpm install`
+# regenerates this one, and Vercel would prefer it over the npm lockfile if it
+# ever landed — so it stays out of the repo.
+pnpm-lock.yaml
