@@ -16,3 +16,6 @@ _originals/
 # Local Netlify folder
 .netlify
 .vercel
+
+# Machine-local Conductor settings (lives in the repo root .conductor/)
+.conductor/settings.local.toml
