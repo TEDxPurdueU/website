@@ -46,6 +46,12 @@ export const applicationUrl =
 	'https://docs.google.com/forms/d/e/1FAIpQLSf-SRXWs6FQpU1LTH3kL_09_m6OxzovRzeSJYTuRoXSsRn6sg/viewform';
 
 /**
+ * Speaker nominations for the annual conference. Shared because the 2027 event
+ * page links it directly and /nominate and /speak are short links to it.
+ */
+export const nominationUrl = 'https://forms.gle/6wbhGyCGho4Q4TYN8';
+
+/**
  * Applications close at the end of September 9. Held as one absolute instant
  * (midnight Eastern, where the club is) rather than a bare calendar date, so
  * the deadline lands at the same moment for a reader in any timezone.

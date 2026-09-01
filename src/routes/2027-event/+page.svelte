@@ -1,5 +1,6 @@
 <script>
 	import ComingSoon from '$lib/components/ComingSoon.svelte';
+	import { nominationUrl } from '$lib/nav.js';
 
 	const facts = [
 		{ label: 'Date', value: '27 February 2027' },
@@ -7,7 +8,6 @@
 	];
 
 	const ticketsUrl = 'https://convocations.purdue.edu/event/tedxpurdue-unseen/';
-	const nominateUrl = 'https://forms.gle/6wbhGyCGho4Q4TYN8';
 </script>
 
 <svelte:head>
@@ -56,7 +56,7 @@
 			note="Know someone with an idea worth spreading — or is it you? Put a name forward, and if you're a Purdue student, take your shot at the stage through our competition."
 		/>
 		<div class="speaker-actions">
-			<a class="btn btn--primary" href={nominateUrl} target="_blank" rel="noopener noreferrer">
+			<a class="btn btn--primary" href={nominationUrl} target="_blank" rel="noopener noreferrer">
 				Nominate a speaker
 			</a>
 			<a class="btn btn--outline" href="/speakers">Students: enter the competition</a>
