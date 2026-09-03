@@ -6,6 +6,7 @@
 
 <svelte:head>
 	<title>{isNotFound ? 'Page not found' : 'Something went wrong'} | TEDxPurdueU</title>
+	<meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
 <section class="error-page">

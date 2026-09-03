@@ -1,22 +1,61 @@
 <script>
 	import ComingSoon from '$lib/components/ComingSoon.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { nominationUrl } from '$lib/nav.js';
+	import { site } from '$lib/seo.js';
+
+	const description =
+		'Unseen is the 2027 TEDxPurdueU conference at Loeb Playhouse: ideas about what sits just outside our attention and what changes when we look.';
 
 	const facts = [
 		{ label: 'Date', value: '27 February 2027' },
-		{ label: 'Venue', value: 'Loeb Playhouse' }
+		{ label: 'Time', value: '2:00 PM' },
+		{ label: 'Venue', value: 'Loeb Playhouse' },
+		{ label: 'Tickets', value: 'From $12' }
 	];
 
 	const ticketsUrl = 'https://convocations.purdue.edu/event/tedxpurdue-unseen/';
+	const eventStructuredData = {
+		'@type': 'Event',
+		'@id': `${site.url}/2027-event#event`,
+		name: 'TEDxPurdueU: Unseen 2027',
+		description,
+		url: `${site.url}/2027-event`,
+		startDate: '2027-02-27T14:00:00-05:00',
+		eventStatus: 'https://schema.org/EventScheduled',
+		eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+		image: [`${site.url}/img/conference-group.webp`, `${site.url}/img/stage-group.webp`],
+		location: {
+			'@type': 'Place',
+			name: 'Loeb Playhouse',
+			address: {
+				'@type': 'PostalAddress',
+				streetAddress: '128 Memorial Mall',
+				addressLocality: 'West Lafayette',
+				addressRegion: 'IN',
+				postalCode: '47907',
+				addressCountry: 'US'
+			}
+		},
+		organizer: { '@id': `${site.url}/#organization` },
+		offers: {
+			'@type': 'Offer',
+			url: ticketsUrl,
+			price: 12,
+			priceCurrency: 'USD',
+			availability: 'https://schema.org/InStock'
+		}
+	};
 </script>
 
-<svelte:head>
-	<title>TEDxPurdueU</title>
-	<meta
-		name="description"
-		content="Unseen is the theme of the 2027 TEDxPurdueU annual conference — about what sits just outside our attention, and what changes the moment we look."
-	/>
-</svelte:head>
+<Seo
+	title="TEDxPurdueU: Unseen 2027 | Purdue TEDx Conference"
+	{description}
+	path="/2027-event"
+	image="/img/stage-group.webp"
+	imageAlt="The TEDxPurdueU team gathered on stage at Loeb Playhouse"
+	structuredData={eventStructuredData}
+/>
 
 <section class="hero section--ruled">
 	<div class="hero-inner">

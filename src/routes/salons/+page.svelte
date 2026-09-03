@@ -1,15 +1,19 @@
 <script>
 	import ComingSoon from '$lib/components/ComingSoon.svelte';
 	import Placeholder from '$lib/components/Placeholder.svelte';
+	import Seo from '$lib/components/Seo.svelte';
+
+	const description =
+		'TEDxPurdueU Salons are free community events at Purdue: one idea, one small room, and a thoughtful conversation over food.';
 </script>
 
-<svelte:head>
-	<title>TEDxPurdueU</title>
-	<meta
-		name="description"
-		content="Salons are TEDxPurdueU's mini-events: one idea, one small room, one long conversation. Free and open to everyone at Purdue."
-	/>
-</svelte:head>
+<Seo
+	title="TEDxPurdueU Salons | Free Events at Purdue"
+	{description}
+	path="/salons"
+	image="/img/salon.webp"
+	imageAlt="A TEDxPurdueU Salon discussion in progress"
+/>
 
 <section class="hero section--ruled">
 	<div class="hero-copy">

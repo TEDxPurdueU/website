@@ -1,5 +1,9 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
+	import Seo from '$lib/components/Seo.svelte';
+
+	const description =
+		'Every Purdue student can compete for a speaking slot at the TEDxPurdueU conference. Pitch an idea, get coached, and take the Unseen stage.';
 
 	const steps = [
 		{
@@ -55,13 +59,13 @@
 	];
 </script>
 
-<svelte:head>
-	<title>TEDxPurdueU</title>
-	<meta
-		name="description"
-		content="Every Purdue student can compete for a speaking slot at the TEDxPurdueU conference. Pitch an idea, get coached, and take the Unseen stage."
-	/>
-</svelte:head>
+<Seo
+	title="Student Speaker Competition | TEDxPurdueU"
+	{description}
+	path="/speakers"
+	image="/img/student-speaker-hero.webp"
+	imageAlt="A Purdue student delivering a TEDxPurdueU talk on stage"
+/>
 
 <section class="hero section--ruled">
 	<div class="hero-copy">
