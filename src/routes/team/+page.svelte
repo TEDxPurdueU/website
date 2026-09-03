@@ -1,16 +1,35 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { applicationUrl, contactEmail } from '$lib/nav.js';
+	import { site } from '$lib/seo.js';
 	import { team } from '$lib/team.js';
+
+	const description =
+		'Meet the Purdue students who lead TEDxPurdueU across curation, operations, marketing, salons, outreach, design, and partnerships.';
+	const teamStructuredData = {
+		'@type': 'ItemList',
+		name: 'TEDxPurdueU student leadership team',
+		itemListElement: team.map((member, index) => ({
+			'@type': 'ListItem',
+			position: index + 1,
+			item: {
+				'@type': 'Person',
+				name: member.name,
+				jobTitle: member.role,
+				image: member.photo ? `${site.url}${member.photo}` : undefined,
+				memberOf: { '@id': `${site.url}/#organization` }
+			}
+		}))
+	};
 </script>
 
-<svelte:head>
-	<title>TEDxPurdueU</title>
-	<meta
-		name="description"
-		content="Logistics, marketing, design, partnerships, and the talks — every aspect of the TEDxPurdueU conference is built by Purdue students."
-	/>
-</svelte:head>
+<Seo
+	title="Meet the TEDxPurdueU Student Team"
+	{description}
+	path="/team"
+	structuredData={teamStructuredData}
+/>
 
 <section class="hero section--ruled">
 	<div class="hero-inner">

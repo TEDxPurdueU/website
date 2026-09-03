@@ -1,7 +1,35 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
 	import Lightbox from '$lib/components/Lightbox.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { gallery as galleryPhotos } from '$lib/gallery.js';
+	import { site } from '$lib/seo.js';
+	import { socials } from '$lib/nav.js';
+
+	const description =
+		'TEDxPurdueU is Purdue University’s student-run TEDx organization, producing an annual conference, community salons, and a student speaker competition.';
+	const homeStructuredData = [
+		{
+			'@type': 'WebSite',
+			'@id': `${site.url}/#website`,
+			url: `${site.url}/`,
+			name: site.name,
+			alternateName: 'TEDx Purdue U',
+			description
+		},
+		{
+			'@type': 'Organization',
+			'@id': `${site.url}/#organization`,
+			name: site.name,
+			alternateName: 'TEDx Purdue U',
+			url: `${site.url}/`,
+			logo: `${site.url}/logo-dark.png`,
+			image: `${site.url}${site.image}`,
+			description,
+			email: 'tedx@purdue.edu',
+			sameAs: socials.map(({ href }) => href)
+		}
+	];
 
 	const programmes = [
 		{
@@ -95,13 +123,12 @@
 	const pageNumbers = $derived(Array.from({ length: pageCount }, (_, i) => i));
 </script>
 
-<svelte:head>
-	<title>TEDxPurdueU</title>
-	<meta
-		name="description"
-		content="TEDxPurdueU is a student-run organization at Purdue University that curates one independently organized TED event each year, plus salons and a student speaker competition."
-	/>
-</svelte:head>
+<Seo
+	title="TEDxPurdueU | Ideas Worth Spreading at Purdue"
+	{description}
+	path="/"
+	structuredData={homeStructuredData}
+/>
 
 <section class="hero">
 	<div class="hero-copy">
