@@ -19,10 +19,9 @@
 						href={social.href}
 						target="_blank"
 						rel="noopener noreferrer"
-						aria-label={social.handle ? `${social.name} ${social.handle}` : social.name}
+						aria-label={social.name}
 					>
 						<svg viewBox="0 0 24 24" aria-hidden="true"><path d={social.icon} /></svg>
-						{#if social.handle}<span class="social-handle">{social.handle}</span>{/if}
 					</a>
 				{/each}
 			</div>
@@ -103,14 +102,8 @@
 	   more attention than a footer warrants. Red is kept for the hover. */
 	.socials a {
 		display: inline-flex;
-		align-items: center;
-		gap: 7px;
 		color: var(--text);
 		transition: color 0.15s ease;
-	}
-
-	.social-handle {
-		font-size: 14px;
 	}
 
 	.socials a:hover {

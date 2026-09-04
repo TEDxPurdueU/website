@@ -10,8 +10,7 @@
 	const facts = [
 		{ label: 'Date', value: '27 February 2027' },
 		{ label: 'Time', value: '2:00 PM' },
-		{ label: 'Venue', value: 'Loeb Playhouse' },
-		{ label: 'Tickets', value: 'From $12' }
+		{ label: 'Venue', value: 'Loeb Playhouse' }
 	];
 
 	const ticketsUrl = 'https://convocations.purdue.edu/event/tedxpurdue-unseen/';
@@ -40,10 +39,7 @@
 		organizer: { '@id': `${site.url}/#organization` },
 		offers: {
 			'@type': 'Offer',
-			url: ticketsUrl,
-			price: 12,
-			priceCurrency: 'USD',
-			availability: 'https://schema.org/InStock'
+			url: ticketsUrl
 		}
 	};
 </script>

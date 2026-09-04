@@ -154,6 +154,10 @@
 		min-width: 0;
 	}
 
+	.hero-copy .btn {
+		align-self: flex-start;
+	}
+
 	.hero-media {
 		min-width: 0;
 	}
