@@ -8,13 +8,22 @@
 
 :root {
 	--bg: #faf9f8;
+	/* The bright TEDx red stays available for decorative rules, icons, and
+	   focus indicators (3.57:1 against the canvas, exceeding the 3:1 UI
+	   requirement). Text and filled controls use the darker companion below:
+	   #c82100 is 5.44:1 against the canvas and white is 5.72:1 on it. */
 	--red: #ff2b06;
+	--red-accessible: #c82100;
 	--text: #14100f;
 	--text-muted: #443e3a;
 	--text-dim: #5f5852;
-	--text-faint: #7d766f;
-	--text-fainter: #8b847c;
-	--text-faintest: #948d85;
+	/* Supporting text steps down in a consistent visual order while remaining at
+	   or above 4.5:1 on the canvas. The darker --text-on-fill is reserved for
+	   captions over the tinted placeholder fill. */
+	--text-faint: #756e67; /* 4.78:1 */
+	--text-fainter: #766f68; /* 4.71:1 */
+	--text-faintest: #786f68; /* 4.67:1 */
+	--text-on-fill: #6f6861; /* 4.71:1 on --fill */
 	--rule: #e4dfd9;
 	--border: #d9d3cc;
 	--border-strong: #cbc4bc;
@@ -42,7 +51,7 @@ body {
 }
 
 a {
-	color: var(--red);
+	color: var(--red-accessible);
 	text-decoration: none;
 }
 
@@ -51,7 +60,7 @@ a:hover {
 }
 
 ::selection {
-	background: var(--red);
+	background: var(--red-accessible);
 	color: #fff;
 }
 
@@ -143,7 +152,7 @@ p {
 }
 
 .btn--primary {
-	background: var(--red);
+	background: var(--red-accessible);
 	color: #fff;
 }
 
@@ -158,8 +167,8 @@ p {
 }
 
 .btn--outline:hover {
-	border-color: var(--red);
-	color: var(--red);
+	border-color: var(--red-accessible);
+	color: var(--red-accessible);
 }
 
 /* A red-underlined text link that reads as a call to action. */
@@ -169,8 +178,8 @@ p {
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	font-weight: 700;
-	color: var(--red);
-	border-bottom: 2px solid var(--red);
+	color: var(--red-accessible);
+	border-bottom: 2px solid var(--red-accessible);
 	padding-bottom: 4px;
 }
 

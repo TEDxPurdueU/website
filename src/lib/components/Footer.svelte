@@ -131,7 +131,7 @@
 	}
 
 	.page-links a:hover {
-		color: var(--red);
+		color: var(--red-accessible);
 	}
 
 	.colophon {

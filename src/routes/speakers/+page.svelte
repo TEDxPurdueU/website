@@ -267,7 +267,7 @@
 	}
 
 	.winner__cta:hover {
-		color: var(--red);
+		color: var(--red-accessible);
 	}
 
 	.cta__play {

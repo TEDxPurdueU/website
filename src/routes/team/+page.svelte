@@ -119,7 +119,7 @@
 
 	.member-role {
 		font-size: 14px;
-		color: var(--red);
+		color: var(--red-accessible);
 		letter-spacing: 0.06em;
 	}
 
