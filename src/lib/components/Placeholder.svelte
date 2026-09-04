@@ -56,7 +56,7 @@
 	span {
 		font-family: var(--mono);
 		font-size: 12px;
-		color: var(--text-fainter);
+		color: var(--text-on-fill);
 	}
 
 	.placeholder.compact span {

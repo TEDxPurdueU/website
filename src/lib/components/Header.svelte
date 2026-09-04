@@ -251,7 +251,7 @@
 
 	.nav-link:hover,
 	.nav-link.active {
-		color: var(--red);
+		color: var(--red-accessible);
 	}
 
 	/* The right-hand group. Holding the social set and the toggle together
@@ -300,7 +300,7 @@
 	.join {
 		flex-shrink: 0;
 		padding: 12px 18px;
-		background: var(--red);
+		background: var(--red-accessible);
 		color: #fff;
 		font-size: 12px;
 		font-weight: 700;
@@ -408,7 +408,7 @@
 
 	.menu__link:hover,
 	.menu__link.active {
-		color: var(--red);
+		color: var(--red-accessible);
 	}
 
 	/* Bigger than the bar's set and sized for thumbs: the panel has the room,

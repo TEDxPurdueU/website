@@ -3,6 +3,7 @@
 	import Lightbox from '$lib/components/Lightbox.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import { gallery as galleryPhotos } from '$lib/gallery.js';
+	import { galleryDescriptions } from '$lib/gallery-descriptions.js';
 	import { site } from '$lib/seo.js';
 	import { socials } from '$lib/nav.js';
 
@@ -94,16 +95,22 @@
 		}
 	];
 
-	const PER_PAGE = 10;
+	// `gallery.js` is generated, so descriptive alt text is maintained separately
+	// and joined here by the stable full-image URL.
+	const accessibleGalleryPhotos = galleryPhotos.map((photo) => ({
+		...photo,
+		label: galleryDescriptions[photo.src] ?? photo.label,
+		alt: galleryDescriptions[photo.src] ?? photo.label
+	}));
 
 	// The prerendered HTML carries one fixed order, so the reshuffle has to wait
 	// until after hydration or the client markup would disagree with it. Fifty-odd
 	// array items cost nothing to shuffle, and the image URLs are unchanged, so
 	// the browser cache still hits.
-	let photos = $state(galleryPhotos);
+	let photos = $state(accessibleGalleryPhotos);
 
 	$effect(() => {
-		const next = [...galleryPhotos];
+		const next = [...accessibleGalleryPhotos];
 		for (let i = next.length - 1; i > 0; i--) {
 			const j = Math.floor(Math.random() * (i + 1));
 			[next[i], next[j]] = [next[j], next[i]];
@@ -112,15 +119,60 @@
 	});
 
 	let page = $state(0);
+	/** @type {HTMLDivElement | undefined} */
+	let galleryGrid = $state();
+	// This SSR-safe baseline preserves the existing ten-photo markup until the
+	// browser measures the real CSS grid after hydration.
+	let galleryColumns = $state(5);
+	let galleryIsMobile = $state(false);
+	let previousPerPage = $state(10);
 	// -1 is "closed"; anything else is an index into the whole gallery, not into
 	// the current page, so the lightbox can run past a page boundary.
 	let openIndex = $state(-1);
 
-	const pageCount = $derived(Math.ceil(photos.length / PER_PAGE));
-	const pageStart = $derived(page * PER_PAGE);
-	const pagePhotos = $derived(photos.slice(pageStart, pageStart + PER_PAGE));
+	const galleryRows = $derived(galleryIsMobile ? 3 : 2);
+	const perPage = $derived(galleryColumns * galleryRows);
+	const pageCount = $derived(Math.ceil(photos.length / perPage));
+	const pageStart = $derived(page * perPage);
+	const pagePhotos = $derived(photos.slice(pageStart, pageStart + perPage));
 	/** @type {number[]} */
 	const pageNumbers = $derived(Array.from({ length: pageCount }, (_, i) => i));
+
+	// The grid uses auto-fit, so its column count is a layout result rather than
+	// a breakpoint we can safely duplicate in JavaScript. Observe it instead:
+	// desktop gets two complete rows and the touch layout gets three.
+	$effect(() => {
+		if (!galleryGrid) return;
+
+		const grid = galleryGrid;
+		const mobile = window.matchMedia('(max-width: 720px)');
+		const updatePagination = () => {
+			galleryIsMobile = mobile.matches;
+			const tracks = getComputedStyle(grid).gridTemplateColumns.trim().split(/\s+/);
+			galleryColumns = Math.max(1, tracks.filter(Boolean).length);
+		};
+		const observer = new ResizeObserver(updatePagination);
+
+		updatePagination();
+		observer.observe(grid);
+		mobile.addEventListener('change', updatePagination);
+
+		return () => {
+			observer.disconnect();
+			mobile.removeEventListener('change', updatePagination);
+		};
+	});
+
+	// On reflow retain the first item of the current page instead of resetting a
+	// visitor to the beginning of the gallery.
+	$effect(() => {
+		const nextPage = Math.min(
+			Math.floor((page * previousPerPage) / perPage),
+			Math.max(0, pageCount - 1)
+		);
+		previousPerPage = perPage;
+		if (page !== nextPage) page = nextPage;
+	});
 </script>
 
 <Seo
@@ -163,7 +215,7 @@
 <div class="hero-rule"><div class="hero-rule__line"></div></div>
 
 <section class="who">
-	<div class="section-label">Who we are</div>
+	<h2 class="section-label">Who we are</h2>
 	<div class="who__copy">
 		<p class="who__lead">
 			TEDxPurdueU is the official TEDx chapter at Purdue University.
@@ -178,7 +230,7 @@
 
 <section class="programmes">
 	<div class="programmes__head">
-		<div class="section-label">What we do</div>
+		<h2 class="section-label">What we do</h2>
 	</div>
 	{#each programmes as item (item.number)}
 		<a class="programme" href={item.href}>
@@ -228,7 +280,7 @@
 	<div class="gallery__head">
 		<h2>Gallery</h2>
 	</div>
-	<div class="gallery__grid">
+	<div class="gallery__grid" bind:this={galleryGrid}>
 		{#each pagePhotos as photo, i (photo.src)}
 			<button
 				class="gallery__item"
@@ -236,7 +288,7 @@
 				aria-label="View {photo.label} larger"
 				onclick={() => (openIndex = pageStart + i)}
 			>
-				<Placeholder ratio="3/4" label={photo.label} src={photo.thumb} alt={photo.label} />
+				<Placeholder ratio="3/4" label={photo.label} src={photo.thumb} alt={photo.alt} />
 			</button>
 		{/each}
 	</div>
@@ -344,7 +396,7 @@
 		/* Once the tile is phone-narrow the label wraps and the 4/3 box can no
 		   longer hold the copy; letting it outgrow the ratio beats clipping. */
 		min-height: min-content;
-		background: var(--red);
+		background: var(--red-accessible);
 		color: #fff;
 		/* The tile is a quarter of the collage, so on a phone it is only ~130px
 		   across — desktop's fixed padding and gap would clip the date out. */
@@ -366,7 +418,6 @@
 		font-size: 12px;
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
-		opacity: 0.85;
 	}
 
 	.next-card__title {
@@ -381,7 +432,6 @@
 	.next-card__meta {
 		font-size: 13px;
 		letter-spacing: 0.06em;
-		opacity: 0.9;
 	}
 
 	/* The hairline that closes the hero, inset to the page gutter. */
@@ -407,9 +457,12 @@
 	/* Shared label for the two paired sections — "Who we are" / "What we do". */
 	.section-label {
 		font-size: 13px;
+		/* h2 supplies the document structure; this keeps the former plain-label
+		   weight so the visual hierarchy does not change. */
+		font-weight: 400;
 		letter-spacing: 0.22em;
 		text-transform: uppercase;
-		color: var(--red);
+		color: var(--red-accessible);
 	}
 
 	.who__copy {
@@ -501,7 +554,7 @@
 
 	.programme__number {
 		font-size: 14px;
-		color: var(--red);
+		color: var(--red-accessible);
 		font-weight: 700;
 		letter-spacing: 0.1em;
 	}
@@ -630,7 +683,7 @@
 
 	.speaker__count {
 		font-weight: 700;
-		color: var(--red);
+		color: var(--red-accessible);
 	}
 
 	/* A quiet text link rather than a filled button: six red slabs in a row
@@ -651,7 +704,7 @@
 	}
 
 	.speaker__cta:hover {
-		color: var(--red);
+		color: var(--red-accessible);
 	}
 
 	.cta__play {
@@ -764,13 +817,13 @@
 
 	.pager__step:hover:not(:disabled),
 	.pager__page:hover {
-		border-color: var(--red);
-		color: var(--red);
+		border-color: var(--red-accessible);
+		color: var(--red-accessible);
 	}
 
 	.pager__page[aria-current='page'] {
-		background: var(--red);
-		border-color: var(--red);
+		background: var(--red-accessible);
+		border-color: var(--red-accessible);
 		color: #fff;
 	}
 
