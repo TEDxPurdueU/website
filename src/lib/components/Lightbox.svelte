@@ -128,7 +128,6 @@
 		</div>
 
 		<div class="lightbox__bar lightbox__bar--foot">
-			<span class="lightbox__label">{photo.label}</span>
 			<div class="lightbox__nav">
 				<button class="ctrl" type="button" onclick={prev} aria-label="Previous photo">
 					<span aria-hidden="true">←</span>
@@ -197,16 +196,6 @@
 		font-size: 12px;
 		letter-spacing: 0.08em;
 		color: var(--text-faint);
-		padding-left: 4px;
-	}
-
-	.lightbox__label {
-		min-width: 0;
-		font-size: 13px;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		overflow-wrap: anywhere;
 		padding-left: 4px;
 	}
 
