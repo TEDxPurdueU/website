@@ -3,7 +3,6 @@
 	import Lightbox from '$lib/components/Lightbox.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import { gallery as galleryPhotos } from '$lib/gallery.js';
-	import { galleryDescriptions } from '$lib/gallery-descriptions.js';
 	import { site } from '$lib/seo.js';
 	import { socials } from '$lib/nav.js';
 
@@ -95,12 +94,14 @@
 		}
 	];
 
-	// `gallery.js` is generated, so descriptive alt text is maintained separately
-	// and joined here by the stable full-image URL.
+	const galleryImageAlt = 'Image from TEDxPurdueU Odyssey 2026';
+
+	// Keep the generated gallery metadata untouched while giving every image and
+	// its interactive thumbnail the same accurate, non-speculative accessible name.
 	const accessibleGalleryPhotos = galleryPhotos.map((photo) => ({
 		...photo,
-		label: galleryDescriptions[photo.src] ?? photo.label,
-		alt: galleryDescriptions[photo.src] ?? photo.label
+		label: galleryImageAlt,
+		alt: galleryImageAlt
 	}));
 
 	// The prerendered HTML carries one fixed order, so the reshuffle has to wait
@@ -285,7 +286,7 @@
 			<button
 				class="gallery__item"
 				type="button"
-				aria-label="View {photo.label} larger"
+				aria-label={photo.alt}
 				onclick={() => (openIndex = pageStart + i)}
 			>
 				<Placeholder ratio="3/4" label={photo.label} src={photo.thumb} alt={photo.alt} />
