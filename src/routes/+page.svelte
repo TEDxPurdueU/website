@@ -7,7 +7,7 @@
 	import { socials } from '$lib/nav.js';
 
 	const description =
-		'TEDxPurdueU is Purdue University’s student-run TEDx organization, producing an annual conference, community salons, and a student speaker competition.';
+		'TEDxPurdueU is the official TEDx chapter at Purdue University. We organize a TEDx conference every year, drawing 500+ attendees.';
 	const homeStructuredData = [
 		{
 			'@type': 'WebSite',
@@ -124,7 +124,7 @@
 </script>
 
 <Seo
-	title="TEDxPurdueU | Ideas Worth Spreading at Purdue"
+	title="TEDxPurdueU"
 	{description}
 	path="/"
 	structuredData={homeStructuredData}

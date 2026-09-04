@@ -3,7 +3,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 
 	const description =
-		'Every Purdue student can compete for a speaking slot at the TEDxPurdueU conference. Pitch an idea, get coached, and take the Unseen stage.';
+		'Any currently enrolled Purdue student is eligible to take part in the Student Speaker Competition - the winner of which gets to speak at our main event.';
 
 	const steps = [
 		{
