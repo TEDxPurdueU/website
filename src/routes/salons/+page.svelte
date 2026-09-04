@@ -4,11 +4,11 @@
 	import Seo from '$lib/components/Seo.svelte';
 
 	const description =
-		'TEDxPurdueU Salons are free community events at Purdue: one idea, one small room, and a thoughtful conversation over food.';
+		'Salons are free events hosted throughout the year aimed at community engagement and bonding.';
 </script>
 
 <Seo
-	title="TEDxPurdueU Salons | Free Events at Purdue"
+	title="TEDxPurdueU Salons"
 	{description}
 	path="/salons"
 	image="/img/salon.webp"

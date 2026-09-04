@@ -25,7 +25,7 @@
 </script>
 
 <Seo
-	title="Meet the TEDxPurdueU Student Team"
+	title="TEDxPurdueU Team"
 	{description}
 	path="/team"
 	structuredData={teamStructuredData}

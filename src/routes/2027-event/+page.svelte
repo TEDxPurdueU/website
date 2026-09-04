@@ -5,7 +5,7 @@
 	import { site } from '$lib/seo.js';
 
 	const description =
-		'Unseen is the 2027 TEDxPurdueU conference at Loeb Playhouse: ideas about what sits just outside our attention and what changes when we look.';
+		"TEDxPurdueU: Unseen 2027 will be held on 27th February at Loeb Playhouse. We'll be exploring ideas and recognizing speakers usually not in the spotlight.";
 
 	const facts = [
 		{ label: 'Date', value: '27 February 2027' },
@@ -49,7 +49,7 @@
 </script>
 
 <Seo
-	title="TEDxPurdueU: Unseen 2027 | Purdue TEDx Conference"
+	title="TEDxPurdueU: Unseen 2027"
 	{description}
 	path="/2027-event"
 	image="/img/stage-group.webp"
