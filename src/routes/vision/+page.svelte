@@ -6,7 +6,7 @@
 
 	const values = [
 		{
-			title: 'Believe in the power of ideas',
+			title: 'Believe in the power of Ideas',
 			body: "One idea can spark enormous change: a new company, a new career, a new way of seeing the world. We believe that deeply, and it's the reason behind everything we do."
 		},
 		{

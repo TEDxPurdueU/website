@@ -185,7 +185,7 @@
 
 <section class="hero">
 	<div class="hero-copy">
-		<h1>Ideas worth<br />spreading.</h1>
+		<h1>Ideas Change<br />Everything</h1>
 		<p class="hero-lede">
 			One independently organized TED event each year, salons all semester, and a competition that
 			puts a student in the spotlight.
