@@ -14,7 +14,8 @@ export const indexablePages = [
 	{ path: '/2027-event', changeFrequency: 'weekly', priority: '0.9' },
 	{ path: '/speakers', changeFrequency: 'monthly', priority: '0.8' },
 	{ path: '/salons', changeFrequency: 'weekly', priority: '0.7' },
-	{ path: '/team', changeFrequency: 'monthly', priority: '0.6' }
+	{ path: '/team', changeFrequency: 'monthly', priority: '0.6' },
+	{ path: '/vision', changeFrequency: 'yearly', priority: '0.5' }
 ];
 
 /** @param {string} path */

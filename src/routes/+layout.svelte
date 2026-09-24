@@ -2,17 +2,25 @@
 	import '../app.css';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { page } from '$app/state';
 
 	let { children } = $props();
+
+	// /vision is a standalone read with its own logo, so it drops the site chrome.
+	const standalone = $derived(page.url.pathname === '/vision');
 </script>
 
 <div class="shell">
 	<a class="skip-link" href="#main-content">Skip to main content</a>
-	<Header />
+	{#if !standalone}
+		<Header />
+	{/if}
 	<main id="main-content" tabindex="-1">
 		{@render children()}
 	</main>
-	<Footer />
+	{#if !standalone}
+		<Footer />
+	{/if}
 </div>
 
 <style>
