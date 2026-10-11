@@ -35,7 +35,7 @@ export const members = [
 	{ name: 'Fatimah Khan', photo: null },
 	{ name: 'Matthew Krunnfusz', photo: null },
 	{ name: 'Kylyne Kuo', photo: null },
-	{ name: 'Maguire', photo: null },
+	{ name: 'Maguire Mosby', photo: null },
 	{ name: 'Linda Ontiveros', photo: null },
 	{ name: 'Mahi Ramteke', photo: null },
 	{ name: 'Anjali Ranasinghe', photo: null },
