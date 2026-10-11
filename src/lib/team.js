@@ -13,7 +13,7 @@
 export const team = [
 	{ name: 'Aayan Agarwal', role: 'President', photo: '/headshots/aayan-agarwal.webp' },
 	{ name: 'Ben Packer', role: 'Vice President', photo: '/headshots/ben-packer.webp' },
-	{ name: 'Sophia Smith', role: 'Marketing Director', photo: '/headshots/sophia-smith.webp' },
+	{ name: 'Sophia Smith', role: 'Marketing Chair', photo: '/headshots/sophia-smith.webp' },
 	{ name: 'Laiba Farooqi', role: 'Curations Chair', photo: '/headshots/laiba-farooqi.webp' },
 	{ name: 'Alaina Salsaa', role: 'Salons Chair', photo: '/headshots/alaina-salsaa.webp' },
 	{ name: 'Gia Sareen', role: 'Operations Chair', photo: '/headshots/gia-sareen.webp' }
@@ -26,23 +26,23 @@ export const team = [
  * @type {{ name: string, photo: string | null }[]}
  */
 export const members = [
-	{ name: 'Koree Arndt', photo: null },
-	{ name: 'Aryan Bansal', photo: null },
-	{ name: 'Riley Chapla', photo: null },
-	{ name: 'Elina Dawoodani', photo: null },
-	{ name: 'Connor Johnson', photo: null },
-	{ name: 'Shauryeh Raj Kapur', photo: null },
-	{ name: 'Fatimah Khan', photo: null },
-	{ name: 'Matthew Krunnfusz', photo: null },
-	{ name: 'Kylyne Kuo', photo: null },
-	{ name: 'Maguire Mosby', photo: null },
-	{ name: 'Linda Ontiveros', photo: null },
-	{ name: 'Mahi Ramteke', photo: null },
-	{ name: 'Anjali Ranasinghe', photo: null },
-	{ name: 'Sarah Robinovitz', photo: null },
-	{ name: 'Anthony John Rossini', photo: null },
-	{ name: 'Maya Seong', photo: null },
-	{ name: 'Newson Shen', photo: null },
-	{ name: 'Ajitesh Veeramachaneni', photo: null },
-	{ name: 'Lillian Whitson', photo: null }
+	{ name: 'Koree Arndt', photo: '/headshots/koree-arndt.webp' },
+	{ name: 'Aryan Bansal', photo: '/headshots/aryan-bansal.webp' },
+	{ name: 'Riley Chapla', photo: '/headshots/riley-chapla.webp' },
+	{ name: 'Elina Dawoodani', photo: '/headshots/elina-dawoodani.webp' },
+	{ name: 'Connor Johnson', photo: '/headshots/connor-johnson.webp' },
+	{ name: 'Shauryeh Raj Kapur', photo: '/headshots/shauryeh-raj-kapur.webp' },
+	{ name: 'Fatimah Khan', photo: '/headshots/fatimah-khan.webp' },
+	{ name: 'Matthew Krunnfusz', photo: '/headshots/matthew-krunnfusz.webp' },
+	{ name: 'Kylyne Kuo', photo: '/headshots/kylyne-kuo.webp' },
+	{ name: 'Maguire Mosby', photo: '/headshots/maguire-mosby.webp' },
+	{ name: 'Linda Ontiveros', photo: '/headshots/linda-ontiveros.webp' },
+	{ name: 'Mahi Ramteke', photo: '/headshots/mahi-ramteke.webp' },
+	{ name: 'Anjali Ranasinghe', photo: '/headshots/anjali-ranasinghe.webp' },
+	{ name: 'Sarah Robinovitz', photo: '/headshots/sarah-robinovitz.webp' },
+	{ name: 'Anthony John Rossini', photo: '/headshots/anthony-john-rossini.webp' },
+	{ name: 'Maya Seong', photo: '/headshots/maya-seong.webp' },
+	{ name: 'Newson Shen', photo: '/headshots/newson-shen.webp' },
+	{ name: 'Ajitesh Veeramachaneni', photo: '/headshots/ajitesh-veeramachaneni.webp' },
+	{ name: 'Lillian Whitson', photo: '/headshots/lillian-whitson.webp' }
 ];

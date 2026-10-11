@@ -50,6 +50,26 @@ CROPS = {
     'gia-sareen': (0.50, 0.685, 0.32),
     # Already close to a headshot; full width is as wide as it goes.
     'laiba-farooqi': (0.50, 0.550, 1.0),
+    # General members, from the member directory form.
+    'ajitesh-veeramachaneni': (0.45, 0.27, 0.70),
+    'anjali-ranasinghe': (0.52, 0.36, 0.55),
+    'anthony-john-rossini': (0.51, 0.36, 0.45),
+    'aryan-bansal': (0.50, 0.34, 0.80),
+    'connor-johnson': (0.50, 0.33, 0.85),
+    'elina-dawoodani': (0.50, 0.33, 0.55),
+    'fatimah-khan': (0.55, 0.38, 0.50),
+    'koree-arndt': (0.50, 0.50, 1.0),
+    'kylyne-kuo': (0.50, 0.40, 0.85),
+    'lillian-whitson': (0.50, 0.45, 1.0),
+    'linda-ontiveros': (0.50, 0.50, 1.0),
+    'maguire-mosby': (0.53, 0.45, 0.90),
+    'mahi-ramteke': (0.50, 0.45, 1.0),
+    'matthew-krunnfusz': (0.50, 0.38, 0.80),
+    'maya-seong': (0.50, 0.42, 0.90),
+    'newson-shen': (0.50, 0.45, 1.0),
+    'riley-chapla': (0.45, 0.40, 0.70),
+    'sarah-robinovitz': (0.50, 0.42, 1.0),
+    'shauryeh-raj-kapur': (0.52, 0.35, 0.85),
 }
 
 
