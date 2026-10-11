@@ -18,3 +18,31 @@ export const team = [
 	{ name: 'Alaina Salsaa', role: 'Salons Chair', photo: '/headshots/alaina-salsaa.webp' },
 	{ name: 'Gia Sareen', role: 'Operations Chair', photo: '/headshots/gia-sareen.webp' }
 ];
+
+/**
+ * General members, alphabetical by last name. Same shape as `team`; every
+ * row renders with the role "Member".
+ *
+ * @type {{ name: string, photo: string | null }[]}
+ */
+export const members = [
+	{ name: 'Koree Arndt', photo: null },
+	{ name: 'Aryan Bansal', photo: null },
+	{ name: 'Riley Chapla', photo: null },
+	{ name: 'Elina Dawoodani', photo: null },
+	{ name: 'Connor Johnson', photo: null },
+	{ name: 'Shauryeh Raj Kapur', photo: null },
+	{ name: 'Fatimah Khan', photo: null },
+	{ name: 'Matthew Krunnfusz', photo: null },
+	{ name: 'Kylyne Kuo', photo: null },
+	{ name: 'Maguire', photo: null },
+	{ name: 'Linda Ontiveros', photo: null },
+	{ name: 'Mahi Ramteke', photo: null },
+	{ name: 'Anjali Ranasinghe', photo: null },
+	{ name: 'Sarah Robinovitz', photo: null },
+	{ name: 'Anthony John Rossini', photo: null },
+	{ name: 'Maya Seong', photo: null },
+	{ name: 'Newson Shen', photo: null },
+	{ name: 'Ajitesh Veeramachaneni', photo: null },
+	{ name: 'Lillian Whitson', photo: null }
+];

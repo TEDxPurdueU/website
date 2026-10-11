@@ -3,7 +3,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import { applicationUrl, contactEmail } from '$lib/nav.js';
 	import { site } from '$lib/seo.js';
-	import { team } from '$lib/team.js';
+	import { members, team } from '$lib/team.js';
 
 	const description =
 		'Meet the Purdue students who lead TEDxPurdueU across curation, operations, marketing, salons, outreach, design, and partnerships.';
@@ -42,6 +42,7 @@
 </section>
 
 <section class="sec section--ruled">
+	<h2 class="sec-title">Leadership</h2>
 	<div class="roster">
 		{#each team as member (member.name)}
 			<div class="member">
@@ -54,6 +55,26 @@
 				<div>
 					<div class="member-name">{member.name}</div>
 					<div class="member-role">{member.role}</div>
+				</div>
+			</div>
+		{/each}
+	</div>
+</section>
+
+<section class="sec section--ruled">
+	<h2 class="sec-title">General Members</h2>
+	<div class="roster">
+		{#each members as member (member.name)}
+			<div class="member">
+				<Placeholder
+					ratio="1/1"
+					label={member.name}
+					src={member.photo ?? undefined}
+					alt="{member.name}, Member"
+				/>
+				<div>
+					<div class="member-name">{member.name}</div>
+					<div class="member-role">Member</div>
 				</div>
 			</div>
 		{/each}
@@ -94,6 +115,12 @@
 
 	.sec {
 		padding: 7vh var(--gutter);
+	}
+
+	.sec-title {
+		font-size: clamp(24px, 2.8vw, 34px);
+		letter-spacing: -0.02em;
+		margin-bottom: 32px;
 	}
 
 	/* The 42% floor holds the roster two-up on a phone — six full-width square
