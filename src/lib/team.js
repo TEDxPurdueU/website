@@ -29,7 +29,6 @@ export const members = [
 	{ name: 'Koree Arndt', photo: '/headshots/koree-arndt.webp' },
 	{ name: 'Aryan Bansal', photo: '/headshots/aryan-bansal.webp' },
 	{ name: 'Riley Chapla', photo: '/headshots/riley-chapla.webp' },
-	{ name: 'Elina Dawoodani', photo: '/headshots/elina-dawoodani.webp' },
 	{ name: 'Connor Johnson', photo: '/headshots/connor-johnson.webp' },
 	{ name: 'Shauryeh Raj Kapur', photo: '/headshots/shauryeh-raj-kapur.webp' },
 	{ name: 'Fatimah Khan', photo: '/headshots/fatimah-khan.webp' },
