@@ -1,4 +1,7 @@
+import events from './events.json';
+
 /**
+ * Salons, from `events.json` (kept up to date by the events portal; see portal/README.md).
  * Every salon, in any order. The salons page splits them into Upcoming and Past
  * by `end`, so nothing here needs moving once a salon is over.
  *
@@ -18,17 +21,4 @@
  *   rsvp: string | null
  * }[]}
  */
-export const salons = [
-	{
-		slug: 'daniel-stenberg-ama',
-		title: 'AMA with Daniel Stenberg',
-		blurb:
-			'Ask the inventor of cURL anything. cURL powers HTTP requests on billions of devices, and Daniel was recently awarded the Gold Medal by the Royal Swedish Academy of Engineering Sciences.',
-		start: '2026-10-17T12:00',
-		end: '2026-10-17T13:00',
-		collab: 'Purdue Hackers',
-		image: '/img/salon-daniel-stenberg.webp',
-		imageAlt: 'Flyer for the AMA with Daniel Stenberg, Sat Oct 17 at 12:00 PM',
-		rsvp: 'https://luma.com/ovmbfrtu'
-	}
-];
+export const salons = events.filter((e) => e.type === 'salon');
