@@ -2,7 +2,7 @@
  * Every salon, in any order. The salons page splits them into Upcoming and Past
  * by `end`, so nothing here needs moving once a salon is over.
  *
- * `image` is a portrait (3:4) path under `static/`, or `null` until we have one
+ * `image` is a portrait (4:5) path under `static/`, or `null` until we have one
  * — those render the hatched placeholder. `collab` and `rsvp` are optional.
  * Times are Purdue local time (America/Indiana/Indianapolis).
  *
@@ -23,12 +23,12 @@ export const salons = [
 		slug: 'daniel-stenberg-ama',
 		title: 'AMA with Daniel Stenberg',
 		blurb:
-			'Ask the lead developer of curl anything. An open conversation, with your questions driving the hour.',
+			'TEDxPurdueU and Purdue Hackers are hosting an AMA with Daniel Stenberg, the inventor of cURL. cURL has become one of the most widely used open source technologies and is used by billions of devices to make HTTP requests. He was recently awarded the Gold Medal by the Royal Swedish Academy of Engineering Sciences.',
 		start: '2026-10-17T12:00',
 		end: '2026-10-17T13:00',
 		collab: 'Purdue Hackers',
-		image: null,
-		imageAlt: 'Daniel Stenberg',
-		rsvp: null
+		image: '/img/salon-daniel-stenberg.webp',
+		imageAlt: 'Flyer for the AMA with Daniel Stenberg, Sat Oct 17 at 12:00 PM',
+		rsvp: 'https://luma.com/ovmbfrtu'
 	}
 ];
