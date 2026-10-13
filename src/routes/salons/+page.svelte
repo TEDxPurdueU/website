@@ -109,9 +109,10 @@
 							<h3 class="event-title">{s.title}</h3>
 							<p class="body-text">{s.blurb}</p>
 							{#if s.collab}
-								<p class="collab">
-									In collaboration with <strong>{s.collab}</strong>
-								</p>
+								<dl class="meta">
+									<dt>Hosted with</dt>
+									<dd>{s.collab}</dd>
+								</dl>
 							{/if}
 							<div class="actions">
 								{#if s.rsvp}
@@ -276,14 +277,23 @@
 		letter-spacing: -0.02em;
 	}
 
-	.collab {
-		font-size: 15px;
-		color: var(--text-dim);
+	.meta {
+		margin: 0;
+		display: flex;
+		gap: 16px;
+		font-size: 16px;
+		border-top: 1px solid var(--rule);
+		padding-top: 18px;
 	}
 
-	.collab strong {
-		color: var(--text);
-		border-bottom: 2px solid var(--red);
+	.meta dt {
+		color: var(--text-dim);
+		min-width: 110px;
+	}
+
+	.meta dd {
+		margin: 0;
+		font-weight: 700;
 	}
 
 	.actions {

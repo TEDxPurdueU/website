@@ -22,8 +22,7 @@ export const salons = [
 	{
 		slug: 'daniel-stenberg-ama',
 		title: 'AMA with Daniel Stenberg',
-		blurb:
-			'TEDxPurdueU and Purdue Hackers are hosting an AMA with Daniel Stenberg, the inventor of cURL. cURL has become one of the most widely used open source technologies and is used by billions of devices to make HTTP requests. He was recently awarded the Gold Medal by the Royal Swedish Academy of Engineering Sciences.',
+		blurb: 'Ask the inventor of cURL anything. cURL is used by billions of devices.',
 		start: '2026-10-17T12:00',
 		end: '2026-10-17T13:00',
 		collab: 'Purdue Hackers',
