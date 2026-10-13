@@ -24,3 +24,6 @@ _originals/
 # regenerates this one, and Vercel would prefer it over the npm lockfile if it
 # ever landed — so it stays out of the repo.
 pnpm-lock.yaml
+
+# Event/team images downloaded from Drive by scripts/sync-events.js at build time
+/static/cms/

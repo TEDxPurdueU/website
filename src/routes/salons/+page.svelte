@@ -17,10 +17,10 @@
 	// "now" expressed in Purdue time.
 	const stamp = $derived(now.toLocaleString('sv-SE', { timeZone: tz }).replace(' ', 'T').slice(0, 16));
 	const upcoming = $derived(
-		salons.filter((s) => s.end >= stamp).sort((a, b) => a.start.localeCompare(b.start))
+		salons.filter((s) => s.end >= stamp && (!s.visibleFrom || s.visibleFrom <= stamp)).sort((a, b) => a.start.localeCompare(b.start))
 	);
 	const past = $derived(
-		salons.filter((s) => s.end < stamp).sort((a, b) => b.start.localeCompare(a.start))
+		salons.filter((s) => s.end < stamp && (!s.visibleFrom || s.visibleFrom <= stamp)).sort((a, b) => b.start.localeCompare(a.start))
 	);
 
 	/** @param {string} local e.g. 2026-10-17T12:00 */

@@ -1,0 +1,14 @@
+name = "tedx-portal"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+# Fill these in during setup (see README.md). None of them are secrets.
+[vars]
+SHEET_ID = ""         # the Google Sheet's id (the long part of its URL)
+DRIVE_FOLDER_ID = ""  # Drive folder that holds uploaded images
+TEAM_DOMAIN = ""      # e.g. tedxpurdueu.cloudflareaccess.com
+POLICY_AUD = ""       # the Access application's AUD tag
+
+# Secrets (set with `npx wrangler secret put <NAME>`, never commit):
+#   GOOGLE_SA        the service account's JSON key
+#   DEPLOY_HOOK_URL  Vercel deploy hook, used by "Publish site"
