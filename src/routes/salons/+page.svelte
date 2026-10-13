@@ -107,13 +107,13 @@
 								<span class="time">{time(s.start)}</span>
 							</div>
 							<h3 class="event-title">{s.title}</h3>
-							<p class="body-text">{s.blurb}</p>
 							{#if s.collab}
 								<dl class="meta">
 									<dt>Hosted with</dt>
 									<dd>{s.collab}</dd>
 								</dl>
 							{/if}
+							<p class="blurb">{s.blurb}</p>
 							<div class="actions">
 								{#if s.rsvp}
 									<a class="btn btn--primary" href={s.rsvp}>RSVP</a>
@@ -275,6 +275,12 @@
 		font-size: clamp(28px, 4vw, 44px);
 		line-height: 1.05;
 		letter-spacing: -0.02em;
+	}
+
+	.blurb {
+		font-size: 19px;
+		line-height: 1.6;
+		color: var(--text-muted);
 	}
 
 	.meta {

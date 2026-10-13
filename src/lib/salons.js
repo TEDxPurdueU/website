@@ -22,7 +22,8 @@ export const salons = [
 	{
 		slug: 'daniel-stenberg-ama',
 		title: 'AMA with Daniel Stenberg',
-		blurb: 'Ask the inventor of cURL anything. cURL is used by billions of devices.',
+		blurb:
+			'Ask the inventor of cURL anything. cURL powers HTTP requests on billions of devices, and Daniel was recently awarded the Gold Medal by the Royal Swedish Academy of Engineering Sciences.',
 		start: '2026-10-17T12:00',
 		end: '2026-10-17T13:00',
 		collab: 'Purdue Hackers',
