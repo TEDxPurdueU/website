@@ -66,7 +66,12 @@ try {
 	if (!events.length || !events[0].slug || !events[0].title || !team.length || !team[0].name) throw new Error('sheet columns look wrong');
 
 	const eventsOut = [];
+	const dt = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
 	for (const e of events.filter((e) => yes(e.published) && !yes(e.deleted))) {
+		if (!dt.test(e.start) || !dt.test(e.end) || e.end < e.start) {
+			console.warn(`events: skipped "${e.title}" (bad start/end dates)`);
+			continue;
+		}
 		eventsOut.push({
 			slug: e.slug,
 			type: e.type === 'main' ? 'main' : e.type,
@@ -79,7 +84,8 @@ try {
 			rsvp: e.rsvp || null,
 			button: e.button_url ? { label: e.button_label || 'Learn more', url: e.button_url } : null,
 			image: await localImage(e.image),
-			imageAlt: e.image_alt
+			imageAlt: e.image_alt,
+			visibleFrom: e.visible_from || null
 		});
 	}
 

@@ -11,6 +11,7 @@
 		"rsvp": "https://luma.com/ovmbfrtu",
 		"button": null,
 		"image": "/img/salon-daniel-stenberg.webp",
-		"imageAlt": "Flyer for the AMA with Daniel Stenberg, Sat Oct 17 at 12:00 PM"
+		"imageAlt": "Flyer for the AMA with Daniel Stenberg, Sat Oct 17 at 12:00 PM",
+		"visibleFrom": null
 	}
 ]

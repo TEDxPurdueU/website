@@ -20,7 +20,7 @@ If the portal ever breaks, officers can edit the Sheet directly; the site doesn'
 4. Upload a flyer or headshot (it is shrunk automatically), or leave it empty.
 5. **Save**, then click **Publish site** once you're done. The website updates in about 7 minutes (Google refreshes the Sheet's public copy every few minutes).
 
-"Show on website" off hides something without deleting it. Delete also hides it, and the row stays in the Sheet (use the Sheet's version history to undo).
+"Show on website" off hides something without deleting it. "Visible from" (optional) keeps it off the site until that date and time. It is hidden in the visitor's browser, so the details are still in the page source early; do not use it for secrets. Delete also hides it, and the row stays in the Sheet (use the Sheet's version history to undo).
 If an image upload fails, the error says so; ask an officer to check the Drive folder (see Troubleshooting).
 
 ## One-time setup (officer, using the club Google account and club Cloudflare account)
