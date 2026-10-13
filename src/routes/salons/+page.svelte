@@ -99,7 +99,7 @@
 				{#each upcoming as s (s.slug)}
 					<article class="event" id={s.slug}>
 						<div class="portrait">
-							<Placeholder ratio="3/4" src={s.image ?? undefined} alt={s.imageAlt} label="Portrait image" />
+							<Placeholder ratio="4/5" src={s.image ?? undefined} alt={s.imageAlt} label="Portrait image" />
 						</div>
 						<div class="info">
 							<div class="when">
@@ -160,7 +160,7 @@
 			<div class="grid">
 				{#each past as s (s.slug)}
 					<article class="card">
-						<Placeholder ratio="3/4" src={s.image ?? undefined} alt={s.imageAlt} label="Portrait image" />
+						<Placeholder ratio="4/5" src={s.image ?? undefined} alt={s.imageAlt} label="Portrait image" />
 						<span class="label">{longDay(s.start)}</span>
 						<h3 class="card-title">{s.title}</h3>
 						{#if s.collab}<p class="body-text">With {s.collab}</p>{/if}
