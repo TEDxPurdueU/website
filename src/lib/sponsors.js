@@ -17,5 +17,10 @@ export const sponsors = [
 		name: 'Department of Computer Science',
 		url: 'https://www.cs.purdue.edu',
 		logo: '/sponsors/purdue-cs.webp'
+	},
+	{
+		name: 'Department of English',
+		url: 'https://cla.purdue.edu/academic/english/',
+		logo: null
 	}
 ];

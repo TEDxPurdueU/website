@@ -136,7 +136,10 @@
 		border-color: var(--red-accessible);
 	}
 
+	/* flex: 1 lets a wordmark tile, which has no caption, fill the row height
+	   instead of leaving a blank band under it next to captioned tiles. */
 	.mark {
+		flex: 1;
 		aspect-ratio: 16 / 9;
 		display: grid;
 		place-items: center;
