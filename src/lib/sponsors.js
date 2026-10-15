@@ -21,6 +21,6 @@ export const sponsors = [
 	{
 		name: 'Department of English',
 		url: 'https://cla.purdue.edu/academic/english/',
-		logo: null
+		logo: '/sponsors/purdue.webp'
 	}
 ];
