@@ -33,8 +33,8 @@
 	<div class="hero-inner">
 		<h1 class="page-title">Sponsors</h1>
 		<p class="lede">
-			TEDxPurdueU is free to attend because of the organizations below. Their support puts
-			speakers on stage, audiences in seats, and ideas in front of the Purdue community.
+			Our sponsors enable us to host such events and provide a platform for the Purdue
+			community to share their ideas and stories.
 		</p>
 	</div>
 </section>
