@@ -37,7 +37,7 @@ export const salons = [
 		blurb:
 			'A fireside chat with Harshita Arora, General Partner at Y Combinator, on building startups. YC has backed OpenAI, Airbnb, DoorDash, Reddit and Twitch.',
 		start: '2026-10-26T17:30',
-		end: '2026-10-26T19:00',
+		end: '2026-10-26T20:30',
 		collab: null,
 		image: '/img/salon-yc-purdue.webp',
 		imageAlt: 'Flyer for Y Combinator at Purdue, a fireside chat with Harshita Arora, Oct 26 at 5:30 PM',
