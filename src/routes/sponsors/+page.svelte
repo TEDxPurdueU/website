@@ -41,7 +41,7 @@
 
 <section class="sec section--ruled">
 	<div class="wrap">
-		<h2 class="list-heading">Current sponsors</h2>
+		<h2 class="list-heading">Sponsors</h2>
 		<ul class="grid">
 			{#each sponsors as sponsor (sponsor.name)}
 				<li>
