@@ -52,9 +52,6 @@
 						target={sponsor.url ? '_blank' : undefined}
 						rel={sponsor.url ? 'noopener noreferrer' : undefined}
 					>
-						{#if sponsor.url}
-							<span class="go" aria-hidden="true">↗</span>
-						{/if}
 						<div class="mark">
 							{#if sponsor.logo}
 								<!-- The name is printed in the caption, so the mark itself is decorative. -->
@@ -127,7 +124,6 @@
 	}
 
 	.tile {
-		position: relative;
 		height: 100%;
 		display: flex;
 		flex-direction: column;
@@ -138,26 +134,6 @@
 
 	a.tile:hover {
 		border-color: var(--red-accessible);
-	}
-
-	/* Always visible so touch screens, which never hover, still see the tile is a
-	   link. The ↗ also signals that it opens a new tab. */
-	.go {
-		position: absolute;
-		top: 12px;
-		right: 14px;
-		font-size: 20px;
-		line-height: 1;
-		color: var(--text-dim);
-		transition:
-			color 0.15s ease,
-			transform 0.25s ease;
-	}
-
-	a.tile:hover .go,
-	a.tile:focus-visible .go {
-		color: var(--red);
-		transform: translate(3px, -3px);
 	}
 
 	.mark {
