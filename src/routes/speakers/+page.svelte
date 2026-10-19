@@ -172,9 +172,9 @@
 	}
 
 	.when {
-		font-size: 13px;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
+		font-size: clamp(22px, 3vw, 36px);
+		line-height: 1.1;
+		letter-spacing: -0.02em;
 		font-weight: 700;
 		color: var(--red-accessible);
 	}
