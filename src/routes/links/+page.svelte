@@ -24,6 +24,9 @@
 	const sources = ['flyer', 'instagram', 'email', 'linkedin', 'newsletter', 'poster'];
 
 	let unlocked = $state(false);
+	// A preview or local copy: its links and QR codes point at the real site, where a link
+	// made here (or this whole version) does not exist until it is merged.
+	let offSite = $state(false);
 	let password = $state('');
 	let entered = $state('');
 	let wrong = $state(false);
@@ -56,6 +59,7 @@
 	}
 
 	onMount(async () => {
+		offSite = !['tedxpurdueu.org', 'www.tedxpurdueu.org'].includes(location.hostname);
 		try {
 			const saved = sessionStorage.getItem(UNLOCK_KEY);
 			if (saved && (await isPassword(saved))) {
@@ -157,9 +161,8 @@
 		return link.toString();
 	});
 
-	const fileName = $derived(
-		[path.replace(/^\//, '') || 'home', tag, 'qr'].filter(Boolean).join('-') + '.svg'
-	);
+	// What the downloaded QR files are called, without the extension.
+	const fileName = $derived([path.replace(/^\//, '') || 'home', tag, 'qr'].filter(Boolean).join('-'));
 
 	// "Open" stays on whichever site this page is running on, so testing a link on a
 	// local run visits the local site instead of adding a visit to production.
@@ -209,12 +212,38 @@
 		announce('Copied');
 	}
 
-	function downloadQr() {
+	/**
+	 * @param {Blob} blob
+	 * @param {string} name
+	 */
+	function save(blob, name) {
 		const link = document.createElement('a');
-		link.href = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
-		link.download = fileName;
+		link.href = URL.createObjectURL(blob);
+		link.download = name;
 		link.click();
 		setTimeout(() => URL.revokeObjectURL(link.href));
+	}
+
+	const downloadSvg = () => save(new Blob([svg], { type: 'image/svg+xml' }), `${fileName}.svg`);
+
+	// The PNG is the same QR code drawn at a whole-number multiple of its size, so every
+	// square lands on exact pixels, and at least 1024px wide so it holds up in print.
+	async function downloadPng() {
+		const image = new Image();
+		image.src = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+		try {
+			await image.decode();
+		} finally {
+			URL.revokeObjectURL(image.src);
+		}
+		const size = image.naturalWidth * Math.ceil(1024 / image.naturalWidth);
+		const canvas = document.createElement('canvas');
+		canvas.width = canvas.height = size;
+		const context = /** @type {CanvasRenderingContext2D} */ (canvas.getContext('2d'));
+		context.fillStyle = '#fff';
+		context.fillRect(0, 0, size, size);
+		context.drawImage(image, 0, 0, size, size);
+		canvas.toBlob((blob) => blob && save(blob, `${fileName}.png`));
 	}
 </script>
 
@@ -389,9 +418,20 @@
 					{/if}
 				</div>
 
-				<button type="button" class="btn btn--outline download" onclick={downloadQr} disabled={!svg}>
-					Download SVG
-				</button>
+				<div class="actions">
+					<button type="button" class="btn btn--outline" onclick={downloadPng} disabled={!svg}>
+						Download PNG
+					</button>
+					<button type="button" class="btn btn--outline" onclick={downloadSvg} disabled={!svg}>
+						Download SVG
+					</button>
+				</div>
+				{#if offSite}
+					<p class="hint">
+						This is not the live site. The link and QR code point at {site.url.replace('https://', '')},
+						so they only work there once this version is merged.
+					</p>
+				{/if}
 				<p class="hint">Test-scan every printed QR code with a phone before it goes to the printer.</p>
 			</div>
 		</div>
@@ -573,7 +613,6 @@
 		height: 100%;
 	}
 
-.download,
 	.create {
 		align-self: flex-start;
 	}
