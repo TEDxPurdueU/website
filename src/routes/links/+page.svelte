@@ -188,7 +188,10 @@
 				qrFailed = false;
 			})
 			.catch(() => {
-				if (!stale) qrFailed = true;
+				if (stale) return;
+				// Drop the previous link's QR so the downloads cannot save it under this name.
+				svg = '';
+				qrFailed = true;
 			});
 		return () => (stale = true);
 	});

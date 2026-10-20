@@ -6,6 +6,9 @@ export const UTM_KEYS = ['utm_source'];
 
 const STORE = 'tedx_utm';
 
+/** Fallback for when storage is blocked: lasts until the page is reloaded. @type {Record<string, string>} */
+let memory = {};
+
 /**
  * The UTM tags present in a query string.
  *
@@ -31,19 +34,20 @@ export function parseUtm(search) {
 export function rememberUtm() {
 	const found = parseUtm(location.search);
 	if (!Object.keys(found).length) return;
+	memory = found;
 	try {
 		sessionStorage.setItem(STORE, JSON.stringify(found));
 	} catch {
-		// Storage can be blocked (private mode); the tags then last one page only.
+		// Storage can be blocked (private mode); the tags then live in `memory`.
 	}
 }
 
 /** @returns {Record<string, string>} the tags remembered for this visit. */
 export function currentUtm() {
 	try {
-		return JSON.parse(sessionStorage.getItem(STORE) ?? '{}');
+		return JSON.parse(sessionStorage.getItem(STORE) ?? 'null') ?? memory;
 	} catch {
-		return {};
+		return memory;
 	}
 }
 
