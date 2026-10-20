@@ -70,7 +70,7 @@
 
 <section class="hero section--ruled">
 	<div class="hero-copy">
-		<p class="when">Saturday, Nov 14 · 2–5 PM</p>
+		<p class="when">Saturday, Nov 14</p>
 		<h1>Student Speaker Competition</h1>
 		<p class="lede">
 			One slot on the Unseen stage goes to a student. You don't need a title, a lab, or a startup —
