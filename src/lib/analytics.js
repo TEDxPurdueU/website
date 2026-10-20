@@ -1,12 +1,14 @@
 /**
  * Visit analytics (PostHog). The library is imported on demand, in the
- * browser only, so it adds nothing to first paint. The project key comes from
- * the build environment; without one (local dev, forks) every export is a
- * silent no-op.
+ * browser only, so it adds nothing to first paint.
  */
 import { currentUtm } from '$lib/utm.js';
 
-const KEY = import.meta.env.VITE_POSTHOG_KEY;
+// A PostHog project key is public by design (it ships in every page), so it is
+// committed here and a build on any host tracks without extra configuration.
+// The env vars point a build at a different project or region.
+const KEY =
+	import.meta.env.VITE_POSTHOG_KEY || 'phc_kWaPb2wk2E7gdmV2BQavvJCQWWUcUX4fGMGqFfThxyAH';
 const HOST = import.meta.env.VITE_POSTHOG_HOST || 'https://us.i.posthog.com';
 
 /** @type {(value?: unknown) => void} */
