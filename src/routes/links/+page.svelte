@@ -1,19 +1,18 @@
 <script>
 	import { onMount } from 'svelte';
+	import { PASSWORD_SHA256 } from '$lib/linkspassword.js';
 	import { absoluteUrl, site } from '$lib/seo.js';
 	import { shortLinks } from '$lib/shortlinks.js';
 
-	// A static site has no server to check a password against, so this is a soft
-	// lock: it keeps casual visitors out of a team tool, and nothing secret sits
-	// behind it. To change the password: printf '%s' 'new password' | shasum -a 256
-	const PASSWORD_SHA256 = '0894012affbb630bb196cdee6a5c1d7fcf4510720800f20e65180a94a5735c54';
-	const UNLOCK_KEY = 'tedx_links_unlocked';
+	// This page only hides the builder from casual visitors (the check runs in the
+	// browser). Creating a short link is checked again on the server, in
+	// api/shortlinks.js, so the password is kept for the tab and sent along.
+	const UNLOCK_KEY = 'tedx_links_password';
 
 	// Short links come from the shared list, so a new one shows up here as soon as it is added.
-	const links = shortLinks.map(({ slug, what }) => ({
-		path: `/${slug}`,
-		label: what.charAt(0).toUpperCase() + what.slice(1)
-	}));
+	/** @param {string} what */
+	const label = (what) => what.charAt(0).toUpperCase() + what.slice(1);
+	const links = $state(shortLinks.map(({ slug, what }) => ({ path: `/${slug}`, label: label(what) })));
 
 	const pages = [
 		{ path: '/', label: 'Home' },
@@ -25,8 +24,15 @@
 	const sources = ['flyer', 'instagram', 'email', 'linkedin', 'newsletter', 'poster'];
 
 	let unlocked = $state(false);
+	let password = $state('');
 	let entered = $state('');
 	let wrong = $state(false);
+
+	let newUrl = $state('');
+	let newName = $state('');
+	let creating = $state(false);
+	let createError = $state('');
+	let createNote = $state('');
 
 	let path = $state(links[0].path);
 	let source = $state('');
@@ -38,9 +44,24 @@
 	/** @type {ReturnType<typeof setTimeout> | undefined} */
 	let timer;
 
-	onMount(() => {
+	/** @param {string} text */
+	async function isPassword(text) {
 		try {
-			unlocked = sessionStorage.getItem(UNLOCK_KEY) === '1';
+			const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+			const hash = Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, '0')).join('');
+			return hash === PASSWORD_SHA256;
+		} catch {
+			return false;
+		}
+	}
+
+	onMount(async () => {
+		try {
+			const saved = sessionStorage.getItem(UNLOCK_KEY);
+			if (saved && (await isPassword(saved))) {
+				password = saved;
+				unlocked = true;
+			}
 		} catch {
 			// Storage can be blocked (private mode); the password is then asked each visit.
 		}
@@ -49,18 +70,15 @@
 	/** @param {SubmitEvent} event */
 	async function unlock(event) {
 		event.preventDefault();
-		try {
-			const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(entered));
-			const hash = Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, '0')).join('');
-			if (hash !== PASSWORD_SHA256) throw new Error('wrong password');
-		} catch {
+		if (!(await isPassword(entered))) {
 			wrong = true;
 			entered = '';
 			return;
 		}
+		password = entered;
 		unlocked = true;
 		try {
-			sessionStorage.setItem(UNLOCK_KEY, '1');
+			sessionStorage.setItem(UNLOCK_KEY, entered);
 		} catch {
 			// Not remembered; the next visit asks again.
 		}
@@ -79,6 +97,58 @@
 			.replace(/^-|-$/g, '');
 
 	const tag = $derived(slug(source));
+
+	/**
+	 * The new link is a commit that Vercel has to build, so it is not reachable for a
+	 * minute or so. Ask for it every few seconds and say when it is.
+	 *
+	 * @param {string} name
+	 */
+	async function watchLive(name) {
+		createNote = `/${name} is created. It goes live in about a minute.`;
+		for (let tries = 0; tries < 36; tries++) {
+			await new Promise((resolve) => setTimeout(resolve, 5000));
+			try {
+				const res = await fetch(`/${name}?live=${Date.now()}`, { method: 'HEAD', cache: 'no-store' });
+				if (res.ok) return (createNote = `/${name} is live.`);
+			} catch {
+				// Offline for a moment; try again.
+			}
+		}
+		createNote = `/${name} is created but is taking longer than usual to go live.`;
+	}
+
+	/** @param {SubmitEvent} event */
+	async function createLink(event) {
+		event.preventDefault();
+		const name = slug(newName);
+		createError = createNote = '';
+		creating = true;
+		try {
+			const res = await fetch('/api/shortlinks', {
+				method: 'POST',
+				headers: { 'content-type': 'application/json', 'x-links-password': password },
+				body: JSON.stringify({ slug: name, url: newUrl.trim() })
+			});
+			const data = await res.json().catch(() => ({}));
+			if (!res.ok) {
+				createError =
+					data.error ??
+					(res.status === 404
+						? 'The short link service is not available here. It only runs on the live site and previews.'
+						: 'Could not create the link. Try again.');
+				return;
+			}
+			links.push({ path: `/${name}`, label: label(name.replaceAll('-', ' ')) });
+			path = `/${name}`;
+			newUrl = newName = '';
+			watchLive(name);
+		} catch {
+			createError = 'Could not reach the short link service. Check your connection and try again.';
+		} finally {
+			creating = false;
+		}
+	}
 
 	// With no source this is the plain link, which is what a generic QR code wants.
 	const url = $derived.by(() => {
@@ -159,8 +229,8 @@
 		<div class="eyebrow">Team only</div>
 		<h1 class="page-title">Link builder</h1>
 		<p class="lede">
-			Make a short link and QR code for a flyer, slide, Instagram bio or email. Add a source to see
-			which one brought people in.
+			Turn any link into a short link, then make a QR code for a flyer, slide, Instagram bio or
+			email. Add a source to see which one brought people in.
 		</p>
 	</div>
 </section>
@@ -189,50 +259,94 @@
 		</form>
 	{:else}
 		<div class="layout">
-			<form class="stack form" onsubmit={(event) => event.preventDefault()}>
-				<h2 class="col-title">Link details</h2>
+			<div class="left">
+				<form class="stack form" onsubmit={createLink}>
+					<h2 class="col-title">New short link</h2>
 
-				<div class="field">
-					<label class="label" for="path">Destination</label>
-					<select id="path" bind:value={path} aria-describedby="path-hint">
-						<optgroup label="Short links">
-							{#each links as destination (destination.path)}
-								<option value={destination.path}>{destination.label} ({destination.path})</option>
-							{/each}
-						</optgroup>
-						<optgroup label="Site pages">
-							{#each pages as destination (destination.path)}
-								<option value={destination.path}>{destination.label} ({destination.path})</option>
-							{/each}
-						</optgroup>
-					</select>
-					<p class="hint" id="path-hint">Need a new short link? Add a line to src/lib/shortlinks.js.</p>
-				</div>
+					<div class="field">
+						<label class="label" for="new-url">Where should it go?</label>
+						<input
+							id="new-url"
+							type="url"
+							bind:value={newUrl}
+							required
+							placeholder="https://"
+							autocomplete="off"
+							autocapitalize="none"
+							spellcheck="false"
+						/>
+					</div>
 
-				<div class="field">
-					<label class="label" for="source">Source</label>
-					<input
-						id="source"
-						type="text"
-						list="source-options"
-						bind:value={source}
-						onblur={() => (source = slug(source))}
-						autocomplete="off"
-						autocapitalize="none"
-						spellcheck="false"
-						aria-describedby="source-hint"
-					/>
-					<datalist id="source-options">
-						{#each sources as option (option)}
-							<option value={option}></option>
-						{/each}
-					</datalist>
-					<p class="hint" id="source-hint">
-						Optional. Where the link will live, like flyer or instagram. Leave it empty for a plain
-						link.
-					</p>
-				</div>
-			</form>
+					<div class="field">
+						<label class="label" for="new-name">Short name</label>
+						<input
+							id="new-name"
+							type="text"
+							bind:value={newName}
+							onblur={() => (newName = slug(newName))}
+							required
+							autocomplete="off"
+							autocapitalize="none"
+							spellcheck="false"
+							aria-describedby="new-name-hint"
+						/>
+						<p class="hint" id="new-name-hint">The link will be {site.url.replace('https://', '')}/{slug(newName) || 'name'}</p>
+					</div>
+
+					<button type="submit" class="btn btn--primary create" disabled={creating}>
+						{creating ? 'Creating' : 'Create short link'}
+					</button>
+					{#if createError}
+						<p class="error" role="alert">{createError}</p>
+					{/if}
+					<!-- Always in the page so screen readers announce the text when it appears. -->
+					<p class="note" role="status">{createNote}</p>
+				</form>
+
+				<form class="stack form" onsubmit={(event) => event.preventDefault()}>
+					<h2 class="col-title">Link details</h2>
+
+					<div class="field">
+						<label class="label" for="path">Destination</label>
+						<select id="path" bind:value={path}>
+							<optgroup label="Short links">
+								{#each links as destination (destination.path)}
+									<option value={destination.path}>{destination.label} ({destination.path})</option>
+								{/each}
+							</optgroup>
+							<optgroup label="Site pages">
+								{#each pages as destination (destination.path)}
+									<option value={destination.path}>{destination.label} ({destination.path})</option>
+								{/each}
+							</optgroup>
+						</select>
+					</div>
+
+					<div class="field">
+						<label class="label" for="source">Source</label>
+						<input
+							id="source"
+							type="text"
+							list="source-options"
+							bind:value={source}
+							onblur={() => (source = slug(source))}
+							autocomplete="off"
+							autocapitalize="none"
+							spellcheck="false"
+							aria-describedby="source-hint"
+						/>
+						<datalist id="source-options">
+							{#each sources as option (option)}
+								<option value={option}></option>
+							{/each}
+						</datalist>
+						<p class="hint" id="source-hint">
+							Optional. Where the link will live, like flyer or instagram. Leave it empty for a plain
+							link.
+						</p>
+					</div>
+				</form>
+			</div>
 
 			<div class="stack output">
 				<h2 class="col-title">Your link</h2>
@@ -313,6 +427,12 @@
 			gap: 72px;
 			align-items: start;
 		}
+	}
+
+	.left {
+		display: flex;
+		flex-direction: column;
+		gap: 56px;
 	}
 
 	.form,
@@ -434,6 +554,12 @@
 		color: var(--red-accessible);
 	}
 
+	.note {
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+	}
+
 	.qr {
 		width: min(100%, 280px);
 		aspect-ratio: 1;
@@ -447,7 +573,8 @@
 		height: 100%;
 	}
 
-	.download {
+.download,
+	.create {
 		align-self: flex-start;
 	}
 </style>
