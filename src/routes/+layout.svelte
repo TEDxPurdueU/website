@@ -2,13 +2,42 @@
 	import '../app.css';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { onMount } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
+	import { pageview, startAnalytics, track } from '$lib/analytics.js';
+	import { rememberUtm, tagOutbound } from '$lib/utm.js';
 
 	let { children } = $props();
 
 	// /vision is a standalone read with its own logo, so it drops the site chrome.
 	const standalone = $derived(page.url.pathname === '/vision');
+
+	onMount(startAnalytics);
+
+	// Runs on the first load and after every client-side navigation, so this one
+	// callback is every page view. The tags are remembered first so a tagged
+	// landing page carries them.
+	afterNavigate(() => {
+		rememberUtm();
+		pageview();
+	});
+
+	/**
+	 * Links to the forms and the YC page leave the site, so they get the visit's
+	 * tags here instead of from their own page. Middle-click opens a new tab
+	 * without a `click`, hence `auxclick`.
+	 *
+	 * @param {MouseEvent} event
+	 */
+	function onLinkClick(event) {
+		if (event.button > 1) return;
+		const destination = tagOutbound(event);
+		if (destination) track('outbound_click', { destination }, true);
+	}
 </script>
+
+<svelte:document onclick={onLinkClick} onauxclick={onLinkClick} />
 
 <div class="shell">
 	<a class="skip-link" href="#main-content">Skip to main content</a>
