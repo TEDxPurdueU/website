@@ -53,6 +53,12 @@ export const applicationUrl =
 export const nominationUrl = 'https://forms.gle/6wbhGyCGho4Q4TYN8';
 
 /**
+ * Student Speaker Competition application. Shared by the /speakers page and
+ * the /student-apply short link.
+ */
+export const studentApplyUrl = 'https://forms.gle/cffzFoz8Q2f8RtTb6';
+
+/**
  * Applications close at the end of September 9. Held as one absolute instant
  * (midnight Eastern, where the club is) rather than a bare calendar date, so
  * the deadline lands at the same moment for a reader in any timezone.

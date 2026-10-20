@@ -1,6 +1,7 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import { studentApplyUrl } from '$lib/nav.js';
 
 	const description =
 		'Any currently enrolled Purdue student is eligible to take part in the Student Speaker Competition - the winner of which gets to speak at our main event.';
@@ -14,7 +15,7 @@
 		{
 			step: 'Step 02',
 			title: 'The competition',
-			body: 'Selected students give a shortened version of their talk.'
+			body: 'Selected students give a shortened version of their talk on Nov 14.'
 		},
 		{
 			step: 'Step 03',
@@ -69,12 +70,13 @@
 
 <section class="hero section--ruled">
 	<div class="hero-copy">
+		<p class="when">Saturday, Nov 14</p>
 		<h1>Student Speaker Competition</h1>
 		<p class="lede">
 			One slot on the Unseen stage goes to a student. You don't need a title, a lab, or a startup —
 			you need one idea you can defend in six minutes.
 		</p>
-		<a class="btn btn--primary" href="/coming-soon">Applications open soon</a>
+		<a class="btn btn--primary" href={studentApplyUrl} target="_blank" rel="noopener noreferrer">Apply now</a>
 	</div>
 	<div class="hero-media">
 		<Placeholder
@@ -167,6 +169,14 @@
 		line-height: 0.98;
 		letter-spacing: -0.03em;
 		text-wrap: balance;
+	}
+
+	.when {
+		font-size: clamp(22px, 3vw, 36px);
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		font-weight: 700;
+		color: var(--red-accessible);
 	}
 
 	.sec {
