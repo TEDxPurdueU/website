@@ -11,9 +11,11 @@
 	 * Everyone else is first recorded and handed their UTM tags, so a tagged flyer
 	 * link shows up in analytics and the tags carry on to the destination.
 	 *
-	 * @type {{ url: string, title: string, heading: string, what: string }}
+	 * `what` names the destination: "application form", "event page" ...
+	 *
+	 * @type {{ url: string, what: string }}
 	 */
-	let { url, title, heading, what } = $props();
+	let { url, what } = $props();
 
 	/** The destination with this visit's tags; known only once we are in the browser. */
 	let tagged = $state('');
@@ -35,7 +37,7 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>Taking you to the {what} | TEDxPurdueU</title>
 	<meta name="description" content="Redirecting to the {what}." />
 	<!-- Only for crawlers and no-JS visitors. It must outlast the JS path above (which
 	     records the visit, then leaves within MAX_WAIT_MS), or the page is gone before
@@ -48,7 +50,7 @@
 <section class="sec">
 	<div class="wrap">
 		<div class="eyebrow">Redirecting</div>
-		<h1 class="page-title">{heading}</h1>
+		<h1 class="page-title">Taking you to the {what}</h1>
 		<p class="lede">If nothing happens in a moment, open the {what} directly.</p>
 		<a class="btn btn--primary" href={tagged || url}>Open the {what}</a>
 	</div>

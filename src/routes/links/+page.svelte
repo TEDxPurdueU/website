@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { absoluteUrl, site } from '$lib/seo.js';
+	import { shortLinks } from '$lib/shortlinks.js';
 
 	// A static site has no server to check a password against, so this is a soft
 	// lock: it keeps casual visitors out of a team tool, and nothing secret sits
@@ -8,12 +9,15 @@
 	const PASSWORD_SHA256 = '0894012affbb630bb196cdee6a5c1d7fcf4510720800f20e65180a94a5735c54';
 	const UNLOCK_KEY = 'tedx_links_unlocked';
 
-	const destinations = [
+	// Short links come from the shared list, so a new one shows up here as soon as it is added.
+	const links = shortLinks.map(({ slug, what }) => ({
+		path: `/${slug}`,
+		label: what.charAt(0).toUpperCase() + what.slice(1)
+	}));
+
+	const pages = [
 		{ path: '/', label: 'Home' },
 		{ path: '/2027-event', label: 'Unseen 2027' },
-		{ path: '/apply', label: 'Apply' },
-		{ path: '/nominate', label: 'Nominate a speaker' },
-		{ path: '/yc-event', label: 'YC at Purdue' },
 		{ path: '/sponsors', label: 'Sponsors' },
 		{ path: '/team', label: 'Team' }
 	];
@@ -24,7 +28,7 @@
 	let entered = $state('');
 	let wrong = $state(false);
 
-	let path = $state('/');
+	let path = $state(links[0].path);
 	let source = $state('');
 	let svg = $state('');
 	let qrFailed = $state(false);
@@ -76,13 +80,16 @@
 
 	const tag = $derived(slug(source));
 
-	// Without a source the link would be untagged, which is just the plain page.
+	// With no source this is the plain link, which is what a generic QR code wants.
 	const url = $derived.by(() => {
-		if (!tag) return '';
 		const link = new URL(absoluteUrl(path));
-		link.searchParams.set('utm_source', tag);
+		if (tag) link.searchParams.set('utm_source', tag);
 		return link.toString();
 	});
+
+	const fileName = $derived(
+		[path.replace(/^\//, '') || 'home', tag, 'qr'].filter(Boolean).join('-') + '.svg'
+	);
 
 	// "Open" stays on whichever site this page is running on, so testing a link on a
 	// local run visits the local site instead of adding a visit to production.
@@ -94,10 +101,6 @@
 	// size (the page itself stretches it to fit).
 	$effect(() => {
 		const text = url;
-		if (!text) {
-			svg = '';
-			return;
-		}
 		let stale = false;
 		import('qrcode-generator')
 			.then(({ default: qrcode }) => {
@@ -139,7 +142,7 @@
 	function downloadQr() {
 		const link = document.createElement('a');
 		link.href = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
-		link.download = `${tag}-qr.svg`;
+		link.download = fileName;
 		link.click();
 		setTimeout(() => URL.revokeObjectURL(link.href));
 	}
@@ -156,8 +159,8 @@
 		<div class="eyebrow">Team only</div>
 		<h1 class="page-title">Link builder</h1>
 		<p class="lede">
-			Make a tagged link for a flyer, QR code, Instagram bio or email, so we can see which one
-			brought people in.
+			Make a short link and QR code for a flyer, slide, Instagram bio or email. Add a source to see
+			which one brought people in.
 		</p>
 	</div>
 </section>
@@ -191,11 +194,19 @@
 
 				<div class="field">
 					<label class="label" for="path">Destination</label>
-					<select id="path" bind:value={path}>
-						{#each destinations as destination (destination.path)}
-							<option value={destination.path}>{destination.label} ({destination.path})</option>
-						{/each}
+					<select id="path" bind:value={path} aria-describedby="path-hint">
+						<optgroup label="Short links">
+							{#each links as destination (destination.path)}
+								<option value={destination.path}>{destination.label} ({destination.path})</option>
+							{/each}
+						</optgroup>
+						<optgroup label="Site pages">
+							{#each pages as destination (destination.path)}
+								<option value={destination.path}>{destination.label} ({destination.path})</option>
+							{/each}
+						</optgroup>
 					</select>
+					<p class="hint" id="path-hint">Need a new short link? Add a line to src/lib/shortlinks.js.</p>
 				</div>
 
 				<div class="field">
@@ -217,7 +228,8 @@
 						{/each}
 					</datalist>
 					<p class="hint" id="source-hint">
-						Where the link will live, like flyer or instagram. Also names the QR file.
+						Optional. Where the link will live, like flyer or instagram. Leave it empty for a plain
+						link.
 					</p>
 				</div>
 			</form>
@@ -225,52 +237,48 @@
 			<div class="stack output">
 				<h2 class="col-title">Your link</h2>
 
-				{#if url}
-					<div class="field">
-						<label class="label" for="url">Tagged link</label>
-						<textarea
-							id="url"
-							class="url"
-							rows="4"
-							readonly
-							value={url}
-							bind:this={field}
-							onfocus={(event) => event.currentTarget.select()}
-						></textarea>
-					</div>
+				<div class="field">
+					<label class="label" for="url">Link</label>
+					<textarea
+						id="url"
+						class="url"
+						rows="4"
+						readonly
+						value={url}
+						bind:this={field}
+						onfocus={(event) => event.currentTarget.select()}
+					></textarea>
+				</div>
 
-					<div class="actions">
-						<button type="button" class="btn btn--primary" onclick={copy}>Copy</button>
-						<a
-							class="btn btn--outline"
-							href={testHref}
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label="Open link in a new tab"
-						>
-							Open
-						</a>
-						<!-- Always in the page so screen readers announce the text when it appears. -->
-						<p class="status" role="status">{status}</p>
-					</div>
+				<div class="actions">
+					<button type="button" class="btn btn--primary" onclick={copy}>Copy</button>
+					<a
+						class="btn btn--outline"
+						href={testHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Open link in a new tab"
+					>
+						Open
+					</a>
+					<!-- Always in the page so screen readers announce the text when it appears. -->
+					<p class="status" role="status">{status}</p>
+				</div>
 
-					<div class="field">
-						<span class="label">QR code</span>
-						<div class="qr" role="img" aria-label="QR code for the link above">
-							{@html svg}
-						</div>
-						{#if qrFailed}
-							<p class="hint">The QR code could not load. Reload the page and try again.</p>
-						{/if}
+				<div class="field">
+					<span class="label">QR code</span>
+					<div class="qr" role="img" aria-label="QR code for the link above">
+						{@html svg}
 					</div>
+					{#if qrFailed}
+						<p class="hint">The QR code could not load. Reload the page and try again.</p>
+					{/if}
+				</div>
 
-					<button type="button" class="btn btn--outline download" onclick={downloadQr} disabled={!svg}>
-						Download SVG
-					</button>
-					<p class="hint">Test-scan every printed QR code with a phone before it goes to the printer.</p>
-				{:else}
-					<p class="body-text">Add a source and your link and QR code will show up here.</p>
-				{/if}
+				<button type="button" class="btn btn--outline download" onclick={downloadQr} disabled={!svg}>
+					Download SVG
+				</button>
+				<p class="hint">Test-scan every printed QR code with a phone before it goes to the printer.</p>
 			</div>
 		</div>
 	{/if}
