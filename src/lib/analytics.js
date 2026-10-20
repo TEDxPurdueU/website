@@ -80,6 +80,19 @@ export function track(event, props = {}, instant = false) {
 	});
 }
 
+/** Longest a visitor is held for analytics before being sent on anyway. */
+const MAX_WAIT_MS = 1200;
+
+/**
+ * Wait for an event to be recorded, but only up to MAX_WAIT_MS: a slow or
+ * blocked PostHog must never trap the visitor on a page they are leaving.
+ *
+ * @param {Promise<void>} recorded
+ */
+export function boundedWait(recorded) {
+	return Promise.race([recorded, new Promise((resolve) => setTimeout(resolve, MAX_WAIT_MS))]);
+}
+
 /**
  * A page view. The URL is read now rather than when PostHog gets to it, which
  * can be after the visitor has already moved on.
