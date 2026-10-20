@@ -33,7 +33,23 @@
 	function onLinkClick(event) {
 		if (event.button > 1) return;
 		const destination = tagOutbound(event);
-		if (destination) track('outbound_click', { destination }, true);
+		if (!destination) return;
+		const recorded = track('outbound_click', { destination }, true);
+		const link = /** @type {Element} */ (event.target).closest('a[href]');
+		// A same-tab click unloads the page, which can drop the event if PostHog is
+		// still loading, so hold the click briefly (capped) like Redirect.svelte does.
+		if (
+			!(link instanceof HTMLAnchorElement) ||
+			event.type !== 'click' ||
+			event.button !== 0 ||
+			event.ctrlKey || event.metaKey || event.shiftKey || event.altKey ||
+			(link.target && link.target !== '_self') ||
+			link.hasAttribute('download')
+		)
+			return;
+		event.preventDefault();
+		const cap = new Promise((resolve) => setTimeout(resolve, 1200));
+		Promise.race([recorded, cap]).then(() => location.assign(link.href));
 	}
 </script>
 
