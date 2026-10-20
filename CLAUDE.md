@@ -4,6 +4,14 @@ Static SvelteKit site, fully prerendered via `@sveltejs/adapter-static`. No
 server runtime. Staying host-agnostic is deliberate — this project has already
 been moved once, and the build should not need changing to move again.
 
+## Short links
+`src/lib/shortlinks.js` lists them; one `[slug=shortlink]` route serves all of them as redirect
+pages (a real server redirect would skip the page, and then PostHog could not count the visit).
+Most live in `src/lib/shortlinks.json`, which the "New short link" form on `/links` edits through
+`api/shortlinks.js`, a Vercel Function that commits to GitHub (needs `GITHUB_TOKEN` in Vercel; see
+the header of that file). It is the only non-static part of the site and is optional: on another
+host the form just reports that it cannot be reached.
+
 ## Commands
 - `npm run dev` — dev server
 - `npm run build` — prerender to `build/`
