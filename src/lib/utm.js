@@ -1,5 +1,8 @@
-/** The five standard UTM tags. */
-export const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+/**
+ * The one tag we use: where a visit came from. Medium, campaign and the rest
+ * are deliberately left out so links stay short and sources stay easy to read.
+ */
+export const UTM_KEYS = ['utm_source'];
 
 const STORE = 'tedx_utm';
 

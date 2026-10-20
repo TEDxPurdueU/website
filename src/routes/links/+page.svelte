@@ -1,6 +1,12 @@
 <script>
+	import { onMount } from 'svelte';
 	import { absoluteUrl, site } from '$lib/seo.js';
-	import { UTM_KEYS } from '$lib/utm.js';
+
+	// A static site has no server to check a password against, so this is a soft
+	// lock: it keeps casual visitors out of a team tool, and nothing secret sits
+	// behind it. To change the password: printf '%s' 'new password' | shasum -a 256
+	const PASSWORD_SHA256 = '0894012affbb630bb196cdee6a5c1d7fcf4510720800f20e65180a94a5735c54';
+	const UNLOCK_KEY = 'tedx_links_unlocked';
 
 	const destinations = [
 		{ path: '/', label: 'Home' },
@@ -12,37 +18,14 @@
 		{ path: '/team', label: 'Team' }
 	];
 
-	/** @type {{ key: string, label: string, hint: string, options?: string[], required?: boolean }[]} */
-	const fields = [
-		{
-			key: 'utm_source',
-			label: 'Source',
-			hint: 'Where the link will live.',
-			options: ['flyer', 'instagram', 'email', 'linkedin', 'newsletter', 'poster'],
-			required: true
-		},
-		{
-			key: 'utm_medium',
-			label: 'Medium',
-			hint: 'How people get to it.',
-			options: ['qr', 'social', 'email', 'print', 'bio']
-		},
-		{
-			key: 'utm_campaign',
-			label: 'Campaign',
-			hint: 'The push it belongs to, like yc-purdue-2026. Also names the QR file.'
-		},
-		{
-			key: 'utm_content',
-			label: 'Content',
-			hint: 'Optional. Tells two versions of one placement apart, like red-flyer.'
-		}
-	];
+	const sources = ['flyer', 'instagram', 'email', 'linkedin', 'newsletter', 'poster'];
 
-	const blank = Object.fromEntries(UTM_KEYS.map((key) => [key, '']));
+	let unlocked = $state(false);
+	let entered = $state('');
+	let wrong = $state(false);
 
 	let path = $state('/');
-	let values = $state({ ...blank });
+	let source = $state('');
 	let svg = $state('');
 	let qrFailed = $state(false);
 	let status = $state('');
@@ -51,9 +34,37 @@
 	/** @type {ReturnType<typeof setTimeout> | undefined} */
 	let timer;
 
+	onMount(() => {
+		try {
+			unlocked = sessionStorage.getItem(UNLOCK_KEY) === '1';
+		} catch {
+			// Storage can be blocked (private mode); the password is then asked each visit.
+		}
+	});
+
+	/** @param {SubmitEvent} event */
+	async function unlock(event) {
+		event.preventDefault();
+		try {
+			const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(entered));
+			const hash = Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, '0')).join('');
+			if (hash !== PASSWORD_SHA256) throw new Error('wrong password');
+		} catch {
+			wrong = true;
+			entered = '';
+			return;
+		}
+		unlocked = true;
+		try {
+			sessionStorage.setItem(UNLOCK_KEY, '1');
+		} catch {
+			// Not remembered; the next visit asks again.
+		}
+	}
+
 	/**
 	 * Analytics counts `Spring Flyer` and `spring-flyer` as two different
-	 * sources, so every tag is forced to one shape.
+	 * sources, so the tag is forced to one shape.
 	 *
 	 * @param {string} text
 	 */
@@ -63,15 +74,13 @@
 			.replace(/[^a-z0-9]+/g, '-')
 			.replace(/^-|-$/g, '');
 
-	const tags = $derived(Object.fromEntries(UTM_KEYS.map((key) => [key, slug(values[key])])));
+	const tag = $derived(slug(source));
 
 	// Without a source the link would be untagged, which is just the plain page.
 	const url = $derived.by(() => {
-		if (!tags.utm_source) return '';
+		if (!tag) return '';
 		const link = new URL(absoluteUrl(path));
-		for (const [key, value] of Object.entries(tags)) {
-			if (value) link.searchParams.set(key, value);
-		}
+		link.searchParams.set('utm_source', tag);
 		return link.toString();
 	});
 
@@ -108,16 +117,6 @@
 		return () => (stale = true);
 	});
 
-	function fillYcFlyer() {
-		path = '/yc-event';
-		values = {
-			...blank,
-			utm_source: 'flyer',
-			utm_medium: 'qr',
-			utm_campaign: 'yc-purdue-2026'
-		};
-	}
-
 	/** @param {string} message */
 	function announce(message) {
 		status = message;
@@ -140,7 +139,7 @@
 	function downloadQr() {
 		const link = document.createElement('a');
 		link.href = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
-		link.download = `${tags.utm_campaign || tags.utm_source}-qr.svg`;
+		link.download = `${tag}-qr.svg`;
 		link.click();
 		setTimeout(() => URL.revokeObjectURL(link.href));
 	}
@@ -164,105 +163,117 @@
 </section>
 
 <section class="sec">
-	<div class="layout">
-		<form class="stack form" onsubmit={(event) => event.preventDefault()}>
-			<h2 class="col-title">Link details</h2>
-
-			<div class="preset">
-				<span class="label">Quick fill</span>
-				<button type="button" class="btn btn--outline" onclick={fillYcFlyer}>YC flyer QR</button>
-			</div>
-
+	{#if !unlocked}
+		<form class="stack gate" onsubmit={unlock}>
+			<h2 class="col-title">Team password</h2>
 			<div class="field">
-				<label class="label" for="path">Destination</label>
-				<select id="path" bind:value={path}>
-					{#each destinations as destination (destination.path)}
-						<option value={destination.path}>{destination.label} ({destination.path})</option>
-					{/each}
-				</select>
+				<label class="label" for="password">Password</label>
+				<input
+					id="password"
+					type="password"
+					bind:value={entered}
+					oninput={() => (wrong = false)}
+					required
+					autocomplete="current-password"
+					aria-invalid={wrong}
+					aria-describedby={wrong ? 'password-error' : undefined}
+				/>
+				{#if wrong}
+					<p class="error" id="password-error" role="alert">That password is not right.</p>
+				{/if}
 			</div>
+			<button type="submit" class="btn btn--primary">Unlock</button>
+		</form>
+	{:else}
+		<div class="layout">
+			<form class="stack form" onsubmit={(event) => event.preventDefault()}>
+				<h2 class="col-title">Link details</h2>
 
-			{#each fields as item (item.key)}
 				<div class="field">
-					<label class="label" for={item.key}>
-						{item.label}
-						{#if item.required}<span class="required">Required</span>{/if}
-					</label>
+					<label class="label" for="path">Destination</label>
+					<select id="path" bind:value={path}>
+						{#each destinations as destination (destination.path)}
+							<option value={destination.path}>{destination.label} ({destination.path})</option>
+						{/each}
+					</select>
+				</div>
+
+				<div class="field">
+					<label class="label" for="source">Source</label>
 					<input
-						id={item.key}
+						id="source"
 						type="text"
-						list={item.options ? `${item.key}-options` : undefined}
-						bind:value={values[item.key]}
-						onblur={() => (values[item.key] = slug(values[item.key]))}
-						required={item.required}
+						list="source-options"
+						bind:value={source}
+						onblur={() => (source = slug(source))}
 						autocomplete="off"
 						autocapitalize="none"
 						spellcheck="false"
-						aria-describedby="{item.key}-hint"
+						aria-describedby="source-hint"
 					/>
-					{#if item.options}
-						<datalist id="{item.key}-options">
-							{#each item.options as option (option)}
-								<option value={option}></option>
-							{/each}
-						</datalist>
-					{/if}
-					<p class="hint" id="{item.key}-hint">{item.hint}</p>
+					<datalist id="source-options">
+						{#each sources as option (option)}
+							<option value={option}></option>
+						{/each}
+					</datalist>
+					<p class="hint" id="source-hint">
+						Where the link will live, like flyer or instagram. Also names the QR file.
+					</p>
 				</div>
-			{/each}
-		</form>
+			</form>
 
-		<div class="stack output">
-			<h2 class="col-title">Your link</h2>
+			<div class="stack output">
+				<h2 class="col-title">Your link</h2>
 
-			{#if url}
-				<div class="field">
-					<label class="label" for="url">Tagged link</label>
-					<textarea
-						id="url"
-						class="url"
-						rows="4"
-						readonly
-						value={url}
-						bind:this={field}
-						onfocus={(event) => event.currentTarget.select()}
-					></textarea>
-				</div>
-
-				<div class="actions">
-					<button type="button" class="btn btn--primary" onclick={copy}>Copy</button>
-					<a
-						class="btn btn--outline"
-						href={testHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label="Open link in a new tab"
-					>
-						Open
-					</a>
-					<!-- Always in the page so screen readers announce the text when it appears. -->
-					<p class="status" role="status">{status}</p>
-				</div>
-
-				<div class="field">
-					<span class="label">QR code</span>
-					<div class="qr" role="img" aria-label="QR code for the link above">
-						{@html svg}
+				{#if url}
+					<div class="field">
+						<label class="label" for="url">Tagged link</label>
+						<textarea
+							id="url"
+							class="url"
+							rows="4"
+							readonly
+							value={url}
+							bind:this={field}
+							onfocus={(event) => event.currentTarget.select()}
+						></textarea>
 					</div>
-					{#if qrFailed}
-						<p class="hint">The QR code could not load. Reload the page and try again.</p>
-					{/if}
-				</div>
 
-				<button type="button" class="btn btn--outline download" onclick={downloadQr} disabled={!svg}>
-					Download SVG
-				</button>
-				<p class="hint">Test-scan every printed QR code with a phone before it goes to the printer.</p>
-			{:else}
-				<p class="body-text">Add a source and your link and QR code will show up here.</p>
-			{/if}
+					<div class="actions">
+						<button type="button" class="btn btn--primary" onclick={copy}>Copy</button>
+						<a
+							class="btn btn--outline"
+							href={testHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="Open link in a new tab"
+						>
+							Open
+						</a>
+						<!-- Always in the page so screen readers announce the text when it appears. -->
+						<p class="status" role="status">{status}</p>
+					</div>
+
+					<div class="field">
+						<span class="label">QR code</span>
+						<div class="qr" role="img" aria-label="QR code for the link above">
+							{@html svg}
+						</div>
+						{#if qrFailed}
+							<p class="hint">The QR code could not load. Reload the page and try again.</p>
+						{/if}
+					</div>
+
+					<button type="button" class="btn btn--outline download" onclick={downloadQr} disabled={!svg}>
+						Download SVG
+					</button>
+					<p class="hint">Test-scan every printed QR code with a phone before it goes to the printer.</p>
+				{:else}
+					<p class="body-text">Add a source and your link and QR code will show up here.</p>
+				{/if}
+			</div>
 		</div>
-	</div>
+	{/if}
 </section>
 
 <style>
@@ -297,8 +308,14 @@
 	}
 
 	.form,
-	.output {
+	.output,
+	.gate {
 		gap: 24px;
+	}
+
+	.gate {
+		max-width: 420px;
+		align-items: flex-start;
 	}
 
 	.col-title {
@@ -306,26 +323,11 @@
 		letter-spacing: 0.02em;
 	}
 
-	.preset {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 12px 20px;
-		padding-bottom: 24px;
-		border-bottom: 1px solid var(--rule);
-	}
-
 	.field {
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
-	}
-
-	/* Bold because red text under 18px is kept bold for legibility. */
-	.required {
-		margin-left: 8px;
-		font-weight: 700;
-		color: var(--red-accessible);
+		width: 100%;
 	}
 
 	/* 16px stops iOS zooming the page when a field is focused. The edge is
@@ -367,6 +369,13 @@
 		color: var(--text-dim);
 	}
 
+	/* Bold because red text under 18px is kept bold for legibility. */
+	.error {
+		font-size: 14px;
+		font-weight: 700;
+		color: var(--red-accessible);
+	}
+
 	.url {
 		resize: none;
 		font-family: var(--mono);
@@ -379,7 +388,7 @@
 		min-height: 6.5em;
 	}
 
-	/* The site's .btn is built for links, so the two <button>s here need the
+	/* The site's .btn is built for links, so the <button>s here need the
 	   native chrome stripped. The transparent border keeps Copy as tall as the
 	   outlined buttons beside it. */
 	button.btn {
