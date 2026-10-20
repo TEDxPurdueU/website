@@ -16,7 +16,7 @@
     "@sveltejs/kit": "^2.70.2",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "posthog-js": "^1.438.12",
-    "qrcode": "^1.5.4",
+    "qrcode-generator": "^2.0.4",
     "svelte": "^5.56.9",
     "svelte-check": "^4.1.5",
     "vite": "^8.2.1"
