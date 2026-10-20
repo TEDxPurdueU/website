@@ -1,5 +1,5 @@
 <script>
-	import { absoluteUrl } from '$lib/seo.js';
+	import { absoluteUrl, site } from '$lib/seo.js';
 	import { UTM_KEYS } from '$lib/utm.js';
 
 	const destinations = [
@@ -75,9 +75,14 @@
 		return link.toString();
 	});
 
-	// qrcode is only needed here, so it loads on demand instead of joining the
-	// shared bundle. Its default output is solid black on white, which is what
-	// scanners read best.
+	// "Open" stays on whichever site this page is running on, so testing a link on a
+	// local run visits the local site instead of adding a visit to production.
+	const testHref = $derived(url.slice(site.url.length));
+
+	// The QR library is only needed here, so it loads on demand instead of joining
+	// the shared bundle. Its output is solid black on white, which is what scanners
+	// read best, and carries a pixel size so the downloaded file opens at a sensible
+	// size (the page itself stretches it to fit).
 	$effect(() => {
 		const text = url;
 		if (!text) {
@@ -85,8 +90,13 @@
 			return;
 		}
 		let stale = false;
-		import('qrcode')
-			.then(({ default: QRCode }) => QRCode.toString(text, { type: 'svg', margin: 2 }))
+		import('qrcode-generator')
+			.then(({ default: qrcode }) => {
+				const qr = qrcode(0, 'M');
+				qr.addData(text);
+				qr.make();
+				return qr.createSvgTag({ cellSize: 16, margin: 32 });
+			})
 			.then((out) => {
 				if (stale) return;
 				svg = out;
@@ -223,7 +233,7 @@
 					<button type="button" class="btn btn--primary" onclick={copy}>Copy</button>
 					<a
 						class="btn btn--outline"
-						href={url}
+						href={testHref}
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="Open link in a new tab"
