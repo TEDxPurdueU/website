@@ -13,6 +13,8 @@ import { PASSWORD_SHA256 } from '../src/lib/linkspassword.js';
 const REPO = 'TEDxPurdueU/website';
 const FILE = 'src/lib/shortlinks.json';
 const SITE = 'tedxpurdueu.org';
+// The list ships to every visitor inside the site's JavaScript, so it is kept small.
+const MAX_LINKS = 200;
 const GITHUB = process.env.GITHUB_API_URL || 'https://api.github.com';
 
 // Addresses that already mean something. A short link on one of these would
@@ -55,8 +57,10 @@ function cleanUrl(value) {
 	} catch {
 		return null;
 	}
-	if (url.protocol !== 'https:' || url.username || url.password || !url.hostname.includes('.')) return null;
-	if (url.hostname === SITE || url.hostname.endsWith(`.${SITE}`)) return null;
+	// A trailing dot (tedxpurdueu.org.) names the same host, so it is dropped first.
+	const host = url.hostname.replace(/\.+$/, '');
+	if (url.protocol !== 'https:' || url.username || url.password || !host.includes('.')) return null;
+	if (host === SITE || host.endsWith(`.${SITE}`)) return null;
 	return url.toString();
 }
 
@@ -66,6 +70,7 @@ const github = (token, path, init) =>
 		...init,
 		headers: {
 			authorization: `Bearer ${token}`,
+			'content-type': 'application/json',
 			accept: 'application/vnd.github+json',
 			'user-agent': 'tedxpurdueu-shortlinks'
 		}
@@ -76,15 +81,16 @@ const github = (token, path, init) =>
  * file's version (sha); if someone else changed it in between, GitHub answers
  * 409 and we go round once more from the fresh copy.
  *
- * @returns {Promise<'added' | 'taken'>}
+ * @returns {Promise<'added' | 'taken' | 'full'>}
  */
 async function addLink(token, branch, slug, url) {
-	for (let attempt = 0; attempt < 2; attempt++) {
+	for (let attempt = 0; attempt < 3; attempt++) {
 		const read = await github(token, `?ref=${encodeURIComponent(branch)}`);
 		if (!read.ok) throw new Error(`GitHub read failed: ${read.status}`);
 		const file = await read.json();
 		const links = JSON.parse(Buffer.from(file.content, 'base64').toString('utf8'));
 		if (links.some((/** @type {{ slug: string }} */ link) => link.slug === slug)) return 'taken';
+		if (links.length >= MAX_LINKS) return 'full';
 		links.push({ slug, url });
 		const write = await github(token, '', {
 			method: 'PUT',
@@ -124,12 +130,14 @@ export default async function handler(req, res) {
 	if (!url) return send(res, 400, { error: 'The destination must be a full https:// address (not tedxpurdueu.org itself).' });
 
 	// Production builds main; a preview builds its own branch, so a test on a
-	// preview never touches the live list.
-	const branch = process.env.VERCEL_GIT_COMMIT_REF || 'main';
+	// preview never touches the live list. A preview that cannot name its branch
+	// is refused rather than sent to main.
+	const branch = process.env.VERCEL_GIT_COMMIT_REF || (process.env.VERCEL_ENV === 'preview' ? '' : 'main');
+	if (!branch) return send(res, 503, { error: 'This preview cannot tell which branch to change.' });
 	try {
-		if ((await addLink(token, branch, slug, url)) === 'taken') {
-			return send(res, 409, { error: `/${slug} is already taken. Pick another name.` });
-		}
+		const result = await addLink(token, branch, slug, url);
+		if (result === 'taken') return send(res, 409, { error: `/${slug} is already taken. Pick another name.` });
+		if (result === 'full') return send(res, 400, { error: `The list is full (${MAX_LINKS} links). Delete one from src/lib/shortlinks.json first.` });
 	} catch (error) {
 		console.error('shortlinks:', error instanceof Error ? error.message : error);
 		return send(res, 502, { error: 'GitHub did not accept the change. Try again in a moment.' });
