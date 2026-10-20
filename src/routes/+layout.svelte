@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
-	import { pageview, startAnalytics, track } from '$lib/analytics.js';
+	import { boundedWait, pageview, startAnalytics, track } from '$lib/analytics.js';
 	import { rememberUtm, tagOutbound } from '$lib/utm.js';
 
 	let { children } = $props();
@@ -32,15 +32,16 @@
 	 */
 	function onLinkClick(event) {
 		if (event.button > 1) return;
-		const destination = tagOutbound(event);
-		if (!destination) return;
+		const hit = tagOutbound(event);
+		if (!hit) return;
+		const { link, destination } = hit;
 		const recorded = track('outbound_click', { destination }, true);
-		const link = /** @type {Element} */ (event.target).closest('a[href]');
 		// A same-tab click unloads the page, which can drop the event if PostHog is
-		// still loading, so hold the click briefly (capped) like Redirect.svelte does.
+		// still loading, so hold the click briefly, as Redirect.svelte does. Anything
+		// that does not unload this page (new tab, modifier key, download, a click
+		// someone else already handled) goes ahead untouched.
 		if (
-			!(link instanceof HTMLAnchorElement) ||
-			event.type !== 'click' ||
+			event.defaultPrevented ||
 			event.button !== 0 ||
 			event.ctrlKey || event.metaKey || event.shiftKey || event.altKey ||
 			(link.target && link.target !== '_self') ||
@@ -48,8 +49,7 @@
 		)
 			return;
 		event.preventDefault();
-		const cap = new Promise((resolve) => setTimeout(resolve, 1200));
-		Promise.race([recorded, cap]).then(() => location.assign(link.href));
+		boundedWait(recorded).then(() => location.assign(link.href));
 	}
 </script>
 

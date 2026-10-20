@@ -72,6 +72,9 @@ export function withUtm(url) {
  */
 const OUTBOUND = ['docs.google.com/forms', 'forms.gle/', 'events.ycombinator.com/'];
 
+/** Each tagged link's destination as it was first found, and the URL we tagged it to. */
+const tagged = new WeakMap();
+
 /**
  * Tag a link to one of the OUTBOUND destinations just before the browser
  * follows it. Done on click, not at render: the pages are prerendered, so the
@@ -79,13 +82,18 @@ const OUTBOUND = ['docs.google.com/forms', 'forms.gle/', 'events.ycombinator.com
  * such link (header, team page, salons) without each having to opt in.
  *
  * @param {MouseEvent} event
- * @returns {string | undefined} the link's untagged destination, when it was one
+ * @returns {{ link: HTMLAnchorElement, destination: string } | undefined} the link and its
+ *   untagged destination, when it was one
  */
 export function tagOutbound(event) {
 	const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
 	if (!(link instanceof HTMLAnchorElement)) return;
 	if (!OUTBOUND.some((prefix) => (link.host + link.pathname).startsWith(prefix))) return;
-	const destination = link.href;
+	// A repeat click finds the URL we tagged last time; go back to the original so the
+	// event reports the same destination every time and fresh tags replace old ones.
+	const before = tagged.get(link);
+	const destination = before?.tagged === link.href ? before.destination : link.href;
 	link.href = withUtm(destination);
-	return destination;
+	tagged.set(link, { destination, tagged: link.href });
+	return { link, destination };
 }

@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { track } from '$lib/analytics.js';
+	import { boundedWait, track } from '$lib/analytics.js';
 	import { rememberUtm, withUtm } from '$lib/utm.js';
 
 	/**
@@ -20,19 +20,19 @@
 	/** The destination with this visit's tags; known only once we are in the browser. */
 	let tagged = $state('');
 
-	/** Longest we hold the reader for analytics before leaving anyway. */
-	const MAX_WAIT_MS = 1200;
-
 	// `replace`, not `assign`, so Back returns the reader where they came from
 	// instead of bouncing them through the redirect again.
 	onMount(() => {
 		rememberUtm();
 		const destination = withUtm(url);
 		tagged = destination;
-		// A slow or blocked PostHog must never trap the reader, so the wait is capped.
+		let left = false;
 		const recorded = track('redirect', { destination: url, path: location.pathname }, true);
-		const cap = new Promise((resolve) => setTimeout(resolve, MAX_WAIT_MS));
-		Promise.race([recorded, cap]).then(() => location.replace(destination));
+		boundedWait(recorded).then(() => {
+			if (!left) location.replace(destination);
+		});
+		// If the reader picks another page first (the header's home link), that wins.
+		return () => (left = true);
 	});
 </script>
 
