@@ -5,6 +5,14 @@
 	"outputDirectory": "build",
 	"cleanUrls": true,
 	"trailingSlash": false,
+	"redirects": [
+		{
+			"source": "/(.*)",
+			"has": [{ "type": "host", "value": "www.tedxpurdueu.org" }],
+			"destination": "https://tedxpurdueu.org/$1",
+			"permanent": true
+		}
+	],
 	"rewrites": [{ "source": "/sponsor", "destination": "/sponsor.pdf" }],
 	"headers": [
 		{
