@@ -7,7 +7,7 @@
 		<div class="about">
 			<img src="/logo-dark.png" alt="TEDxPurdueU" width="1275" height="240" />
 			<p>
-				This independent TEDx event is operated under license from TED. West Lafayette, Indiana.
+				This independent TEDx event is operated under license from TED.
 			</p>
 		</div>
 
@@ -37,7 +37,7 @@
 		</div>
 	</div>
 
-	<div class="colophon">© 2026 TEDxPurdueU · x = independently organized TED event</div>
+	<div class="colophon">© 2026 TEDxPurdueU</div>
 </footer>
 
 <style>
