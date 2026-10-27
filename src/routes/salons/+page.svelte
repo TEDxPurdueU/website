@@ -71,7 +71,7 @@
 </script>
 
 <Seo
-	title="TEDxPurdueU Salons"
+	title="Salons | TEDxPurdueU"
 	{description}
 	path="/salons"
 	image="/img/salon.webp"

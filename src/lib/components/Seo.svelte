@@ -52,7 +52,8 @@
 						{
 							'@type': 'ListItem',
 							position: 2,
-							name: title,
+							// Breadcrumbs show the page's own name, not the "| TEDxPurdueU" suffix.
+							name: title.replace(/\s*\|\s*TEDxPurdueU$/, ''),
 							item: canonical
 						}
 					]

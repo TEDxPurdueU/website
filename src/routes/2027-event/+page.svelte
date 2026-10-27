@@ -45,7 +45,7 @@
 </script>
 
 <Seo
-	title="TEDxPurdueU: Unseen 2027"
+	title="Unseen 2027 Conference | TEDxPurdueU"
 	{description}
 	path="/2027-event"
 	image="/img/stage-group.webp"

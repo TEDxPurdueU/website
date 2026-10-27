@@ -64,7 +64,7 @@
 	];
 </script>
 
-<Seo title="TEDxPurdueU Vision" {description} path="/vision" />
+<Seo title="Vision | TEDxPurdueU" {description} path="/vision" />
 
 <svelte:head>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />

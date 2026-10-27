@@ -23,7 +23,7 @@
 </script>
 
 <Seo
-	title="TEDxPurdueU Sponsors"
+	title="Sponsors | TEDxPurdueU"
 	{description}
 	path="/sponsors"
 	structuredData={sponsorsStructuredData}
