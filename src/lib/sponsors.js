@@ -14,13 +14,23 @@ export const sponsors = [
 		logo: '/sponsors/sfab.webp'
 	},
 	{
-		name: 'Department of Computer Science',
-		url: 'https://www.cs.purdue.edu',
-		logo: '/sponsors/purdue-cs.webp'
+		name: 'School of Languages and Cultures',
+		url: 'https://cla.purdue.edu/academic/slc/',
+		logo: '/sponsors/purdue.webp'
+	},
+	{
+		name: 'School of Interdisciplinary Studies',
+		url: 'https://cla.purdue.edu/academic/sis/',
+		logo: '/sponsors/purdue.webp'
 	},
 	{
 		name: 'Department of English',
 		url: 'https://cla.purdue.edu/academic/english/',
 		logo: '/sponsors/purdue-english.webp'
+	},
+	{
+		name: 'Department of Computer Science',
+		url: 'https://www.cs.purdue.edu',
+		logo: '/sponsors/purdue-cs.webp'
 	}
 ];
