@@ -26,11 +26,11 @@ export const sponsors = [
 	{
 		name: 'School of Languages and Cultures',
 		url: 'https://cla.purdue.edu/academic/slc/',
-		logo: null
+		logo: '/sponsors/purdue.webp'
 	},
 	{
 		name: 'School of Interdisciplinary Studies',
 		url: 'https://cla.purdue.edu/academic/sis/',
-		logo: null
+		logo: '/sponsors/purdue.webp'
 	}
 ];
