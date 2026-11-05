@@ -20,27 +20,27 @@ export const team = [
 ];
 
 /**
- * General members, alphabetical by last name. Same shape as `team`; every
- * row renders with the role "Member".
+ * General members, alphabetical by first name (the order the tiles read).
+ * Same shape as `team`; every row renders with the role "Member".
  *
  * @type {{ name: string, photo: string | null }[]}
  */
 export const members = [
-	{ name: 'Koree Arndt', photo: '/headshots/koree-arndt.webp' },
-	{ name: 'Riley Chapla', photo: '/headshots/riley-chapla.webp' },
-	{ name: 'Connor Johnson', photo: '/headshots/connor-johnson.webp' },
-	{ name: 'Shauryeh Raj Kapur', photo: '/headshots/shauryeh-raj-kapur.webp' },
-	{ name: 'Fatimah Khan', photo: '/headshots/fatimah-khan.webp' },
-	{ name: 'Matthew Krunnfusz', photo: '/headshots/matthew-krunnfusz.webp' },
-	{ name: 'Kylyne Kuo', photo: '/headshots/kylyne-kuo.webp' },
-	{ name: 'Maguire Mosby', photo: '/headshots/maguire-mosby.webp' },
-	{ name: 'Linda Ontiveros', photo: '/headshots/linda-ontiveros.webp' },
-	{ name: 'Mahi Ramteke', photo: '/headshots/mahi-ramteke.webp' },
+	{ name: 'Ajitesh Veeramachaneni', photo: '/headshots/ajitesh-veeramachaneni.webp' },
 	{ name: 'Anjali Ranasinghe', photo: '/headshots/anjali-ranasinghe.webp' },
-	{ name: 'Sarah Robinovitz', photo: '/headshots/sarah-robinovitz.webp' },
 	{ name: 'Anthony John Rossini', photo: '/headshots/anthony-john-rossini.webp' },
+	{ name: 'Connor Johnson', photo: '/headshots/connor-johnson.webp' },
+	{ name: 'Fatimah Khan', photo: '/headshots/fatimah-khan.webp' },
+	{ name: 'Koree Arndt', photo: '/headshots/koree-arndt.webp' },
+	{ name: 'Kylyne Kuo', photo: '/headshots/kylyne-kuo.webp' },
+	{ name: 'Lillian Whitson', photo: '/headshots/lillian-whitson.webp' },
+	{ name: 'Linda Ontiveros', photo: '/headshots/linda-ontiveros.webp' },
+	{ name: 'Maguire Mosby', photo: '/headshots/maguire-mosby.webp' },
+	{ name: 'Mahi Ramteke', photo: '/headshots/mahi-ramteke.webp' },
+	{ name: 'Matthew Krunnfusz', photo: '/headshots/matthew-krunnfusz.webp' },
 	{ name: 'Maya Seong', photo: '/headshots/maya-seong.webp' },
 	{ name: 'Newson Shen', photo: '/headshots/newson-shen.webp' },
-	{ name: 'Ajitesh Veeramachaneni', photo: '/headshots/ajitesh-veeramachaneni.webp' },
-	{ name: 'Lillian Whitson', photo: '/headshots/lillian-whitson.webp' }
+	{ name: 'Riley Chapla', photo: '/headshots/riley-chapla.webp' },
+	{ name: 'Sarah Robinovitz', photo: '/headshots/sarah-robinovitz.webp' },
+	{ name: 'Shauryeh Raj Kapur', photo: '/headshots/shauryeh-raj-kapur.webp' }
 ];
