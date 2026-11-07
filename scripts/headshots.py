@@ -54,7 +54,6 @@ CROPS = {
     'ajitesh-veeramachaneni': (0.45, 0.27, 0.70),
     'anjali-ranasinghe': (0.52, 0.36, 0.55),
     'anthony-john-rossini': (0.51, 0.36, 0.45),
-    'connor-johnson': (0.50, 0.33, 0.85),
     'fatimah-khan': (0.55, 0.38, 0.50),
     'koree-arndt': (0.50, 0.50, 1.0),
     'kylyne-kuo': (0.50, 0.40, 0.85),
