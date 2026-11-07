@@ -29,7 +29,6 @@ export const members = [
 	{ name: 'Ajitesh Veeramachaneni', photo: '/headshots/ajitesh-veeramachaneni.webp' },
 	{ name: 'Anjali Ranasinghe', photo: '/headshots/anjali-ranasinghe.webp' },
 	{ name: 'Anthony John Rossini', photo: '/headshots/anthony-john-rossini.webp' },
-	{ name: 'Connor Johnson', photo: '/headshots/connor-johnson.webp' },
 	{ name: 'Fatimah Khan', photo: '/headshots/fatimah-khan.webp' },
 	{ name: 'Koree Arndt', photo: '/headshots/koree-arndt.webp' },
 	{ name: 'Kylyne Kuo', photo: '/headshots/kylyne-kuo.webp' },
