@@ -1,7 +1,6 @@
 <script>
 	import Placeholder from '$lib/components/Placeholder.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import { applicationUrl, contactEmail } from '$lib/nav.js';
 	import { site } from '$lib/seo.js';
 	import { members, team } from '$lib/team.js';
 
@@ -61,7 +60,7 @@
 	</div>
 </section>
 
-<section class="sec section--ruled">
+<section class="sec">
 	<h2 class="sec-title">General Members</h2>
 	<div class="roster">
 		{#each members as member (member.name)}
@@ -78,26 +77,6 @@
 				</div>
 			</div>
 		{/each}
-	</div>
-</section>
-
-<section class="sec">
-	<div class="join">
-		<h2>Join us</h2>
-		<p class="join-body">
-			We recruit every year in Fall for students to join one of our committees — curations,
-			operations, marketing, salons, and outreach. Fill out our application below by the
-			deadline.
-		</p>
-		<a
-			class="btn btn--primary"
-			href={applicationUrl}
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			Apply to join
-		</a>
-		<a class="link-rule" href="mailto:{contactEmail}">{contactEmail}</a>
 	</div>
 </section>
 
@@ -168,29 +147,5 @@
 		font-weight: 700;
 		color: var(--red-accessible);
 		letter-spacing: 0.06em;
-	}
-
-	.join {
-		max-width: var(--measure-prose);
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-	}
-
-	.join h2 {
-		font-size: var(--title-size);
-		letter-spacing: -0.02em;
-	}
-
-	.join-body {
-		font-size: 17px;
-		line-height: 1.7;
-		color: var(--text-dim);
-	}
-
-	/* .join is a flex column, so the button would otherwise stretch the full
-	   760px of it. .link-rule below already sets this on itself. */
-	.join .btn {
-		align-self: flex-start;
 	}
 </style>
