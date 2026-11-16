@@ -88,13 +88,13 @@
 	<div class="speakers-wrap">
 		<h2 class="section-title">Speakers</h2>
 		<ComingSoon
-			note="Know someone with an idea worth spreading — or is it you? Put a name forward, and if you're a Purdue student, take your shot at the stage through our competition."
+			note="Know someone with an idea worth spreading? Put a name forward. Our student speaker comes from the Student Speaker Competition on Nov 14."
 		/>
 		<div class="speaker-actions">
 			<a class="btn btn--primary" href={nominationUrl} target="_blank" rel="noopener noreferrer">
 				Nominate a speaker
 			</a>
-			<a class="btn btn--outline" href="/speakers">Students: enter the competition</a>
+			<a class="btn btn--outline" href="/speakers">Student speaker competition 2026</a>
 		</div>
 	</div>
 </section>

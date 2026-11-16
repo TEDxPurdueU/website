@@ -52,13 +52,13 @@ export function currentUtm() {
 }
 
 /**
- * Add this visit's UTM tags to an absolute destination link, leaving any tags
- * already on it alone.
+ * Add this visit's UTM tags to a destination link (absolute, or a path on this
+ * site), leaving any tags already on it alone.
  *
  * @param {string} url
  */
 export function withUtm(url) {
-	const out = new URL(url);
+	const out = new URL(url, location.href);
 	for (const [key, value] of Object.entries(currentUtm())) {
 		if (!out.searchParams.has(key)) out.searchParams.set(key, value);
 	}
