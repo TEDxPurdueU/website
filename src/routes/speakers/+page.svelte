@@ -1,39 +1,98 @@
 <script>
+	import ComingSoon from '$lib/components/ComingSoon.svelte';
 	import Placeholder from '$lib/components/Placeholder.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import { studentApplyUrl } from '$lib/nav.js';
+	import { contactEmail } from '$lib/nav.js';
 
 	const description =
-		'Any currently enrolled Purdue student is eligible to take part in the Student Speaker Competition - the winner of which gets to speak at our main event.';
+		'Eight Purdue students took the stage at the 2026 Student Speaker Competition. Watch every talk; the winner speaks at our main event.';
 
-	const steps = [
+	const playlistUrl = 'https://www.youtube.com/playlist?list=PLcob9f23kNyI';
+
+	// Names and one-line summaries come from the TEDxPurdueU YouTube uploads, in
+	// playlist order. The talks have no titles of their own: each video is named
+	// after its speaker. Photos live in static/talks (not static/img, which
+	// `npm run images` rewrites from scratch).
+	/** @type {{ name: string, blurb: string, href: string, photo: string }[]} */
+	const talks = [
 		{
-			step: 'Step 01',
-			title: 'Apply',
-			body: 'Submit your application.'
+			name: 'Maria Regina Jaga',
+			blurb:
+				'Grew up in Eastern Indonesia with textbooks that left her home out. Education has to learn to recognize the knowledge communities already hold.',
+			href: 'https://youtu.be/RoXVUiE4d7Q',
+			photo: '/talks/maria.webp'
 		},
 		{
-			step: 'Step 02',
-			title: 'The competition',
-			body: 'Selected students give a shortened version of their talk on Nov 14.'
+			name: 'Taylor Marin',
+			blurb:
+				'Uses the fig tree, which survives drought by reshaping itself, to argue that we are strong because we struggle.',
+			href: 'https://youtu.be/K2XpunZRLZo',
+			photo: '/talks/taylor.webp'
 		},
 		{
-			step: 'Step 03',
-			title: 'Coaching',
-			body: 'Winner gets mentored and coached by our team.'
+			name: 'Max Rosenwasser',
+			blurb:
+				'How the U.S. interstate highway system was routed through Black neighborhoods. Intent is hard to prove, impact is not.',
+			href: 'https://youtu.be/GglpCfWrYdA',
+			photo: '/talks/max.webp'
 		},
 		{
-			step: 'Step 04',
-			title: 'The stage',
-			body: 'The winner speaks at the conference, filmed for the TEDx channel.'
+			name: 'Chris Kim',
+			blurb:
+				"Scored 28 out of 100 on a freshman exam. Never compare your beginning to someone else's middle.",
+			href: 'https://youtu.be/txEb2gVUchQ',
+			photo: '/talks/chris.webp'
+		},
+		{
+			name: 'Stephen Mawuli Amuzu',
+			blurb: 'A PhD student from Ghana on why every visible result begins with an unseen decision.',
+			href: 'https://youtu.be/vkXf9udrGT8',
+			photo: '/talks/stephen.webp'
+		},
+		{
+			name: 'Matthew Schilt',
+			blurb:
+				'Uses his own colorblindness to show that everyone has blind spots, and that much important work goes unrecognized.',
+			href: 'https://youtu.be/mDtoqhuoJuM',
+			photo: '/talks/matthew.webp'
+		},
+		{
+			name: 'Rai Shayaan Kharal',
+			blurb:
+				'A freshman from Singapore, opening with a rap verse, on how small daily actions build momentum when no one sees them.',
+			href: 'https://youtu.be/-FX9aq0pM00',
+			photo: '/talks/rai.webp'
+		},
+		{
+			name: 'Evelyn Wong',
+			blurb: 'What feels like common sense depends on what a curriculum chose to teach.',
+			href: 'https://youtu.be/bvXK1J1Eqs0',
+			photo: '/talks/evelyn.webp'
 		}
 	];
 
-	const eligibility = [
-		'Any currently enrolled Purdue undergraduate or graduate student',
-		'Any discipline'
+	const steps = [
+		{
+			step: 'Step 01 · Done',
+			title: 'Apply',
+			body: 'Applications closed. Purdue students from every discipline applied.'
+		},
+		{
+			step: 'Step 02 · Nov 14',
+			title: 'The competition',
+			body: 'Eight students gave a shortened version of their talk.'
+		},
+		{
+			step: 'Step 03 · Now',
+			title: 'Coaching',
+			body: 'The winner is mentored and coached by our team.'
+		},
+		{
+			step: 'Step 04 · Feb 27',
+			title: 'The stage',
+			body: 'The winner speaks at Unseen, filmed for the TEDx channel.'
+		}
 	];
-
 
 	const winners = [
 		{
@@ -70,13 +129,17 @@
 
 <section class="hero section--ruled">
 	<div class="hero-copy">
-		<p class="when">Saturday, Nov 14</p>
 		<h1>Student Speaker Competition</h1>
 		<p class="lede">
-			One slot on the Unseen stage goes to a student. You don't need a title, a lab, or a startup —
-			you need one idea you can defend in six minutes.
+			Eight Purdue students took the stage, each with one idea to defend. Watch every talk. The
+			winner goes on to speak at Unseen.
 		</p>
-		<a class="btn btn--primary" href={studentApplyUrl} target="_blank" rel="noopener noreferrer">Apply now</a>
+		<div class="actions">
+			<a class="btn btn--primary" href={playlistUrl} target="_blank" rel="noopener noreferrer">
+				Watch all 8 talks
+			</a>
+			<a class="btn btn--outline" href="/2027-event">Unseen 2027</a>
+		</div>
 	</div>
 	<div class="hero-media">
 		<Placeholder
@@ -88,15 +151,38 @@
 </section>
 
 <section class="sec section--ruled">
-	<div class="steps-wrap">
-		<h2 class="sub-title">How it works</h2>
-		<div class="steps">
-			{#each steps as item (item.step)}
-				<div class="step">
-					<div class="step-label">{item.step}</div>
-					<h3>{item.title}</h3>
-					<p class="step-body">{item.body}</p>
-				</div>
+	<div class="talks-wrap">
+		<div class="talks-head">
+			<h2 class="sub-title">2026 Speakers</h2>
+			<a class="link-rule" href={playlistUrl} target="_blank" rel="noopener noreferrer">
+				Full playlist on YouTube
+				<svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+			</a>
+		</div>
+		<div class="talks">
+			{#each talks as talk (talk.href)}
+				<article class="talk">
+					<Placeholder
+						ratio="4/5"
+						src={talk.photo}
+						label={talk.name}
+						alt="{talk.name} giving their talk at the Student Speaker Competition"
+					/>
+					<div class="talk__copy">
+						<h3 class="talk__name">{talk.name}</h3>
+						<p class="talk__blurb">{talk.blurb}</p>
+					</div>
+					<a
+						class="talk__cta"
+						href={talk.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Watch the talk by {talk.name}"
+					>
+						<svg class="cta__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+						Watch the talk
+					</a>
+				</article>
 			{/each}
 		</div>
 	</div>
@@ -118,25 +204,36 @@
 					<h3 class="winner__name">{winner.name}</h3>
 					<p class="winner__talk">{winner.talk}</p>
 					<a class="winner__cta" href={winner.href} target="_blank" rel="noopener noreferrer">
-							<svg class="cta__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
-							Watch the talk
-						</a>
+						<svg class="cta__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+						Watch the talk
+					</a>
 				</article>
 			{/each}
 		</div>
 	</div>
 </section>
 
-<section class="sec">
-	<div class="rules">
-		<div class="rule-col">
-			<h2>Who can enter</h2>
-			<ul>
-				{#each eligibility as item (item)}
-					<li>{item}</li>
-				{/each}
-			</ul>
+<section class="sec section--ruled">
+	<div class="steps-wrap">
+		<h2 class="sub-title">How it worked</h2>
+		<div class="steps">
+			{#each steps as item (item.step)}
+				<div class="step">
+					<div class="step-label">{item.step}</div>
+					<h3>{item.title}</h3>
+					<p class="step-body">{item.body}</p>
+				</div>
+			{/each}
 		</div>
+	</div>
+</section>
+
+<section class="sec">
+	<div class="next-wrap">
+		<ComingSoon
+			label="Next competition"
+			note="Entries for this year are closed. We will announce the next competition here. Questions? Email {contactEmail}."
+		/>
 	</div>
 </section>
 
@@ -156,8 +253,14 @@
 		min-width: 0;
 	}
 
-	.hero-copy .btn {
-		align-self: flex-start;
+	.hero-copy .lede {
+		max-width: 34em;
+	}
+
+	.actions {
+		display: flex;
+		gap: 14px;
+		flex-wrap: wrap;
 	}
 
 	.hero-media {
@@ -169,14 +272,6 @@
 		line-height: 0.98;
 		letter-spacing: -0.03em;
 		text-wrap: balance;
-	}
-
-	.when {
-		font-size: clamp(22px, 3vw, 36px);
-		line-height: 1.1;
-		letter-spacing: -0.02em;
-		font-weight: 700;
-		color: var(--red-accessible);
 	}
 
 	.sec {
@@ -191,10 +286,82 @@
 		gap: 32px;
 	}
 
+	.next-wrap {
+		max-width: 900px;
+	}
+
 	.sub-title {
 		font-size: clamp(24px, 2.8vw, 34px);
 		letter-spacing: -0.02em;
 	}
+
+	/* ---- The eight talks ---------------------------------------------- */
+
+	.talks-wrap {
+		max-width: 1280px;
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	.talks-head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 16px 32px;
+	}
+
+	/* .link-rule is built for a column; in this row it sits on the heading's baseline. */
+	.talks-head .link-rule {
+		align-self: auto;
+	}
+
+	/* The "opens elsewhere" cue: a stroked arrow leaving a corner, in the link's colour. */
+	.ext {
+		width: 13px;
+		height: 13px;
+		margin-left: 4px;
+		vertical-align: -1px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2.4;
+		stroke-linecap: square;
+	}
+
+	.talks {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+		gap: 48px 28px;
+	}
+
+	.talk {
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+	}
+
+	.talk__copy {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		min-width: 0;
+	}
+
+	.talk__name {
+		font-size: 20px;
+		letter-spacing: -0.02em;
+	}
+
+	.talk__blurb {
+		font-size: 15px;
+		line-height: 1.5;
+		color: var(--text-dim);
+		text-wrap: pretty;
+	}
+
+	/* ---- Steps and past winners ---------------------------------------- */
 
 	.steps {
 		display: grid;
@@ -259,9 +426,10 @@
 		color: var(--text-dim);
 	}
 
-	/* A quiet text link rather than a filled button: six red slabs in a row
+	/* A quiet text link rather than a filled button: a row of red slabs
 	   overwhelmed the cards and the photos they sit under. */
-	.winner__cta {
+	.winner__cta,
+	.talk__cta {
 		display: inline-flex;
 		align-items: center;
 		gap: 10px;
@@ -276,7 +444,8 @@
 		transition: color 0.15s ease;
 	}
 
-	.winner__cta:hover {
+	.winner__cta:hover,
+	.talk__cta:hover {
 		color: var(--red-accessible);
 	}
 
@@ -285,34 +454,5 @@
 		height: 15px;
 		flex-shrink: 0;
 		fill: var(--red);
-	}
-
-	.rules {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-		gap: 48px;
-		max-width: 1100px;
-	}
-
-	.rule-col {
-		display: flex;
-		flex-direction: column;
-		gap: 16px;
-	}
-
-	.rule-col h2 {
-		font-size: 24px;
-		letter-spacing: -0.01em;
-	}
-
-	ul {
-		margin: 0;
-		padding-left: 20px;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		font-size: 16px;
-		line-height: 1.6;
-		color: var(--text-dim);
 	}
 </style>

@@ -32,6 +32,10 @@ They are not part of `npm run images` because that script wipes `static/img/`
 on every run. After adding one, point the matching row in `src/lib/team.js` at
 `/headshots/<slug>.webp`; rows left at `photo: null` render the hatched placeholder.
 
+The 2026 Student Speaker Competition talk photos live in `static/talks/` (portrait crops
+of the YouTube thumbnails, listed in `src/routes/speakers/+page.svelte`). No script
+makes them, and they sit outside `static/img/` so `npm run images` does not wipe them.
+
 ## Deploy Configuration (configured by /setup-deploy)
 - Platform: Vercel
 - Production URL: https://tedxpurdueu.org

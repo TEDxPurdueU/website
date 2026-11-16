@@ -48,7 +48,7 @@
 			number: '03',
 			href: '/speakers',
 			title: 'Student Speaker Competition',
-			body: 'An opportunity for Purdue students to give an official TEDx talk while still in college.'
+			body: 'Eight Purdue students took the stage on Nov 14. Watch every talk.'
 		}
 	];
 
@@ -192,7 +192,7 @@
 		</p>
 		<div class="actions">
 			<a class="btn btn--primary" href="/2027-event">Unseen 2027</a>
-			<a class="btn btn--outline" href="/speakers">Speak on our stage</a>
+			<a class="btn btn--outline" href="/speakers">Watch the student talks</a>
 		</div>
 	</div>
 
