@@ -76,13 +76,10 @@
 	<div class="join">
 		<h2>Become a sponsor</h2>
 		<p class="join-body">
-			Partner with us to reach 500+ attendees and the wider Purdue community. Our sponsorship
-			packet covers the tiers and what each one includes.
+			Partner with us to reach 500+ attendees and the wider Purdue community. Email us to talk
+			about how to get involved.
 		</p>
-		<a class="btn btn--primary" href="/sponsor.pdf" target="_blank" rel="noopener">
-			View sponsorship packet
-		</a>
-		<a class="link-rule" href="mailto:{contactEmail}">{contactEmail}</a>
+		<a class="btn btn--primary" href="mailto:{contactEmail}">Email us</a>
 	</div>
 </section>
 
