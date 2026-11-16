@@ -279,6 +279,13 @@
 		border-left: 1px solid var(--rule);
 	}
 
+	/* When the Join button is closed the icons are the last thing in the bar, so
+	   cancel .social's 8px padding: the glyph, not its hit area, sits on the page
+	   edge. With Join open it is the last item and the gap stays. */
+	.socials:has(+ .toggle) {
+		margin-right: calc(-1 * var(--space-2));
+	}
+
 	/* The breathing room lives in each link's padding rather than in a gap, so
 	   every mark has a real pointer target while the set still reads as one
 	   cluster. */
@@ -471,6 +478,10 @@
 
 		.socials {
 			padding-left: 10px;
+		}
+
+		.socials:has(+ .toggle) {
+			margin-right: -6px;
 		}
 
 		.social {

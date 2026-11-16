@@ -103,40 +103,58 @@
 
 <style>
 	.hero {
-		padding: 10vh var(--gutter) 7vh;
+		padding: var(--hero-top) var(--gutter) var(--section-y);
 	}
 
 	.hero-inner {
-		max-width: 900px;
+		max-width: var(--measure);
 		display: flex;
 		flex-direction: column;
-		gap: 26px;
+		gap: var(--stack);
 	}
 
 	.sec {
-		padding: 7vh var(--gutter);
+		padding: var(--section-y) var(--gutter);
 	}
 
 	.sec-title {
-		font-size: clamp(24px, 2.8vw, 34px);
+		font-size: var(--title-size);
 		letter-spacing: -0.02em;
-		margin-bottom: 32px;
+		margin-bottom: var(--title-gap);
 	}
 
-	/* The 42% floor holds the roster two-up on a phone — six full-width square
-	   headshots would otherwise be most of the page. Above ~450px the 210px min
-	   takes over again, so wider layouts are untouched. */
+	/* Explicit column counts (2 / 3 / 4 / 6) instead of auto-fit: auto-fit gave 5
+	   columns on a laptop and stranded one headshot on a row of its own. Two-up
+	   on a phone because six full-width square headshots would be most of the
+	   page. */
 	.roster {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(210px, 42%), 1fr));
-		gap: 32px;
-		max-width: 1200px;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--card-gap);
+	}
+
+	@media (min-width: 600px) {
+		.roster {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 900px) {
+		.roster {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.roster {
+			grid-template-columns: repeat(6, minmax(0, 1fr));
+		}
 	}
 
 	.member {
 		display: flex;
 		flex-direction: column;
-		gap: 14px;
+		gap: var(--card-copy-gap);
 	}
 
 	.member-name {
@@ -153,14 +171,14 @@
 	}
 
 	.join {
-		max-width: 760px;
+		max-width: var(--measure-prose);
 		display: flex;
 		flex-direction: column;
-		gap: 18px;
+		gap: var(--space-4);
 	}
 
 	.join h2 {
-		font-size: clamp(24px, 2.8vw, 34px);
+		font-size: var(--title-size);
 		letter-spacing: -0.02em;
 	}
 

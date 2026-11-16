@@ -213,8 +213,6 @@
 	</div>
 </section>
 
-<div class="hero-rule"><div class="hero-rule__line"></div></div>
-
 <section class="who">
 	<h2 class="section-label">Who we are</h2>
 	<div class="who__copy">
@@ -342,17 +340,18 @@
 	/* ---- Hero -------------------------------------------------------- */
 
 	.hero {
-		padding: 9vh var(--gutter) 0;
+		padding: var(--hero-top) var(--gutter) var(--section-y);
+		border-bottom: 1px solid var(--rule);
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
-		gap: 56px;
+		gap: var(--space-7);
 		align-items: center;
 	}
 
 	.hero-copy {
 		display: flex;
 		flex-direction: column;
-		gap: 32px;
+		gap: var(--stack);
 		min-width: 0;
 	}
 
@@ -373,8 +372,17 @@
 
 	.actions {
 		display: flex;
-		gap: 14px;
+		gap: var(--space-4);
 		flex-wrap: wrap;
+	}
+
+	/* On a phone the two buttons would otherwise sit at different widths; stacked
+	   and full width they read as one deliberate pair. */
+	@media (max-width: 560px) {
+		.actions .btn {
+			flex: 1 1 100%;
+			text-align: center;
+		}
 	}
 
 	.hero-media {
@@ -435,24 +443,14 @@
 		letter-spacing: 0.06em;
 	}
 
-	/* The hairline that closes the hero, inset to the page gutter. */
-	.hero-rule {
-		padding: 9vh var(--gutter) 0;
-	}
-
-	.hero-rule__line {
-		border-bottom: 1px solid var(--rule);
-	}
-
 	/* ---- Who we are -------------------------------------------------- */
 
 	.who {
-		padding: 11vh var(--gutter);
+		padding: var(--section-y) var(--gutter);
 		border-bottom: 1px solid var(--rule);
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-		gap: 64px;
-		max-width: 1300px;
+		gap: var(--space-8);
 	}
 
 	/* Shared label for the two paired sections — "Who we are" / "What we do". */
@@ -471,7 +469,7 @@
 		min-width: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 26px;
+		gap: var(--stack);
 	}
 
 	.who__lead {
@@ -496,6 +494,7 @@
 	@media (max-width: 900px) {
 		.who {
 			grid-template-columns: 1fr;
+			gap: var(--stack);
 		}
 
 		.who__copy {
@@ -512,16 +511,16 @@
 	/* Introduces the numbered rows so they don't start cold off the section
 	   rule above them. */
 	.programmes__head {
-		padding: 10vh var(--gutter) 44px;
+		padding: var(--section-y) var(--gutter) var(--space-6);
 	}
 
 	.programme {
 		position: relative;
 		display: grid;
 		grid-template-columns: auto 1fr auto;
-		gap: 40px;
+		gap: var(--space-6);
 		align-items: baseline;
-		padding: 44px var(--gutter);
+		padding: var(--space-7) var(--gutter);
 		border-bottom: 1px solid var(--rule);
 		color: inherit;
 		transition: background-color 0.25s ease;
@@ -563,7 +562,7 @@
 	.programme__copy {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: var(--space-3);
 		min-width: 0;
 	}
 
@@ -594,8 +593,8 @@
 	@media (max-width: 620px) {
 		.programme {
 			grid-template-columns: 1fr auto;
-			gap: 10px 20px;
-			padding: 34px var(--gutter);
+			gap: var(--space-3) var(--space-5);
+			padding: var(--space-6) var(--gutter);
 		}
 
 		.programme__number {
@@ -606,11 +605,11 @@
 	/* ---- Past speakers ------------------------------------------------ */
 
 	.speakers {
-		padding: 10vh var(--gutter);
+		padding: var(--section-y) var(--gutter);
 		border-bottom: 1px solid var(--rule);
 		display: flex;
 		flex-direction: column;
-		gap: 40px;
+		gap: var(--title-gap);
 	}
 
 	.speakers__head {
@@ -620,7 +619,7 @@
 	}
 
 	.speakers__head h2 {
-		font-size: clamp(24px, 2.6vw, 34px);
+		font-size: var(--title-size);
 		letter-spacing: -0.02em;
 	}
 
@@ -635,7 +634,7 @@
 	.speakers__grid {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 28px;
+		gap: var(--card-gap);
 	}
 
 	@media (max-width: 900px) {
@@ -654,13 +653,13 @@
 		min-width: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 18px;
+		gap: var(--card-copy-gap);
 	}
 
 	.speaker__copy {
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
+		gap: var(--space-2);
 		min-width: 0;
 	}
 
@@ -720,10 +719,10 @@
 	/* Last section on the page, so it carries its own bottom space off the
 	   footer rather than borrowing it from a section below. */
 	.gallery {
-		padding: 9vh 0;
+		padding: var(--section-y) 0;
 		display: flex;
 		flex-direction: column;
-		gap: 28px;
+		gap: var(--title-gap);
 	}
 
 	.gallery__head {
@@ -731,7 +730,7 @@
 	}
 
 	.gallery__head h2 {
-		font-size: clamp(24px, 2.6vw, 34px);
+		font-size: var(--title-size);
 		letter-spacing: -0.02em;
 	}
 
@@ -741,7 +740,7 @@
 	.gallery__grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(min(220px, 45%), 1fr));
-		gap: 12px;
+		gap: var(--space-3);
 		padding: 0 var(--gutter);
 	}
 
@@ -776,10 +775,10 @@
 	}
 
 	.gallery__pager {
-		padding: 4px var(--gutter) 0;
+		padding: var(--space-1) var(--gutter) 0;
 		display: flex;
 		align-items: center;
-		gap: 10px;
+		gap: var(--space-3);
 		flex-wrap: wrap;
 	}
 
@@ -837,6 +836,23 @@
 	.pager__pages {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 6px;
+		gap: var(--space-2);
+	}
+
+	/* On a phone Prev and Next share the top row and the page numbers fill two
+	   even rows below, instead of Prev, two ragged rows of numbers and Next each
+	   landing on its own line. */
+	@media (max-width: 560px) {
+		.gallery__pager {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.pager__pages {
+			order: 1;
+			grid-column: 1 / -1;
+			display: grid;
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+		}
 	}
 </style>

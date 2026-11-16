@@ -43,23 +43,23 @@
 <style>
 	footer {
 		border-top: 1px solid var(--rule);
-		padding: 56px var(--gutter) 40px;
+		padding: var(--space-8) var(--gutter) var(--space-7);
 		display: flex;
 		flex-direction: column;
-		gap: 36px;
+		gap: var(--space-6);
 	}
 
 	.columns {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 40px;
+		gap: var(--space-6);
 		justify-content: space-between;
 	}
 
 	.about {
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: var(--space-4);
 		max-width: 360px;
 	}
 
@@ -81,7 +81,7 @@
 	.col {
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: var(--space-3);
 	}
 
 	.col-head {
@@ -94,7 +94,7 @@
 	.socials {
 		display: flex;
 		align-items: center;
-		gap: 20px;
+		gap: var(--space-5);
 		flex-wrap: wrap;
 	}
 
@@ -121,7 +121,7 @@
 	.page-links {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: var(--space-2);
 	}
 
 	.page-links a {

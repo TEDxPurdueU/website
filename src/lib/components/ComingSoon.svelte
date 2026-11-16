@@ -18,19 +18,29 @@
 </div>
 
 <style>
+	/* The mark sits above the copy on a phone and beside it from 720px up, at a
+	   fixed breakpoint rather than whenever the copy happens to wrap, so every
+	   panel on the site has the same shape. */
 	.panel {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		align-items: flex-start;
 		gap: clamp(20px, 5vw, 48px);
-		flex-wrap: wrap;
 		padding: clamp(24px, 4.6vw, 44px) clamp(20px, 5vw, 48px);
 		border: 1px dashed var(--border-strong);
+		border-radius: var(--radius);
 		background: var(--fill);
 	}
 
-	/* Once the panel wraps, the mark sits above the copy rather than beside it —
-	   the desktop floor would then take most of a phone screen's width, so it
-	   scales down with the viewport instead. */
+	@media (min-width: 720px) {
+		.panel {
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+
+	/* Scales down with the viewport so the stacked mark never takes most of a
+	   phone screen. */
 	.mark {
 		display: block;
 		width: clamp(160px, 30vw, 310px);
@@ -41,7 +51,7 @@
 	.copy {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: var(--space-2);
 		min-width: 0;
 	}
 

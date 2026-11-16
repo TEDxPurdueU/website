@@ -443,31 +443,30 @@
 
 <style>
 	.hero {
-		padding: 9vh var(--gutter) 6vh;
+		padding: var(--hero-top) var(--gutter) var(--section-y);
 	}
 
 	.hero-inner {
-		max-width: 900px;
+		max-width: var(--measure);
 		display: flex;
 		flex-direction: column;
-		gap: 26px;
+		gap: var(--stack);
 	}
 
 	.sec {
-		padding: 7vh var(--gutter) 10vh;
+		padding: var(--section-y) var(--gutter);
 	}
 
 	.layout {
-		max-width: 1200px;
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		gap: 56px;
+		gap: var(--space-7);
 	}
 
 	@media (min-width: 900px) {
 		.layout {
 			grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
-			gap: 72px;
+			gap: var(--space-8);
 			align-items: start;
 		}
 	}
@@ -475,7 +474,7 @@
 	.left {
 		display: flex;
 		flex-direction: column;
-		gap: 56px;
+		gap: var(--space-7);
 	}
 
 	.form,
@@ -508,13 +507,13 @@
 	select,
 	textarea {
 		width: 100%;
-		padding: 14px 16px;
+		padding: var(--space-4);
 		font: inherit;
 		font-size: 16px;
 		color: var(--text);
 		background: var(--bg);
 		border: 1px solid var(--text-faint);
-		border-radius: 0;
+		border-radius: var(--radius);
 	}
 
 	input:hover,
@@ -570,11 +569,7 @@
 		background: none;
 	}
 
-	.btn--primary {
-		border: 2px solid transparent;
-	}
-
-	.btn {
+		.btn {
 		text-align: center;
 	}
 
