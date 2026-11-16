@@ -160,6 +160,12 @@
 		margin-left: auto;
 	}
 
+	@media (max-width: 900px) {
+		.tickets {
+			margin-left: 0;
+		}
+	}
+
 	@media (max-width: 720px) {
 		.hero-title {
 			grid-template-columns: 1fr;
