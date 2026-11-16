@@ -128,7 +128,7 @@
 <section class="sec section--ruled">
 	<div class="talks-wrap">
 		<div class="talks-head">
-			<h2 class="sub-title">2026 Speakers</h2>
+			<h2 class="sub-title">2026 Student Speaker Competition Participants</h2>
 			<a class="link-rule" href={playlistUrl} target="_blank" rel="noopener noreferrer">
 				Full playlist on YouTube
 				<svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
