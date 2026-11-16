@@ -210,7 +210,7 @@
 
 	.actions {
 		display: flex;
-		gap: 14px;
+		gap: var(--space-4);
 		flex-wrap: wrap;
 	}
 
@@ -232,11 +232,11 @@
 	.winners-wrap {
 		display: flex;
 		flex-direction: column;
-		gap: 32px;
+		gap: var(--title-gap);
 	}
 
 	.sub-title {
-		font-size: clamp(24px, 2.8vw, 34px);
+		font-size: var(--title-size);
 		letter-spacing: -0.02em;
 	}
 
@@ -245,7 +245,7 @@
 	.talks-wrap {
 		display: flex;
 		flex-direction: column;
-		gap: 40px;
+		gap: var(--title-gap);
 	}
 
 	.talks-head {
@@ -253,7 +253,7 @@
 		flex-wrap: wrap;
 		align-items: flex-end;
 		justify-content: space-between;
-		gap: 16px 32px;
+		gap: var(--space-4) var(--space-6);
 	}
 
 	/* .link-rule is built for a column; in this row it sits on the heading's baseline. */
@@ -278,7 +278,7 @@
 	.talks {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 48px 28px;
+		gap: var(--card-gap);
 	}
 
 	@media (min-width: 560px) {
@@ -297,13 +297,13 @@
 		min-width: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 18px;
+		gap: var(--card-copy-gap);
 	}
 
 	.talk__copy {
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
+		gap: var(--space-2);
 		min-width: 0;
 	}
 
@@ -325,7 +325,7 @@
 	.winners {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 32px;
+		gap: var(--card-gap);
 	}
 
 	@media (min-width: 700px) {
@@ -337,7 +337,7 @@
 	.winner {
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: var(--card-copy-gap);
 		min-width: 0;
 	}
 
@@ -346,7 +346,7 @@
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--text-faint);
-		padding-top: 4px;
+		padding-top: var(--space-1);
 	}
 
 	.winner__name {
