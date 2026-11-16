@@ -1,8 +1,6 @@
 <script>
-	import ComingSoon from '$lib/components/ComingSoon.svelte';
 	import Placeholder from '$lib/components/Placeholder.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import { contactEmail } from '$lib/nav.js';
 
 	const description =
 		'Eight Purdue students took the stage at the 2026 Student Speaker Competition. Watch every talk; the winner speaks at our main event.';
@@ -68,29 +66,6 @@
 			blurb: 'What feels like common sense depends on what a curriculum chose to teach.',
 			href: 'https://youtu.be/bvXK1J1Eqs0',
 			photo: '/talks/evelyn.webp'
-		}
-	];
-
-	const steps = [
-		{
-			step: 'Step 01 · Done',
-			title: 'Apply',
-			body: 'Applications closed. Purdue students from every discipline applied.'
-		},
-		{
-			step: 'Step 02 · Nov 14',
-			title: 'The competition',
-			body: 'Eight students gave a shortened version of their talk.'
-		},
-		{
-			step: 'Step 03 · Now',
-			title: 'Coaching',
-			body: 'The winner is mentored and coached by our team.'
-		},
-		{
-			step: 'Step 04 · Feb 27',
-			title: 'The stage',
-			body: 'The winner speaks at Unseen, filmed for the TEDx channel.'
 		}
 	];
 
@@ -188,7 +163,7 @@
 	</div>
 </section>
 
-<section class="sec section--ruled">
+<section class="sec">
 	<div class="winners-wrap">
 		<h2 class="sub-title">Past winners</h2>
 		<div class="winners">
@@ -210,30 +185,6 @@
 				</article>
 			{/each}
 		</div>
-	</div>
-</section>
-
-<section class="sec section--ruled">
-	<div class="steps-wrap">
-		<h2 class="sub-title">How it worked</h2>
-		<div class="steps">
-			{#each steps as item (item.step)}
-				<div class="step">
-					<div class="step-label">{item.step}</div>
-					<h3>{item.title}</h3>
-					<p class="step-body">{item.body}</p>
-				</div>
-			{/each}
-		</div>
-	</div>
-</section>
-
-<section class="sec">
-	<div class="next-wrap">
-		<ComingSoon
-			label="Next competition"
-			note="Entries for this year are closed. We will announce the next competition here. Questions? Email {contactEmail}."
-		/>
 	</div>
 </section>
 
@@ -278,16 +229,10 @@
 		padding: 7vh var(--gutter);
 	}
 
-	.steps-wrap,
 	.winners-wrap {
-		max-width: 1100px;
 		display: flex;
 		flex-direction: column;
 		gap: 32px;
-	}
-
-	.next-wrap {
-		max-width: 900px;
 	}
 
 	.sub-title {
@@ -298,7 +243,6 @@
 	/* ---- The eight talks ---------------------------------------------- */
 
 	.talks-wrap {
-		max-width: 1280px;
 		display: flex;
 		flex-direction: column;
 		gap: 40px;
@@ -329,10 +273,24 @@
 		stroke-linecap: square;
 	}
 
+	/* Four across on desktop, two on a tablet, one on a phone: eight talks never leave a
+	   short last row. */
 	.talks {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+		grid-template-columns: 1fr;
 		gap: 48px 28px;
+	}
+
+	@media (min-width: 560px) {
+		.talks {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1000px) {
+		.talks {
+			grid-template-columns: repeat(4, 1fr);
+		}
 	}
 
 	.talk {
@@ -361,43 +319,19 @@
 		text-wrap: pretty;
 	}
 
-	/* ---- Steps and past winners ---------------------------------------- */
+	/* ---- Past winners --------------------------------------------------- */
 
-	.steps {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
-		gap: 36px;
-	}
-
-	.step {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
-		border-top: 3px solid var(--red);
-		padding-top: 18px;
-	}
-
-	.step-label {
-		font-size: 13px;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: var(--text-faint);
-	}
-
-	.step h3 {
-		font-size: 19px;
-	}
-
-	.step-body {
-		font-size: 15px;
-		line-height: 1.6;
-		color: var(--text-dim);
-	}
-
+	/* Three winners: all in one row from tablet up, stacked on a phone. */
 	.winners {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+		grid-template-columns: 1fr;
 		gap: 32px;
+	}
+
+	@media (min-width: 700px) {
+		.winners {
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
 
 	.winner {

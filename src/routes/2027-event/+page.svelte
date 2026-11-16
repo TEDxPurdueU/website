@@ -1,7 +1,6 @@
 <script>
 	import ComingSoon from '$lib/components/ComingSoon.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import { nominationUrl } from '$lib/nav.js';
 	import { site } from '$lib/seo.js';
 
 	const description =
@@ -87,15 +86,8 @@
 <section class="sec section--ruled">
 	<div class="speakers-wrap">
 		<h2 class="section-title">Speakers</h2>
-		<ComingSoon
-			note="Know someone with an idea worth spreading? Put a name forward. Our student speaker comes from the Student Speaker Competition on Nov 14."
-		/>
-		<div class="speaker-actions">
-			<a class="btn btn--primary" href={nominationUrl} target="_blank" rel="noopener noreferrer">
-				Nominate a speaker
-			</a>
-			<a class="btn btn--outline" href="/speakers">Student speaker competition 2026</a>
-		</div>
+		<ComingSoon />
+		<a class="btn btn--outline speaker-link" href="/speakers">Student speaker competition 2026</a>
 	</div>
 </section>
 
@@ -212,25 +204,15 @@
 		gap: 24px;
 	}
 
-	/* Stacked so the general nomination reads as the primary route and the
-	   student competition as the follow-on. */
-	.speaker-actions {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 14px;
-		padding-top: 4px;
+	/* Shrink-to-fit on a desktop; full width and centred on a phone, where the long label
+	   would otherwise wrap to a ragged second line. */
+	.speaker-link {
+		align-self: flex-start;
 	}
 
-	/* Shrink-to-fit leaves the two buttons at mismatched widths, and the longer
-	   label wraps to a ragged second line. Matching their width and centring
-	   the text makes the pair read as one deliberate stack. */
 	@media (max-width: 560px) {
-		.speaker-actions {
-			align-items: stretch;
-		}
-
-		.speaker-actions .btn {
+		.speaker-link {
+			align-self: stretch;
 			text-align: center;
 		}
 	}
