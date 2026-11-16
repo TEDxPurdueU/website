@@ -88,30 +88,29 @@
 
 <style>
 	.hero {
-		padding: 10vh var(--gutter) 7vh;
+		padding: var(--hero-top) var(--gutter) var(--section-y);
 	}
 
 	.hero-inner {
-		max-width: 900px;
+		max-width: var(--measure);
 		display: flex;
 		flex-direction: column;
-		gap: 26px;
+		gap: var(--stack);
 	}
 
 	.sec {
-		padding: 7vh var(--gutter);
+		padding: var(--section-y) var(--gutter);
 	}
 
 	.wrap {
-		max-width: 1200px;
 		display: flex;
 		flex-direction: column;
-		gap: 24px;
+		gap: var(--title-gap);
 	}
 
 	.list-heading {
-		font-size: 22px;
-		letter-spacing: 0.02em;
+		font-size: var(--title-size);
+		letter-spacing: -0.02em;
 	}
 
 	.grid {
@@ -120,7 +119,7 @@
 		margin: 0;
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-		gap: 24px;
+		gap: var(--card-gap);
 	}
 
 	.tile {
@@ -140,7 +139,7 @@
 		aspect-ratio: 16 / 9;
 		display: grid;
 		place-items: center;
-		padding: 28px;
+		padding: var(--space-5);
 		background: var(--fill);
 		text-align: center;
 	}
@@ -162,7 +161,7 @@
 	}
 
 	.caption {
-		padding: 16px 20px;
+		padding: var(--space-4) var(--space-5);
 		border-top: 1px solid var(--border);
 	}
 
@@ -172,14 +171,14 @@
 	}
 
 	.join {
-		max-width: 760px;
+		max-width: var(--measure-prose);
 		display: flex;
 		flex-direction: column;
-		gap: 18px;
+		gap: var(--space-4);
 	}
 
 	.join h2 {
-		font-size: clamp(24px, 2.8vw, 34px);
+		font-size: var(--title-size);
 		letter-spacing: -0.02em;
 	}
 

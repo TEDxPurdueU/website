@@ -27,20 +27,31 @@
 
 <style>
 	.sec {
-		padding: 10vh var(--gutter);
+		padding: var(--hero-top) var(--gutter) var(--section-y);
 	}
 
 	.wrap {
-		max-width: 900px;
+		max-width: var(--measure);
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 26px;
+		gap: var(--stack);
 	}
 
 	.actions {
 		display: flex;
-		gap: 14px;
+		gap: var(--space-4);
 		flex-wrap: wrap;
+	}
+
+	@media (max-width: 560px) {
+		.actions {
+			width: 100%;
+		}
+
+		.actions .btn {
+			flex: 1 1 100%;
+			text-align: center;
+		}
 	}
 </style>

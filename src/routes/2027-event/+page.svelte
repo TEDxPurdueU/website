@@ -100,14 +100,13 @@
 
 <style>
 	.hero {
-		padding: 10vh var(--gutter) 8vh;
+		padding: var(--hero-top) var(--gutter) var(--section-y);
 	}
 
 	.hero-inner {
-		max-width: 1280px;
 		display: flex;
 		flex-direction: column;
-		gap: 28px;
+		gap: var(--stack);
 	}
 
 	.hero-title {
@@ -121,7 +120,7 @@
 		min-width: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 28px;
+		gap: var(--stack);
 	}
 
 	.theme-illustration {
@@ -145,15 +144,15 @@
 	}
 
 	.theme-lede {
-		max-width: 660px;
+		max-width: var(--measure-prose);
 	}
 
 	.facts {
 		display: flex;
-		gap: 40px;
+		gap: var(--space-6) var(--space-7);
 		flex-wrap: wrap;
 		align-items: center;
-		padding-top: 12px;
+		padding-top: var(--space-3);
 	}
 
 	/* Sits on the same row as the date/venue/tickets facts, pushed to the end. */
@@ -178,7 +177,7 @@
 	.fact {
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
+		gap: var(--space-2);
 	}
 
 	.fact-value {
@@ -187,21 +186,19 @@
 	}
 
 	.sec {
-		padding: 8vh var(--gutter);
+		padding: var(--section-y) var(--gutter);
 	}
 
 	.schedule-wrap {
-		max-width: 900px;
 		display: flex;
 		flex-direction: column;
-		gap: 24px;
+		gap: var(--title-gap);
 	}
 
 	.speakers-wrap {
-		max-width: 900px;
 		display: flex;
 		flex-direction: column;
-		gap: 24px;
+		gap: var(--title-gap);
 	}
 
 	/* Shrink-to-fit on a desktop; full width and centred on a phone, where the long label

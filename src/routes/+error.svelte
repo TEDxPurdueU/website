@@ -34,12 +34,10 @@
 
 <style>
 	.error-page {
-		padding: 10vh var(--gutter);
-		border-bottom: 1px solid var(--rule);
+		padding: var(--hero-top) var(--gutter) var(--section-y);
 	}
 
 	.error-inner {
-		max-width: 1180px;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
 		gap: clamp(40px, 7vw, 88px);
@@ -50,7 +48,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 24px;
+		gap: var(--stack);
 		min-width: 0;
 	}
 

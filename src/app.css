@@ -34,10 +34,48 @@
 	/* Hover wash for the full-bleed programme rows. Deliberately lighter than
 	   the placeholder fill so a hovered row reads as a tint, not a grey slab. */
 	--row-wash: #f5f2ee;
-	/* Floored so the page still has a real margin on a 320px phone, where a bare
-	   6vw would leave only 19px. */
-	--gutter: max(20px, 6vw);
 	--mono: ui-monospace, Menlo, monospace;
+
+	/* ---- Layout system ------------------------------------------------
+	   One set of edges for the header, every page and the footer. The gutter
+	   is 6vw (floored at 20px so a 320px phone keeps a real margin) and grows
+	   past --page-max so content stops stretching on very wide screens while
+	   still lining up with the header. Pages never set their own max-width on a
+	   section; they use these two measures for text only. */
+	--page-max: 1280px;
+	--gutter: max(20px, 6vw, calc((100vw - var(--page-max)) / 2));
+	--measure: 900px; /* page heading + lede blocks */
+	--measure-prose: 760px; /* running text (join/CTA blocks, schedule) */
+
+	/* Vertical rhythm. Fixed to the viewport *width*, not height (the old vh
+	   values made every page a different height on every window). */
+	--section-y: clamp(56px, 6vw, 80px); /* top and bottom of a section */
+	--hero-top: clamp(56px, 8vw, 96px); /* top of a page's first section */
+
+	/* Space scale: 4px steps up to 16, then 24 / 32 / 48 / 64. Gaps and
+	   paddings use these and nothing in between. */
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 24px;
+	--space-6: 32px;
+	--space-7: 48px;
+	--space-8: 64px;
+
+	/* Roles on top of the scale. */
+	--stack: var(--space-5); /* between the parts of a heading + copy + button block */
+	--title-gap: var(--space-6); /* section heading to its content */
+	--card-gap: var(--space-6); /* between cards in a grid */
+	--card-copy-gap: var(--space-3); /* inside a card, under the photo */
+
+	/* The site is square-cornered. Anything that draws a box edge (buttons,
+	   fields, panels, callouts) takes its radius from here, so a rounded corner
+	   is a one-line change, not a hunt. */
+	--radius: 0;
+
+	/* Heading size shared by every section title. */
+	--title-size: clamp(24px, 2.8vw, 34px);
 }
 
 * {
@@ -83,7 +121,7 @@ p {
 /* ---- Layout primitives ------------------------------------------------- */
 
 .section {
-	padding: 9vh var(--gutter);
+	padding: var(--section-y) var(--gutter);
 }
 
 .section--ruled {
@@ -118,7 +156,7 @@ p {
 }
 
 .section-title {
-	font-size: clamp(26px, 3vw, 38px);
+	font-size: var(--title-size);
 	letter-spacing: -0.02em;
 }
 
@@ -139,7 +177,11 @@ p {
 
 .btn {
 	display: inline-block;
-	padding: 15px 30px;
+	/* Every variant carries a 2px border (transparent on the filled one) so a
+	   primary and an outline button side by side are the same 50px height. */
+	padding: 13px 30px;
+	border: 2px solid transparent;
+	border-radius: var(--radius);
 	font-size: 14px;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
@@ -158,11 +200,12 @@ p {
 
 .btn--primary:hover {
 	background: var(--text);
+	border-color: var(--text);
 	color: var(--bg);
 }
 
 .btn--outline {
-	border: 2px solid var(--border-strong);
+	border-color: var(--border-strong);
 	color: var(--text);
 }
 
@@ -180,7 +223,7 @@ p {
 	font-weight: 700;
 	color: var(--red-accessible);
 	border-bottom: 2px solid var(--red-accessible);
-	padding-bottom: 4px;
+	padding-bottom: var(--space-1);
 }
 
 /* On touch-sized screens the rule link grows a tap target upwards, cancelled

@@ -174,17 +174,17 @@
 
 <style>
 	.hero {
-		padding: 10vh var(--gutter) 7vh;
+		padding: var(--hero-top) var(--gutter) var(--section-y);
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-		gap: 56px;
+		gap: var(--space-7);
 		align-items: center;
 	}
 
 	.hero-copy {
 		display: flex;
 		flex-direction: column;
-		gap: 26px;
+		gap: var(--stack);
 		min-width: 0;
 	}
 
@@ -193,31 +193,28 @@
 	}
 
 	.sec {
-		padding: 7vh var(--gutter);
+		padding: var(--section-y) var(--gutter);
 	}
 
 	.sec--past {
-		padding-top: 0;
+		border-top: 1px solid var(--rule);
 	}
 
 	.wrap {
-		max-width: 1100px;
 		display: flex;
 		flex-direction: column;
-		gap: 24px;
+		gap: var(--title-gap);
 	}
 
 	.list-heading {
-		font-size: 22px;
-		letter-spacing: 0.02em;
-		border-top: 2px solid var(--text);
-		padding-top: 18px;
+		font-size: var(--title-size);
+		letter-spacing: -0.02em;
 	}
 
 	.events {
 		display: flex;
 		flex-direction: column;
-		gap: 44px;
+		gap: var(--space-7);
 	}
 
 	.event {
@@ -225,7 +222,7 @@
 		flex-wrap: wrap;
 		gap: clamp(24px, 4vw, 56px);
 		align-items: flex-start;
-		padding-bottom: 44px;
+		padding-bottom: var(--space-7);
 		border-bottom: 1px solid var(--rule);
 		scroll-margin-top: 24px;
 	}
@@ -247,13 +244,13 @@
 		max-width: 620px;
 		display: flex;
 		flex-direction: column;
-		gap: 18px;
+		gap: var(--space-4);
 	}
 
 	.when {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 10px;
+		gap: var(--space-3);
 		align-items: center;
 	}
 
@@ -263,7 +260,7 @@
 		font-weight: 700;
 		font-size: 13px;
 		letter-spacing: 0.06em;
-		padding: 6px 10px;
+		padding: var(--space-2) var(--space-3);
 	}
 
 	.time {
@@ -289,7 +286,7 @@
 		gap: 16px;
 		font-size: 16px;
 		border-top: 1px solid var(--rule);
-		padding-top: 18px;
+		padding-top: var(--space-4);
 	}
 
 	.meta dt {
@@ -313,8 +310,8 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 48px;
-		height: 48px;
+		width: 50px;
+		height: 50px;
 		border: 2px solid var(--text);
 		background: none;
 		color: var(--text);
@@ -348,13 +345,13 @@
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
-		gap: 36px 28px;
+		gap: var(--card-gap);
 	}
 
 	.card {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: var(--space-2);
 	}
 
 	.card-title {

@@ -58,14 +58,14 @@
 
 <style>
 	.sec {
-		padding: 10vh var(--gutter);
+		padding: var(--hero-top) var(--gutter) var(--section-y);
 	}
 
 	.wrap {
-		max-width: 900px;
+		max-width: var(--measure);
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 26px;
+		gap: var(--stack);
 	}
 </style>

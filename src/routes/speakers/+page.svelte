@@ -190,17 +190,17 @@
 
 <style>
 	.hero {
-		padding: 10vh var(--gutter) 7vh;
+		padding: var(--hero-top) var(--gutter) var(--section-y);
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-		gap: 56px;
+		gap: var(--space-7);
 		align-items: center;
 	}
 
 	.hero-copy {
 		display: flex;
 		flex-direction: column;
-		gap: 26px;
+		gap: var(--stack);
 		min-width: 0;
 	}
 
@@ -226,7 +226,7 @@
 	}
 
 	.sec {
-		padding: 7vh var(--gutter);
+		padding: var(--section-y) var(--gutter);
 	}
 
 	.winners-wrap {

@@ -150,7 +150,7 @@
 		font-size: 17px;
 		line-height: 1.6;
 		padding-inline: var(--gutter);
-		padding-block: 72px 96px;
+		padding-block: var(--hero-top) var(--section-y);
 	}
 
 	@media (prefers-color-scheme: dark) {
@@ -173,7 +173,7 @@
 
 	.mark {
 		display: inline-block;
-		margin: 0 0 56px;
+		margin: 0 0 var(--space-7);
 	}
 
 	.mark img {
@@ -188,7 +188,7 @@
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		color: var(--v-faint);
-		margin: 0 0 14px;
+		margin: 0 0 var(--space-4);
 	}
 
 	h1 {
@@ -202,8 +202,8 @@
 	}
 
 	section {
-		padding-top: 44px;
-		margin-top: 44px;
+		padding-top: var(--space-7);
+		margin-top: var(--space-7);
 		border-top: 1px solid var(--v-rule);
 	}
 
@@ -213,12 +213,12 @@
 		font-size: 28px;
 		letter-spacing: -0.02em;
 		line-height: 1.15;
-		margin: 0 0 16px;
+		margin: 0 0 var(--space-4);
 		text-wrap: balance;
 	}
 
 	p {
-		margin: 0 0 14px;
+		margin: 0 0 var(--space-4);
 		color: var(--v-muted);
 		max-width: 65ch;
 	}
@@ -230,8 +230,8 @@
 
 	.callout {
 		border-left: 3px solid var(--v-text);
-		padding: 2px 0 2px 18px;
-		margin: 20px 0 0;
+		padding: var(--space-1) 0 var(--space-1) var(--space-4);
+		margin: var(--space-5) 0 0;
 	}
 
 	.callout p {
@@ -240,18 +240,18 @@
 
 	.values {
 		list-style: none;
-		margin: 8px 0 0;
+		margin: var(--space-2) 0 0;
 		padding: 0;
 	}
 
 	.value {
-		padding: 28px 0;
+		padding: var(--space-6) 0;
 		border-top: 1px solid var(--v-rule);
 	}
 
 	.value:first-child {
 		border-top: 0;
-		padding-top: 8px;
+		padding-top: var(--space-2);
 	}
 
 	h3 {
@@ -260,9 +260,9 @@
 		font-size: 22px;
 		letter-spacing: -0.015em;
 		line-height: 1.2;
-		margin: 0 0 10px;
+		margin: 0 0 var(--space-2);
 		display: flex;
-		gap: 12px;
+		gap: var(--space-3);
 		align-items: baseline;
 	}
 
@@ -278,7 +278,7 @@
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		color: var(--v-faint);
-		margin: 16px 0 8px;
+		margin: var(--space-4) 0 var(--space-2);
 	}
 
 	.value ul {
@@ -286,16 +286,16 @@
 		padding-left: 20px;
 		color: var(--v-muted);
 		display: grid;
-		gap: 6px;
+		gap: var(--space-2);
 	}
 
 	.bar {
 		display: grid;
-		gap: 16px;
-		margin: 20px 0 0;
+		gap: var(--space-4);
+		margin: var(--space-5) 0 0;
 		background: var(--v-chip);
-		border-radius: 12px;
-		padding: 20px 22px;
+		border-radius: var(--radius);
+		padding: var(--space-5);
 	}
 
 	.bar p {
