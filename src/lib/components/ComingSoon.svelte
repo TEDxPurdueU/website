@@ -30,6 +30,8 @@
 		border: 1px dashed var(--border-strong);
 		border-radius: var(--radius);
 		background: var(--fill);
+		/* Same width on every page it appears on. */
+		max-width: var(--measure);
 	}
 
 	@media (min-width: 720px) {

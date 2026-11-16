@@ -139,7 +139,7 @@
 		}
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 720px) {
 		.roster {
 			grid-template-columns: repeat(4, minmax(0, 1fr));
 		}

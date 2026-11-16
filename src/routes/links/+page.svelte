@@ -489,8 +489,8 @@
 	}
 
 	.col-title {
-		font-size: 22px;
-		letter-spacing: 0.02em;
+		font-size: var(--title-size);
+		letter-spacing: -0.02em;
 	}
 
 	.field {

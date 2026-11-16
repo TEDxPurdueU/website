@@ -356,7 +356,7 @@
 	}
 
 	h1 {
-		font-size: clamp(44px, 6.4vw, 104px);
+		font-size: clamp(44px, 6.4vw, 92px);
 		line-height: 0.92;
 		letter-spacing: -0.045em;
 		text-wrap: balance;
@@ -839,10 +839,10 @@
 		gap: var(--space-2);
 	}
 
-	/* On a phone Prev and Next share the top row and the page numbers fill two
-	   even rows below, instead of Prev, two ragged rows of numbers and Next each
+	/* On a phone or tablet Prev and Next share the top row and the page numbers
+	   fill even rows below, instead of Prev, ragged rows of numbers and Next each
 	   landing on its own line. */
-	@media (max-width: 560px) {
+	@media (max-width: 900px) {
 		.gallery__pager {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
@@ -852,6 +852,12 @@
 			order: 1;
 			grid-column: 1 / -1;
 			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.pager__pages {
 			grid-template-columns: repeat(5, minmax(0, 1fr));
 		}
 	}
