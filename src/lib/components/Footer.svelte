@@ -56,13 +56,15 @@
 		justify-content: space-between;
 	}
 
-	/* From a tablet up the three columns sit in one row; flex-wrap alone dropped
-	   "Pages" under the brand at ~768px. */
+	/* From a tablet up the three columns stay in one row (the brand text shrinks
+	   to make room); wrapping dropped "Pages" under the brand at ~768px. */
 	@media (min-width: 640px) {
 		.columns {
-			display: grid;
-			grid-template-columns: minmax(0, 1fr) auto auto;
-			justify-items: start;
+			flex-wrap: nowrap;
+		}
+
+		.col {
+			flex-shrink: 0;
 		}
 	}
 
