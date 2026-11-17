@@ -190,10 +190,6 @@
 			One independently organized TED event each year, salons all semester, and a competition that
 			puts a student in the spotlight.
 		</p>
-		<div class="actions">
-			<a class="btn btn--primary" href="/2027-event">Unseen 2027</a>
-			<a class="btn btn--outline" href="/speakers">Watch the student talks</a>
-		</div>
 	</div>
 
 	<div class="hero-media">
@@ -368,21 +364,6 @@
 		line-height: 1.65;
 		color: var(--text-dim);
 		text-wrap: pretty;
-	}
-
-	.actions {
-		display: flex;
-		gap: var(--space-4);
-		flex-wrap: wrap;
-	}
-
-	/* On a phone the two buttons would otherwise sit at different widths; stacked
-	   and full width they read as one deliberate pair. */
-	@media (max-width: 560px) {
-		.actions .btn {
-			flex: 1 1 100%;
-			text-align: center;
-		}
 	}
 
 	.hero-media {
