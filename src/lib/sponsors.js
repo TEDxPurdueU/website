@@ -14,9 +14,9 @@ export const sponsors = [
 		logo: '/sponsors/sfab.webp'
 	},
 	{
-		name: 'Department of Computer Science',
-		url: 'https://www.cs.purdue.edu',
-		logo: '/sponsors/purdue-cs.webp'
+		name: 'School of Languages and Cultures',
+		url: 'https://cla.purdue.edu/academic/slc/',
+		logo: '/sponsors/purdue-languages-cultures.webp'
 	},
 	{
 		name: 'Department of English',
@@ -24,8 +24,8 @@ export const sponsors = [
 		logo: '/sponsors/purdue-english.webp'
 	},
 	{
-		name: 'School of Languages and Cultures',
-		url: 'https://cla.purdue.edu/academic/slc/',
-		logo: '/sponsors/purdue-languages-cultures.webp'
+		name: 'Department of Computer Science',
+		url: 'https://www.cs.purdue.edu',
+		logo: '/sponsors/purdue-cs.webp'
 	}
 ];
