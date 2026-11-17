@@ -204,7 +204,7 @@
 		<a class="next-card" href="/2027-event">
 			<div class="next-card__label">Next event</div>
 			<div class="next-card__title">Unseen</div>
-			<div class="next-card__meta">Spring 2027</div>
+			<div class="next-card__meta">27 Feb 2027</div>
 		</a>
 	</div>
 </section>
