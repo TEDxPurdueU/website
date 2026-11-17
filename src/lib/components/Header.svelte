@@ -112,7 +112,7 @@
 
 <header bind:offsetHeight={headerHeight}>
 	<a href="/" class="logo" aria-label="TEDxPurdueU — home">
-		<img src="/logo-dark.png" alt="TEDxPurdueU" width="1275" height="240" />
+		<img src="/logo-dark.png" alt="TEDxPurdueU" width="1275" height="151" />
 	</a>
 	<nav class="nav" aria-label="Primary">
 		{#each pages as item (item.href)}
@@ -229,7 +229,7 @@
 	}
 
 	.logo img {
-		height: 34px;
+		height: 21.4px;
 		width: auto;
 		display: block;
 	}
@@ -514,7 +514,7 @@
 		}
 
 		.logo img {
-			height: 28px;
+			height: 17.6px;
 		}
 
 		.nav {
