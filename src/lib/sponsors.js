@@ -22,5 +22,10 @@ export const sponsors = [
 		name: 'Department of English',
 		url: 'https://cla.purdue.edu/academic/english/',
 		logo: '/sponsors/purdue-english.webp'
+	},
+	{
+		name: 'School of Languages and Cultures',
+		url: 'https://cla.purdue.edu/academic/slc/',
+		logo: '/sponsors/purdue-languages-cultures.webp'
 	}
 ];
