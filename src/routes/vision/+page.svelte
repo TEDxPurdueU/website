@@ -83,7 +83,7 @@
 		<a class="mark" href="/" aria-label="TEDxPurdueU — home">
 			<picture>
 				<source srcset="/logo-light.png" media="(prefers-color-scheme: dark)" />
-				<img src="/logo-dark.png" alt="TEDxPurdueU" width="1275" height="240" />
+				<img src="/logo-dark.png" alt="TEDxPurdueU" width="1275" height="151" />
 			</picture>
 		</a>
 		<p class="kicker">Our vision</p>
@@ -178,7 +178,7 @@
 
 	.mark img {
 		display: block;
-		height: 34px;
+		height: 21.4px;
 		width: auto;
 	}
 

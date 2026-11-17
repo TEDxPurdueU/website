@@ -5,7 +5,7 @@
 <footer>
 	<div class="columns">
 		<div class="about">
-			<img src="/logo-dark.png" alt="TEDxPurdueU" width="1275" height="240" />
+			<img src="/logo-dark.png" alt="TEDxPurdueU" width="1275" height="151" />
 			<p>
 				This independent TEDx event is operated under license from TED.
 			</p>
@@ -78,7 +78,7 @@
 	/* align-self stops the column's default stretch from pulling the wordmark
 	   out to the container width while its height stays fixed. */
 	.about img {
-		height: 30px;
+		height: 18.9px;
 		width: auto;
 		align-self: flex-start;
 		display: block;
