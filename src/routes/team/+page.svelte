@@ -32,7 +32,7 @@
 
 <section class="hero section--ruled">
 	<div class="hero-inner">
-		<h1 class="page-title">The team</h1>
+		<h1 class="page-title">Team</h1>
 		<p class="lede">
 			Logistics, marketing, design, partnerships, and the talks — every aspect of the
 			TEDxPurdueU conference is built by Purdue students.
