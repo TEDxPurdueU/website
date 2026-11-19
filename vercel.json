@@ -11,11 +11,15 @@
 			"has": [{ "type": "host", "value": "www.tedxpurdueu.org" }],
 			"destination": "https://tedxpurdueu.org/$1",
 			"permanent": true
-		},
+		}
+	],
+	"rewrites": [{ "source": "/sponsor", "destination": "/sponsor.pdf" }],
+	"headers": [
 		{
 			"source": "/sponsor(.pdf)?",
-			"destination": "/sponsors",
-			"permanent": false
+			"headers": [
+				{ "key": "cache-control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
+			]
 		}
 	]
 }
