@@ -14,6 +14,11 @@ export const sponsors = [
 		logo: '/sponsors/sfab.webp'
 	},
 	{
+		name: 'College of Science',
+		url: 'https://www.purdue.edu/science/',
+		logo: '/sponsors/purdue-college-of-science.webp'
+	},
+	{
 		name: 'School of Languages and Cultures',
 		url: 'https://cla.purdue.edu/academic/slc/',
 		logo: '/sponsors/purdue-languages-cultures.webp'
